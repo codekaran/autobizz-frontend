@@ -1,0 +1,86 @@
+@keyframes movein {
+    0% {
+        opacity: 0;
+        top: -100px;
+        height: 0%;
+        transform: scale(0);
+    }
+    100% {
+        opacity: 1;
+        top: 0px;
+        height: auto;
+        transform: scale(1);
+    }
+}
+
+.filter {
+    padding: 32px 120px;
+    border-bottom: 1px solid #b1d0e0;
+    select {
+        margin-left: 8px;
+        height: 56px;
+        border-radius: 4px;
+        padding: 16px 20px;
+        font-family: Sora;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 23px;
+        color: #1b1b1b;
+        border: 1px solid #1b1b1b;
+    }
+    .container {
+        display: flex;
+        justify-content: center;
+        button {
+            background: #1a374d;
+            border-radius: 4px;
+            width: 140px;
+            height: 56px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 16px 20px;
+            font-family: Sora;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 23px;
+            color: #f4f4f4;
+
+            &:hover {
+                background: #081e2e;
+            }
+        }
+
+        select {
+            width: clamp(250px, 80%, 800px);
+        }
+    }
+    .filter_toggle {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        padding-top: 12px;
+        animation: movein 300ms;
+        select {
+            width: clamp(250px, 23%, 350px);
+            margin: 20px 20px 0;
+        }
+        input {
+            padding: 16px 20px;
+            border-radius: 4px;
+            height: 56px;
+            width: clamp(200px, 20%, 300px);
+            margin: 20px 20px 0;
+            font-family: Sora;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 23px;
+            color: #1b1b1b;
+            border: 1px solid #1b1b1b;
+        }
+    }
+}

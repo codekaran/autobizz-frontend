@@ -1,0 +1,37 @@
+.container {
+    background: #f4f4f4;
+    padding: 64px 120px;
+
+    h3 {
+        font-family: Sora;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 150%;
+        letter-spacing: 0.05em;
+        color: #000000;
+    }
+    .strip {
+        display: flex;
+        justify-content:space-between;
+        padding-top: 24px;
+        .brand {
+            padding: 12px 32px;
+            .brand_logo {
+                height: 64px;
+                width: 64px;
+                background: #ccc;
+            }
+            p {
+                font-family: Sora;
+                font-style: normal;
+                font-weight: normal;
+                font-size: 16px;
+                line-height: 20px;
+                color: #1b1b1b;
+                text-align: center;
+                padding-top: 10px;
+            }
+        }
+    }
+}

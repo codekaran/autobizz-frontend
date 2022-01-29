@@ -1,0 +1,15 @@
+.signin {
+    padding: 0px 50px;
+
+    .container {
+        display: flex;
+        justify-content: space-evenly;
+
+        .google {
+            height: 64px;
+            aspect-ratio: 1;
+            border-radius: 100%;
+            background-color: #000;
+        }
+    }
+}

@@ -1,8 +1,8 @@
 import Head from "next/head";
-import Header from "../components/Header";
-import HomePage from "../components/HomePage";
+import Header from "../../components/Header";
+import Advertisement from "../../components/Advertisement";
 
-const Home = () => {
+const Advertisements = () => {
   return (
     <div>
       <Head>
@@ -12,10 +12,10 @@ const Home = () => {
       </Head>
       <main>
         <Header />
-        <HomePage />
+        <Advertisement />
       </main>
     </div>
   );
 };
 
-export default Home;
+export default Advertisements;
