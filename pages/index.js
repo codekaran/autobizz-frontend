@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Header from "../components/Header";
-import HomePage from "../components/HomePage";
+import Header from "../components/globals/header/Header";
+import HomePage from "../components/pages/home/HomePage";
 
 const Home = () => {
   return (

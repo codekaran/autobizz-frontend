@@ -1,5 +1,5 @@
-import BrandsStrip from "./BrandsStrip";
-import Carousel from "./Carousel";
+import BrandsStrip from "../../globals/brands/BrandsStrip";
+import Carousel from "../../layouts/carousel/Carousel";
 import Filter from "./Filter";
 import SellCar from "./SellCar";
 

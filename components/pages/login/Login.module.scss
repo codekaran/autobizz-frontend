@@ -1,0 +1,76 @@
+.login {
+    text-align: center;
+    padding: 0 60px;
+
+    h3 {
+        font-family: Sora;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 30px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #406882;
+        margin-bottom: 16px;
+    }
+
+    h1 {
+        font-family: Sora;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 60px;
+        color: #1b1b1b;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 24px;
+        color: #1b1b1b;
+        margin-bottom: 64px;
+    }
+
+    button {
+        width: clamp(300px, 70%, 600px);
+        height: 54px;
+        background: #ffffff;
+        border: 1px solid #1a374d;
+        border-radius: 4px;
+        margin-bottom: 36px;
+
+        // Text
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: #1a374d;
+
+        &:hover {
+            background: #f1f1f1;
+        }
+
+        &:active {
+            background: #b1d0e0;
+        }
+    }
+
+    .sm {
+        font-size: 18px;
+        line-height: 23px;
+        margin: 12px 0px 0px;
+
+        a {
+            color: #6998ab;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}

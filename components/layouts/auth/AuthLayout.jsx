@@ -1,4 +1,4 @@
-import design from "../public/circles.png";
+import design from "../../../public/circles.png";
 import Image from "next/image";
 import styles from "./AuthLayout.module.scss";
 

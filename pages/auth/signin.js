@@ -1,12 +1,11 @@
-import { Fragment } from "react";
-import Signin from "../../components/Signin";
-
+import AuthLayout from "../../components/layouts/auth/AuthLayout";
+import Signin from "../../components/pages/signin/SignIn.jsx";
 const signin = () => {
-    return (
-        <Fragment>
-            <Signin/>
-        </Fragment>
-    )
-}
+  return (
+    <AuthLayout>
+      <Signin />
+    </AuthLayout>
+  );
+};
 
-export default signin
+export default signin;

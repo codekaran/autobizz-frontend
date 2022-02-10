@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Header from "../../components/Header";
-import Advertisement from "../../components/Advertisement";
+import Header from "../../components/globals/header/Header";
+import Advertisement from "../../components/pages/ads/Advertisement";
 
 const Advertisements = () => {
   return (

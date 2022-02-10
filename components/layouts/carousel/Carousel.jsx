@@ -1,5 +1,5 @@
 import styles from "./Carousel.module.scss";
-import CarCard from "./CarCard";
+import CarCard from "../../globals/cards/CarCard";
 
 const Carousel = ({ title }) => {
   return (

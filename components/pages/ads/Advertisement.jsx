@@ -1,12 +1,22 @@
 import { useState } from "react";
 import Image from "next/image";
-import private_png from "../public/private.png";
-import commercial_png from "../public/commercial.png";
-import add_png from "../public/add.png";
+import private_png from "../../../public/private.png";
+import commercial_png from "../../../public/commercial.png";
+import add_png from "../../../public/add.png";
 import styles from "./Advertisement.module.scss";
 
 const Advertisement = () => {
   const [showStep2, setShowStep2] = useState(false);
+  const [adData, setAdData] = useState({
+    brand: "",
+    model: "",
+    dateOfRegistration: "",
+    mileage: "",
+    fuelType: "",
+    horsePower: "",
+    typeOfSale: "",
+    
+  })
   const handleProceed = () => {
     setShowStep2(true);
   };

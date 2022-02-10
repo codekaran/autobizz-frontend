@@ -1,0 +1,24 @@
+.btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 16px 40px;
+    background: #1a374d;
+    border-radius: 4px;
+    height: 56px;
+    width: 200px;
+    p {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: #ffffff !important;
+        margin: 0px;
+    }
+
+    &:hover{
+        cursor: pointer;
+    }
+}

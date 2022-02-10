@@ -1,10 +1,11 @@
-import SellerInfo from "../../components/SellerInfo";
+import SellerInfo from "../../components/pages/signup/Info";
+import AuthLayout from "../../components/layouts/auth/AuthLayout";
 
 const info = () => {
   return (
-    <div>
+    <AuthLayout>
       <SellerInfo />
-    </div>
+    </AuthLayout>
   );
 };
 

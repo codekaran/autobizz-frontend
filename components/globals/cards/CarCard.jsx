@@ -1,8 +1,8 @@
 import Image from "next/image";
-import car from "../public/car.jpeg";
+import car from "../../../public/car.jpeg";
 import styles from "./CarCard.module.scss";
 
-const CarCard = () => {
+const CarCard = (props) => {
   return (
     <div className={styles.car_card}>
       <div className={styles.image}>

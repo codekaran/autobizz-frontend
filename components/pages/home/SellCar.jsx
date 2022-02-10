@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./SellCar.module.scss";
-import sell_car_ad_image from "../public/sellCar.png";
+import sell_car_ad_image from "../../../public/sellCar.png";
 import { FiArrowRight } from "react-icons/fi";
 import Link from "next/link";
 
