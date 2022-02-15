@@ -1,10 +1,10 @@
 import { useState } from "react";
-import styles from "./SignIn.module.scss";
+import styles from "./RegisterPage.module.scss";
 import Button from "../../globals/button/Button";
 import Link from "next/link";
 import Axios from "axios";
 
-const SignIn = () => {
+const RegisterPage = ({ title }) => {
   const [formData, setFormData] = useState({ email: "", password: "" });
 
   const { email, password } = formData;
@@ -32,9 +32,9 @@ const SignIn = () => {
   };
 
   return (
-    <div className={styles.signIn}>
-      <h3>Seller</h3>
-      <h1>Sign In</h1>
+    <div className={styles.register}>
+      <h3>{title}</h3>
+      <h1>Register</h1>
       <p>Register now to start your journey as seller with company name</p>
       <form>
         <div className={styles.formGroup}>
@@ -59,7 +59,9 @@ const SignIn = () => {
           <div></div>
           <p>Keep me remembered</p>
         </div>
-        <Button onClick={handleSubmit}>Sign In</Button>
+        <Link href="/" passHref>
+          <Button onClick={handleSubmit}>Register</Button>
+        </Link>
       </form>
       <p className={styles.or}>Or join with</p>
       <div className={styles.container}>
@@ -68,13 +70,13 @@ const SignIn = () => {
         <div className={styles.google}></div>
       </div>
       <p className={styles.redirect}>
-        Not yet registered?{" "}
+        Already registered?{" "}
         <Link href="/auth/signup" passHref>
-          Sign Up
+          Login
         </Link>
       </p>
     </div>
   );
 };
 
-export default SignIn;
+export default RegisterPage;

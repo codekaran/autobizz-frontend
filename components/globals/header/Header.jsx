@@ -14,7 +14,7 @@ const Header = () => {
           <p>Sell</p>
         </div>
         <div className={styles.container}>
-          <Link href="/auth/signin" passHref>
+          <Link href="/login" passHref>
             <button>Login/Register</button>
           </Link>
           <select>

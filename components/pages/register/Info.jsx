@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Axios from "axios";
+import { useRouter } from "next/router";
 import styles from "./Info.module.scss";
 import Button from "../../globals/button/Button";
 
 const SellerInfo = () => {
+  const router = useRouter();
   const [sellerInfo, setSellerInfo] = useState({
     fname: "Rishabh",
     lname: "Prakash",
@@ -23,7 +25,8 @@ const SellerInfo = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(sellerInfo);
-    Axios.post("http://localhost:4000/form", sellerInfo);
+    router.push("/register/success");
+    // Axios.post("http://localhost:4000/form", sellerInfo);
   };
 
   return (

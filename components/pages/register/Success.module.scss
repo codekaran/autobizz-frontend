@@ -1,0 +1,43 @@
+.success {
+    text-align: center;
+
+    h3 {
+        font-family: Sora;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 30px;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #406882;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 20px;
+        line-height: 24px;
+        color: #1b1b1b;
+        margin-bottom: 48px;
+    }
+
+    button{
+        margin: 0 auto 24px;
+    }
+
+    a {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 22px;
+        color: #1a374d;
+        text-decoration: none;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

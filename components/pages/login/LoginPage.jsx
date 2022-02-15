@@ -59,7 +59,7 @@ const LoginPage = ({ title }) => {
           <div></div>
           <p>Keep me remembered</p>
         </div>
-        <Button onClick={handleSubmit}>Sign In</Button>
+        <Button onClick={handleSubmit}>Log In</Button>
       </form>
       <p className={styles.or}>Or join with</p>
       <div className={styles.container}>
@@ -70,7 +70,7 @@ const LoginPage = ({ title }) => {
       <p className={styles.redirect}>
         Not yet registered?{" "}
         <Link href="/auth/signup" passHref>
-          Sign Up
+          Register
         </Link>
       </p>
     </div>

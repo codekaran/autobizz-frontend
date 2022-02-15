@@ -1,7 +1,4 @@
 .info {
-    height: auto;
-    width: 100%;
-    padding: 0px 80px;
     text-align: center;
 
     h3 {
@@ -13,7 +10,7 @@
         letter-spacing: 0.05em;
         text-transform: uppercase;
         color: #406882;
-        margin-bottom: 14px;
+        margin-bottom: 10px;
     }
 
     h1 {
@@ -23,7 +20,7 @@
         font-size: 48px;
         line-height: 60px;
         color: #1b1b1b;
-        margin-bottom: 18px;
+        margin-bottom: 12px;
     }
 
     p {
@@ -46,12 +43,13 @@
 
     form {
         display: flex;
+        width: 60%;
         justify-content: center;
         align-items: center;
         padding: 0px;
         order: 1;
-        gap: 24px;
-        margin: 48px 90px 0px;
+        gap: 14px;
+        margin: 36px auto 0px;
         flex-wrap: wrap;
 
         input {
@@ -109,6 +107,7 @@
 
         button {
             width: 100%;
+            margin-top: 24px;
         }
     }
 }

@@ -7,10 +7,10 @@ const Register = () => {
       <h3>Seller - buyer</h3>
       <h1>Register</h1>
       <p>Register now to start your journey as seller with company name</p>
-      <Link href="/seller" passHref>
+      <Link href="/register/seller" passHref>
         <button>Register as Seller</button>
       </Link>
-      <Link href="/buyer" passHref>
+      <Link href="/register/buyer" passHref>
         <button>Register as Buyer</button>
       </Link>
       <p className={styles.sm}>
