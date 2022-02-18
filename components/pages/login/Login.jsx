@@ -16,7 +16,7 @@ const Login = () => {
       <p className={styles.sm}>
         Not yet registered?{" "}
         <Link href="/register" passHref>
-          Sign Up
+          Register
         </Link>
       </p>
     </div>

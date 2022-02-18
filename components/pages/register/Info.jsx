@@ -3,17 +3,18 @@ import Axios from "axios";
 import { useRouter } from "next/router";
 import styles from "./Info.module.scss";
 import Button from "../../globals/button/Button";
+import formValidate from "../../globals/funtions/FormValidate";
 
 const SellerInfo = () => {
   const router = useRouter();
   const [sellerInfo, setSellerInfo] = useState({
-    fname: "Rishabh",
-    lname: "Prakash",
-    phone: "123456789",
-    street: "xyz",
-    country: "abc",
-    zipCode: "123456",
-    city: "fhg",
+    fname: "",
+    lname: "",
+    phone: "",
+    street: "",
+    country: "",
+    zipCode: "",
+    city: "",
   });
 
   const { fname, lname, phone, street, country, zipCode, city } = sellerInfo;
@@ -24,8 +25,12 @@ const SellerInfo = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(sellerInfo);
-    router.push("/register/success");
+    // console.log(sellerInfo);
+    if (formValidate(sellerInfo)) {
+      router.push("/register/success");
+    } else {
+      alert("Invalid details");
+    }
     // Axios.post("http://localhost:4000/form", sellerInfo);
   };
 
@@ -46,6 +51,7 @@ const SellerInfo = () => {
           placeholder="Last Name"
           value={lname}
           onChange={handleChange("lname")}
+          required
         />
         <div className={styles.formGroup}>
           <input
@@ -69,7 +75,7 @@ const SellerInfo = () => {
           onChange={handleChange("country")}
         />
         <input
-          type="number"
+          type="text"
           placeholder="Zip Code"
           value={zipCode}
           onChange={handleChange("zipCode")}

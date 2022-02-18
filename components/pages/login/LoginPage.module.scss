@@ -125,7 +125,12 @@
         .google {
             height: 50px;
             width: 50px;
-            background-color: #000;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba($color: #406882, $alpha: 0.2);
+                border-radius: 20%;
+            }
         }
     }
 
