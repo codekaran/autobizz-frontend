@@ -13,6 +13,10 @@ const AuthLayout = ({ children }) => {
         </div>
       </div>
       <div className={styles.container}>
+        <div className={styles.box}>
+          <h3>Welcome to</h3>
+          <h1>Company Name</h1>
+        </div>
         <div className={styles.top}>
           <Image src={design} alt="Design" />
         </div>

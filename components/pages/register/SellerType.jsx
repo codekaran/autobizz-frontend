@@ -1,6 +1,7 @@
 import styles from "./SellerType.module.scss";
 import Image from "next/image";
-import priv from "../../../public/private.png";
+import owner from "../../../public/private.png";
+import dealer from "../../../public/commercial.png";
 
 const SellerType = () => {
   return (
@@ -11,11 +12,11 @@ const SellerType = () => {
       <p className={styles.boldText}>What type of seller is it?</p>
       <div className={styles.container}>
         <div className={styles.box}>
-          <Image src={priv} alt="owner" />
+          <Image src={owner} alt="owner" />
           Owner
         </div>
         <div className={styles.box}>
-          <Image src={priv} alt="owner" />
+          <Image src={dealer} alt="dealer" />
           Dealer
         </div>
       </div>

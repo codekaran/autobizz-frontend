@@ -35,7 +35,8 @@
     }
 
     button {
-        width: clamp(300px, 70%, 600px);
+        width: 100%;
+        max-width: 400px;
         height: 54px;
         background: #ffffff;
         border: 1px solid #1a374d;
@@ -71,6 +72,30 @@
             &:hover {
                 text-decoration: underline;
             }
+        }
+    }
+}
+
+@media (max-width: 700px) {
+    .login {
+        padding: 0 30px;
+
+        p {
+            display: none;
+        }
+
+        h1 {
+            margin-bottom: 58px;
+        }
+
+        button {
+            margin-bottom: 16px;
+        }
+        
+        .sm {
+            display: block;
+            width: 80%;
+            margin: auto;
         }
     }
 }

@@ -53,7 +53,9 @@ const LoginPage = (props) => {
     <div className={styles.login}>
       <h3>{props.title}</h3>
       <h1>Log In</h1>
-      <p>Register now to start your journey as seller with company name</p>
+      <p className={styles.description}>
+        Register now to start your journey as seller with company name
+      </p>
       <form>
         <div className={styles.formGroup}>
           <input
@@ -79,6 +81,11 @@ const LoginPage = (props) => {
         </div>
         <Button onClick={handleSubmit}>Log In</Button>
       </form>
+
+      <p className={styles.forgot}>
+        <Link href="/forgot-password" passHref>Forget password</Link>
+      </p>
+
       <p className={styles.or}>Or join with</p>
       <div className={styles.container}>
         <div className={styles.google}>
