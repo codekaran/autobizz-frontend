@@ -122,7 +122,7 @@
         width: 100%;
         margin: auto;
         order: 1;
-        .google {
+        .icon {
             height: 50px;
             width: 50px;
             cursor: pointer;
@@ -146,10 +146,78 @@
 
 @media (max-width: 700px) {
     .login {
-        padding: 0 30px;
+        padding: 140px 30px 50px;
 
+        h3 {
+            font-size: 15px;
+            line-height: 19px;
+        }
+
+        h1 {
+            font-size: 36px;
+            line-height: 45px;
+            margin-bottom: 32px;
+        }
+
+        form {
+            margin: 0px;
+            .formGroup {
+                margin-bottom: 16px;
+                input {
+                    height: 42px;
+                    width: 100%;
+                    max-width: 450px;
+                    font-size: 14px;
+                    line-height: 18px;
+                }
+            }
+            .remember {
+                margin: 8px 0px;
+                p {
+                    font-size: 14px;
+                    line-height: 17px;
+                }
+            }
+            button {
+                margin: 16px auto;
+                height: 42px;
+                width: 100%;
+                max-width: 450px;
+                padding: 10px 0px;
+
+                p {
+                    font-size: 16px;
+                    line-height: 19px;
+                }
+            }
+        }
+        .forgot {
+            font-family: Sora;
+            font-size: 16px;
+            line-height: 20px;
+            color: #6998ab;
+        }
+        .or {
+            margin-top: 16px;
+            font-size: 14px;
+            line-height: 18px;
+        }
+        .container {
+            padding-bottom: 28px;
+            .icon {
+                height: 40px;
+                width: 40px;
+            }
+        }
         .description {
             display: none;
+        }
+        .redirect {
+            display: block;
+            width: 60%;
+            margin: 0px auto;
+            font-size: 15px;
+            line-height: 22px;
         }
     }
 }

@@ -56,7 +56,9 @@ const ForgotPassword = () => {
         )}
         <button type="submit">Send Link</button>
         {resendState ? (
-          <p className={styles.normalText}>Resend</p>
+          <p className={styles.normalText} style={{ color: "#6998AB" }}>
+            Resend
+          </p>
         ) : (
           <p className={styles.normalText}>Link will be send in {time} sec</p>
         )}

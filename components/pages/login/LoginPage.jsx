@@ -83,18 +83,20 @@ const LoginPage = (props) => {
       </form>
 
       <p className={styles.forgot}>
-        <Link href="/forgot-password" passHref>Forget password</Link>
+        <Link href="/forgot-password" passHref>
+          Forget password
+        </Link>
       </p>
 
       <p className={styles.or}>Or join with</p>
       <div className={styles.container}>
-        <div className={styles.google}>
+        <div className={styles.icon}>
           <Image src={google} />
         </div>
-        <div className={styles.google}>
+        <div className={styles.icon}>
           <Image src={apple} />
         </div>
-        <div className={styles.google}>
+        <div className={styles.icon}>
           <Image src={facebook} />
         </div>
       </div>

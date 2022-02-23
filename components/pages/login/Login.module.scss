@@ -78,24 +78,34 @@
 
 @media (max-width: 700px) {
     .login {
-        padding: 0 30px;
+        padding: 150px 30px 50px;
 
         p {
             display: none;
         }
-
+        h3 {
+            font-size: 14px;
+            line-height: 18px;
+        }
         h1 {
-            margin-bottom: 58px;
+            font-size: 36px;
+            line-height: 45px;
+            margin-bottom: 50px;
         }
 
         button {
             margin-bottom: 16px;
+            height: 42px;
+            font-size: 16px;
+            line-height: 19px;
         }
-        
+
         .sm {
             display: block;
-            width: 80%;
-            margin: auto;
+            width: 60%;
+            margin: 0px auto;
+            font-size: 15px;
+            line-height: 22px;
         }
     }
 }
