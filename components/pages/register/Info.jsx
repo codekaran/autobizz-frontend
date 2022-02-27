@@ -26,11 +26,11 @@ const SellerInfo = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // console.log(sellerInfo);
-    if (formValidate(sellerInfo)) {
-      router.push("/register/success");
-    } else {
-      alert("Invalid details");
-    }
+    // if (formValidate(sellerInfo)) {
+    router.push("/register/success");
+    // } else {
+    // alert("Invalid details");
+    // }
     // Axios.post("http://localhost:4000/form", sellerInfo);
   };
 

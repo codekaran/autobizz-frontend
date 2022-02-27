@@ -193,7 +193,113 @@
         border-radius: 4px;
     }
 
-    button{
+    button {
         margin: 24px auto 0px;
+    }
+}
+
+@media (max-width: 700px) {
+    .step_1,
+    .step_2,
+    .step_3 {
+        padding: 140px 20px 50px;
+
+        button {
+            height: 42px;
+            width: 100%;
+            max-width: 400px;
+            padding: 9px;
+            p {
+                font-size: 16px;
+                line-height: 19px;
+            }
+        }
+    }
+
+    .boldText {
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 24px;
+    }
+
+    .text {
+        margin-bottom: 12px;
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .step_1 {
+        select {
+            height: 42px;
+            width: 100%;
+            max-width: 400px;
+            padding: 9px;
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        .container {
+            gap: 14px;
+
+            .box {
+                border-radius: 8px;
+            }
+        }
+    }
+
+    .step_2 {
+        select,
+        .number,
+        .date {
+            height: 42px;
+            width: 100% !important;
+            max-width: 400px !important;
+            padding: 9px;
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        .inputBox {
+            padding-bottom: 16px;
+        }
+
+        .container {
+            // flex-wrap: nowrap;
+            width: 100%;
+
+            .selectBtn {
+                width: auto;
+                padding: 0px 20px;
+                height: 42px;
+                font-size: 14px;
+                line-height: 18px;
+            }
+        }
+    }
+
+    .step_3 {
+        .container {
+            // flex-wrap: nowrap;
+            width: 100%;
+
+            .selectBtn {
+                width: auto;
+                padding: 0px 20px;
+                height: 42px;
+                font-size: 14px;
+                line-height: 18px;
+            }
+        }
+
+        textarea {
+            font-size: 14px;
+            line-height: 18px;
+            padding: 12px;
+        }
+
+        .smBoldText {
+            font-size: 16px;
+            line-height: 20px;
+        }
     }
 }

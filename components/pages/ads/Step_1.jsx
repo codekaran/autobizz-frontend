@@ -26,7 +26,6 @@ const Step_1 = () => {
         <div className={styles.box}></div>
         <div className={styles.box}></div>
         <div className={styles.box}></div>
-        <div className={styles.box}></div>
       </div>
       <Link href="/ad/create/step-2" passHref>
         <Button>Next</Button>
