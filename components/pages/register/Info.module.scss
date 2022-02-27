@@ -111,3 +111,46 @@
         }
     }
 }
+
+@media (max-width: 700px) {
+    .info {
+        padding: 140px 30px 50px;
+
+        h3 {
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        h1 {
+            font-size: 36px;
+            line-height: 45px;
+            margin-bottom: 12px;
+        }
+        p {
+            font-size: 14px;
+            line-height: 17px;
+        }
+
+        form {
+            margin: 28px auto 0px;
+            width: 100%;
+            max-width: 500px;
+
+            input {
+                height: 42px !important;
+                font-size: 14px;
+                line-height: 18px;
+            }
+            button {
+                height: 42px;
+                width: 100%;
+                max-width: 450px;
+                padding: 9px;
+                p {
+                    font-size: 16px;
+                    line-height: 19px;
+                }
+            }
+        }
+    }
+}

@@ -114,13 +114,12 @@
         margin-top: 36px;
     }
     .container {
-        padding: 20px 0px 36px;
+        margin: 20px 0px 36px;
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
         width: 360px;
-        margin: auto;
         order: 1;
         .icon {
             height: 50px;
@@ -141,5 +140,68 @@
         font-size: 18px;
         line-height: 23px;
         color: #1b1b1b;
+    }
+}
+
+@media (max-width: 700px) {
+    .register {
+        padding: 140px 30px 50px;
+
+        h3 {
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        h1 {
+            font-size: 36px;
+            line-height: 45px;
+            margin-bottom: 50px;
+        }
+
+        .p {
+            display: none;
+        }
+
+        form {
+            margin: 0px;
+
+            .formGroup {
+                input {
+                    height: 42px;
+                    width: 100%;
+                    max-width: 450px;
+                    font-size: 14px;
+                    line-height: 18px;
+                }
+            }
+
+            .remember {
+                p {
+                    font-size: 14px;
+                    line-height: 17px;
+                }
+            }
+
+            button {
+                height: 42px;
+                width: 100%;
+                max-width: 450px;
+                font-size: 14px;
+                line-height: 18px;
+                padding: 9px;
+            }
+        }
+
+        .or{
+            margin-top: 28px;
+        }
+
+        .container{
+            height: 40px;
+            .icon{
+                width: 40px;
+                aspect-ratio: 1;
+            }
+        }
     }
 }

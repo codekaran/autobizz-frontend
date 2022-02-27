@@ -2,8 +2,15 @@ import styles from "./SellerType.module.scss";
 import Image from "next/image";
 import owner from "../../../public/private.png";
 import dealer from "../../../public/commercial.png";
+import { useRouter } from "next/router";
 
 const SellerType = () => {
+  const router = useRouter();
+
+  const handleSubmit = () => {
+    router.push("/register/seller-info");
+  };
+
   return (
     <div className={styles.sellerType}>
       <h3>Seller</h3>
@@ -20,7 +27,7 @@ const SellerType = () => {
           Dealer
         </div>
       </div>
-      <button>Next</button>
+      <button onClick={handleSubmit}>Next</button>
     </div>
   );
 };

@@ -82,3 +82,39 @@
         color: #ffffff;
     }
 }
+
+@media (max-width: 700px) {
+    .sellerType {
+        padding: 140px 30px 50px;
+
+        h3 {
+            font-size: 14px;
+            line-height: 18px;
+        }
+
+        h1 {
+            font-size: 36px;
+            line-height: 45px;
+            margin-bottom: 12px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 17px;
+            margin-bottom: 40px;
+        }
+
+        .boldText {
+            font-size: 16px;
+            line-height: 20px;
+        }
+
+        button {
+            height: 42px;
+            width: 100%;
+            max-width: 450px;
+            font-size: 16px;
+            line-height: 19px;
+        }
+    }
+}

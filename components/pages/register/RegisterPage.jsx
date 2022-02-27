@@ -8,7 +8,7 @@ import Image from "next/image";
 import google from "../../../public/google.svg";
 import apple from "../../../public/apple.svg";
 import facebook from "../../../public/facebook.svg";
-
+const router = useRouter();
 const RegisterPage = (props) => {
   const router = useRouter();
 
@@ -58,7 +58,7 @@ const RegisterPage = (props) => {
     <div className={styles.register}>
       <h3>{props.title}</h3>
       <h1>Register</h1>
-      <p>Register now to start your journey as seller with company name</p>
+      <p className={styles.p}>Register now to start your journey as seller with company name</p>
       <form>
         <div className={styles.formGroup}>
           <input
