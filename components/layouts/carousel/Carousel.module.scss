@@ -1,21 +1,18 @@
 .carousel {
     width: 100%;
-    padding: 64px 120px;
-    p {
+    padding: 32px 0px;
+
+    .title {
         font-family: Sora;
         font-style: normal;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 150%;
-        letter-spacing: 0.05em;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 30px;
         color: #000000;
-        padding-bottom: 20px;
+        padding-bottom: 32px;
     }
-    .container {
-        display: flex;
-        justify-content: space-between;
-        div{
-            flex: 0.32;
-        }
+
+    ul {
+        padding: 10px;
     }
 }

@@ -1,0 +1,158 @@
+.home {
+    padding: 0px 100px;
+}
+
+.heroSection {
+    height: 380px;
+    width: 100%;
+    background-color: #ccc;
+    margin-bottom: 32px;
+}
+
+.testimonialSection {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 1fr 2fr;
+    gap: 100px;
+    padding: 32px 0px;
+
+    .chooseUs {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 1;
+        grid-row-end: 2;
+
+        h3 {
+            font-family: Sora;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 30px;
+            color: #000;
+            padding: 8px 0px 28px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 32px;
+
+            .box {
+                height: 170px;
+                width: 190px;
+                background: #f7fafc;
+                border-radius: 8px;
+                padding: 14px 20px;
+
+                .circle {
+                    height: 100px;
+                    width: 100px;
+                    background: rgba(177, 208, 224, 0.2);
+                    border-radius: 50%;
+                    margin: 0px auto 5px;
+                }
+
+                p {
+                    font-family: Inter;
+                    font-style: normal;
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 17px;
+                    text-align: center;
+                    color: #1b1b1b;
+                }
+            }
+        }
+    }
+
+    .testimony {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+
+        h3 {
+            font-family: Sora;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 24px;
+            line-height: 30px;
+            color: #000000;
+            margin-bottom: 44px;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 32px;
+
+            .box {
+                // width: 47.5%;
+                max-width: 430px;
+                min-width: 300px;
+                min-height: 150px;
+                background: #f7fafc;
+                border-radius: 8px;
+                padding: 16px;
+
+                .head {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    margin-bottom: 8px;
+
+                    .profile {
+                        height: 30px;
+                        width: 30px;
+                        border-radius: 50%;
+                        background-color: #000000;
+                    }
+
+                    .name,
+                    .location {
+                        font-family: Open Sans;
+                        font-style: normal;
+                        font-weight: normal;
+                        font-size: 14px;
+                        line-height: 19px;
+                        color: #1a374d;
+                    }
+                }
+
+                .body {
+                    font-family: Sora;
+                    font-style: normal;
+                    font-weight: normal;
+                    font-size: 18px;
+                    line-height: 23px;
+                    color: #2e2e2e;
+                }
+            }
+        }
+    }
+
+    .googleAd {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 3;
+        background-color: #111;
+        color: #ddd;
+        display: grid;
+        place-items: center;
+    }
+}
+
+.Ad {
+    margin: 32px 0px;
+    height: 240px;
+    width: 100%;
+    background-color: #111;
+    color: #ddd;
+    display: flex;
+    place-items: center;
+    justify-content: center;
+}

@@ -1,18 +1,21 @@
-import BrandsStrip from "../../globals/brands/BrandsStrip";
 import Carousel from "../../layouts/carousel/Carousel";
-import Filter from "./Filter";
-import SellCar from "./SellCar";
+import GoogleAd from "./GoogleAd";
+import HeroSection from "./HeroSection";
+import TestimonialSection from "./TestimonialSection";
+import styles from "./HomePage.module.scss";
 
 const HomePage = () => {
   return (
-    <div>
-      <Filter />
-      <Carousel title="Latest cars" />
-      <SellCar />
-      <Carousel title="Top search cars" />
-      <BrandsStrip />
-      <Carousel title="Cars by Top Brands" />
-    </div>
+    <>
+      <HeroSection />
+      <div className={styles.home}>
+        <Carousel title="Car details" />
+        <TestimonialSection />
+        <Carousel title="Car details" />
+        <GoogleAd />
+        <Carousel title="Car details" />
+      </div>
+    </>
   );
 };
 

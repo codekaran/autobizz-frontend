@@ -1,24 +1,35 @@
 import Image from "next/image";
-import car from "../../../public/car.jpeg";
+import image from "../../../public/car.jpeg";
 import styles from "./CarCard.module.scss";
 
 const CarCard = (props) => {
   return (
     <div className={styles.car_card}>
-      <div className={styles.image}>
-        <Image src={car} alt="car_image" layout="fill" />
+      <div className={styles.top}>
+        <div className={styles.image}>
+          <Image src={image} alt="Car Image"/>
+        </div>
+        <p>152 km away</p>
+        <h4>2015 PEUGEOT 108 1.2I</h4>
       </div>
-      <div className={styles.info}>
-        <h1>2015 PEUGEOT 108 1.2I</h1>
-        <p>Volkswagen Golf VI 1.2 Cabrio...</p>
-        <h3>€ 1.150</h3>
+      <div className={styles.bottom}>
+        <h6>€ 1.150</h6>
         <div className={styles.container}>
-          <p>20689 km</p>
-          <p>2488 cc</p>
-          <p>Diesel</p>
+          <div className={styles.box}>
+            <p className={styles.text}>Distance travelled</p>
+            <p className={styles.boldText}>206890 km</p>
+          </div>
+          <div className={styles.box}>
+            <p className={styles.text}>Engine capacity</p>
+            <p className={styles.boldText}>2515 cc</p>
+          </div>
+          <div className={styles.box}>
+            <p className={styles.text}>Engine type</p>
+            <p className={styles.boldText}>Manual</p>
+          </div>
         </div>
       </div>
-      <button>Contact Seller</button>
+      <button>Contact seller</button>
     </div>
   );
 };
