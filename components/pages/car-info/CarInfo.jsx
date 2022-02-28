@@ -1,11 +1,16 @@
 import styles from "./CarInfo.module.scss";
+import Link from "next/link";
+import Image from "next/image";
+import ChooseUs from "./ChooseUs";
+import Carousel from "../../layouts/carousel/Carousel";
+import Button from "../../globals/button/Button";
+import car2 from "../../../public/car2.jpeg";
+import sell_car_ad_image from "../../../public/sellCar.png";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import { MdOutlineEmail } from "react-icons/md";
 import { HiOutlineLocationMarker } from "react-icons/hi";
-import Image from "next/image";
-import Carousel from "../../layouts/carousel/Carousel";
-import car2 from "../../../public/car2.jpeg";
-import Button from "../../globals/button/Button";
+import { FiArrowRight } from "react-icons/fi";
+import Financing from "./Financing";
 
 const CarInfo = () => {
   return (
@@ -137,11 +142,40 @@ const CarInfo = () => {
             </div>
           </div>
         </div>
-        <div className={styles.sellCar}>3</div>
-        <div className={styles.financing}>4</div>
-        <div className={styles.googleAd1}>5</div>
-        <div className={styles.googleAd2}>6</div>
+        <div className={styles.sellCar}>
+          <div className={styles.container}>
+            <h3>Do you want sell your car ?</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. A
+              tristique tortor commodo eget.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. A
+              tristique tortor commodo eget.
+            </p>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. A
+              tristique tortor commodo eget.
+            </p>
+            <Link href="/ad" passHref>
+              <button>
+                Sell Car &nbsp;&nbsp;
+                <FiArrowRight />
+              </button>
+            </Link>
+          </div>
+          <div className={styles.image}>
+            <Image src={sell_car_ad_image} alt="Image" />
+          </div>
+        </div>
+        <div className={styles.financing}>
+          <Financing />
+        </div>
+        <div className={styles.googleAd1}>Google ads</div>
+        <div className={styles.googleAd2}>Google ads</div>
       </div>
+
+      <ChooseUs />
 
       {/* Carousel for recommended cars */}
       <Carousel title="Recommended posts" />
