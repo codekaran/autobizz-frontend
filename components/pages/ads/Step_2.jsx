@@ -26,7 +26,7 @@ const Step_2 = () => {
   useEffect(async () => {
     console.log(ctx);
     let result = await axios.get(
-      "http://localhost:8000/seller-api/ref/getModels/" + ctx.data.make
+      "http://54.175.33.63:8000/seller-api/ref/getModels/" + ctx.data.make
     );
     console.log(result.data);
     setData({ ...data, ["model"]: result.data[0].model });

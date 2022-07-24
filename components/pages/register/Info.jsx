@@ -21,16 +21,8 @@ const SellerInfo = () => {
     zipCode: "",
     city: "",
   });
-  const {
-    companyName,
-    fname,
-    lname,
-    phone,
-    street,
-    country,
-    zipCode,
-    city,
-  } = sellerInfo;
+  const { companyName, fname, lname, phone, street, country, zipCode, city } =
+    sellerInfo;
 
   // register context
   const ctx = useContext(RegisterContext);
@@ -72,7 +64,7 @@ const SellerInfo = () => {
     if (isFormValid) {
       dataObject = { ...ctx.data, ...sellerInfo };
       let result = await axios.post(
-        "http://localhost:8000/seller-api/sellers/register",
+        "http://54.175.33.63:8000/seller-api/sellers/register",
         dataObject,
         {
           auth: {

@@ -10,12 +10,15 @@ const HomePage = () => {
   const [carsArray, setCarsArray] = useState([]);
   useEffect(async () => {
     // 192.168.1.7
-    let result = await axios.get("http://localhost:8000/seller-api/ads/ads", {
-      auth: {
-        username: "karan",
-        password: 123,
-      },
-    });
+    let result = await axios.get(
+      "http://54.175.33.63:8000/seller-api/ads/ads",
+      {
+        auth: {
+          username: "karan",
+          password: 123,
+        },
+      }
+    );
     console.log(result.data);
     setCarsArray(result.data);
   }, []);

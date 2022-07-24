@@ -66,7 +66,7 @@ const RegisterPage = (props) => {
     console.log("inside handle validation");
     // console.log(email);
     // let res = await axios.get(
-    //   "http://localhost:8000/seller-api/sellers/emailExists?email=" + email
+    //   "http://54.175.33.63:8000/seller-api/sellers/emailExists?email=" + email
     // );
 
     // let userExists = res.data;
