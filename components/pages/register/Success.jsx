@@ -9,7 +9,7 @@ const Success = () => {
     <div className={styles.success}>
       <h3>Seller</h3>
       <p>Congratulation, Now you have become seller with company name</p>
-      <div classname={styles.image}>
+      <div className={styles.image}>
         <Image src={Done} alt="Registration_success" />
       </div>
       <Link href="/ad/create/step-1" passHref>

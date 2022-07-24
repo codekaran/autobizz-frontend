@@ -11,8 +11,10 @@ import { MdOutlineEmail } from "react-icons/md";
 import { HiOutlineLocationMarker } from "react-icons/hi";
 import { FiArrowRight } from "react-icons/fi";
 import Financing from "./Financing";
+import CarScroller from "./CarScroller";
 
 const CarInfo = () => {
+  // console.log(imagePaths);
   return (
     <div className={styles.CarInfo}>
       {/* Return Link */}
@@ -24,38 +26,38 @@ const CarInfo = () => {
       {/* Car Image and basic info */}
       <div className={styles.gridContainer}>
         {/* Car Image Carousel*/}
-        <div className={styles.imageSection}>
-          <Image src={car2} alt="Car Details" layout="fill" />
-        </div>
+        <CarScroller></CarScroller>
         {/* Car Basic Info */}
-        <div className={styles.basicInfo}>
-          <h1>2015 PEUGEOT 108 1.2I</h1>
-          <p>Volkswagen Golf VI 1.2 Cabrio...</p>
-          <h3>€ 1.150</h3>
-          <div className={styles.container}>
-            <p>20689 km</p>
-            <p>2488 cc</p>
-            <p>Diesel</p>
+        <div className={styles.info}>
+          <div className={styles.basicInfo}>
+            <h1>2015 PEUGEOT 108 1.2I</h1>
+            <p>Volkswagen Golf VI 1.2 Cabrio...</p>
+            <h3>€ 1.150</h3>
+            <div className={styles.container}>
+              <p>20689 km</p>
+              <p>2488 cc</p>
+              <p>Diesel</p>
+            </div>
           </div>
-        </div>
-        {/* Car Seller Info */}
-        <div className={styles.sellerInfo}>
-          <div className={styles.container}>
-            <div className={styles.profile}></div>
-            <p>John Doe</p>
+          {/* Car Seller Info */}
+          <div className={styles.sellerInfo}>
+            <div className={styles.container}>
+              <div className={styles.profile}></div>
+              <p>John Doe</p>
+            </div>
+            <div className={styles.container}>
+              <MdOutlineEmail />
+              <p>Johndoe4543@gmail.com</p>
+            </div>
+            <div className={styles.container}>
+              <HiOutlineLocationMarker />
+              <p>250 miles away</p>
+            </div>
           </div>
-          <div className={styles.container}>
-            <MdOutlineEmail />
-            <p>Johndoe4543@gmail.com</p>
+          {/* Contact button */}
+          <div className={styles.btn}>
+            <Button>Contact Seller</Button>
           </div>
-          <div className={styles.container}>
-            <HiOutlineLocationMarker />
-            <p>250 miles away</p>
-          </div>
-        </div>
-        {/* Contact button */}
-        <div className={styles.btn}>
-          <Button>Contact Seller</Button>
         </div>
       </div>
 

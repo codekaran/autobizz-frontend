@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import styles from "./RegisterPage.module.scss";
 import Button from "../../globals/button/Button";
 import Link from "next/link";
@@ -8,10 +8,20 @@ import Image from "next/image";
 import google from "../../../public/google.svg";
 import apple from "../../../public/apple.svg";
 import facebook from "../../../public/facebook.svg";
-const router = useRouter();
+import RegisterContext from "../../../context/register-context";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import {
+  checkEmail,
+  checkPasswordStrength,
+} from "../../globals/funtions/FormValidate";
+import axios from "axios";
+
+// const router = useRouter();
 const RegisterPage = (props) => {
   const router = useRouter();
-
+  const ctx = useContext(RegisterContext);
+  console.log(ctx);
   // Form data is an object which stores email and password of the user from the input fields
   const [formData, setFormData] = useState({
     email: "",
@@ -20,48 +30,104 @@ const RegisterPage = (props) => {
     error: false,
     remember: false,
   });
+
+  const [formValid, setFormValid] = useState({
+    email: true,
+    emailExists: false,
+    password: true,
+    confirmPass: true,
+  });
+
+  const [passVisible, setPassVisible] = useState(false);
+
   const { email, password, confirmPass, error, remember } = formData;
 
   useEffect(() => {
-    console.log(formData);
+    // console.log(formData);
   }, [formData]);
 
   // This function updates the formData object
   const handleChange = (field) => (event) => {
     setFormData({ ...formData, [field]: event.target.value });
+    setFormValid({ ...formValid, [field]: true });
+  };
+  const handlePasswordToggle = () => {
+    let temp = passVisible ? false : true;
+    setPassVisible(temp);
   };
 
-  const handleRemember = () => {
-    remember
-      ? setFormData({ ...formData, remember: false })
-      : setFormData({ ...formData, remember: true });
+  // const handleRemember = () => {
+  //   remember
+  //     ? setFormData({ ...formData, remember: false })
+  //     : setFormData({ ...formData, remember: true });
+  // };
+
+  const handleValidation = async () => {
+    console.log("inside handle validation");
+    // console.log(email);
+    // let res = await axios.get(
+    //   "http://localhost:8000/seller-api/sellers/emailExists?email=" + email
+    // );
+
+    // let userExists = res.data;
+    // if (userExists) {
+    //   setFormValid({ ...formValid, ["emailExists"]: true });
+    //   return false;
+    // } else {
+    //   setFormValid({ ...formValid, ["emailExists"]: false });
+    // }
+    // if (!checkEmail(email)) {
+    //   setFormValid({ ...formValid, ["email"]: false });
+    //   alert("Please enter a valid email");
+    //   return false;
+    // }
+    // // if (!checkPasswordStrength(password)) {
+    // //   setFormValid({ ...formValid, [password]: false });
+    // //   return false;
+    // // }
+    // if (password != confirmPass) {
+    //   console.log("checking the pass");
+    //   setFormValid({ ...formValid, [confirmPass]: false });
+    //   alert("Password mismatch");
+    //   return false;
+    // }
+
+    return true;
   };
 
   // Function to send data to the backend
   //! If error:- Show the error
   //* If success:- Redirect to the user dashboard or homepage
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(formData);
-    router.push("/register/seller-type");
-    Axios.post(props.URL, formData)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        // Update error field of formData, if any
-        console.log(error);
-      });
+    let isFormValid = await handleValidation();
+
+    if (isFormValid) {
+      console.log("helllloooo");
+      console.log(formData);
+      ctx.getData(formData);
+      router.push("/register/seller-type");
+    }
   };
 
   return (
     <div className={styles.register}>
       <h3>{props.title}</h3>
       <h1>Register</h1>
-      <p className={styles.p}>Register now to start your journey as seller with company name</p>
+      <p className={styles.p}>
+        Register now to start your journey as seller with company name
+      </p>
+      {formValid.emailExists ? (
+        <p className={styles.errorMessage}>Email already exists !!</p>
+      ) : (
+        ""
+      )}
       <form>
         <div className={styles.formGroup}>
           <input
+            style={{
+              border: formValid.email ? "" : "1px solid red",
+            }}
             type="email"
             placeholder="Email"
             value={email}
@@ -69,31 +135,40 @@ const RegisterPage = (props) => {
             required
           />
         </div>
+
         <div className={styles.formGroup}>
           <input
-            type="password"
+            type={passVisible ? "text" : "password"}
             placeholder="Password"
             value={password}
             onChange={handleChange("password")}
             required
           />
+          <span className={styles.toggleVisible} onClick={handlePasswordToggle}>
+            <FontAwesomeIcon icon={passVisible ? faEye : faEyeSlash} />
+          </span>
+          <span>{formValid.password}</span>
         </div>
+
         <div className={styles.formGroup}>
           <input
             type="password"
             placeholder="Confirm Password"
             value={confirmPass}
             onChange={handleChange("confirmPass")}
+            style={{
+              border: formValid.confirmPass ? "" : "1px solid red",
+            }}
             required
           />
         </div>
-        <div className={styles.remember}>
+        {/* <div className={styles.remember}>
           <div onClick={handleRemember}></div>
           <p>Keep me remembered</p>
-        </div>
+        </div> */}
         <Button onClick={handleSubmit}>Register</Button>
       </form>
-      <p className={styles.or}>Or join with</p>
+      {/* <p className={styles.or}>Or join with</p>
       <div className={styles.container}>
         <div className={styles.icon}>
           <Image src={google} />
@@ -104,7 +179,7 @@ const RegisterPage = (props) => {
         <div className={styles.icon}>
           <Image src={facebook} />
         </div>
-      </div>
+      </div> */}
       <p className={styles.redirect}>
         Already registered?{" "}
         <Link href="/login/seller" passHref>

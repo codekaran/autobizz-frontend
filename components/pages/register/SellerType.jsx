@@ -1,14 +1,24 @@
 import styles from "./SellerType.module.scss";
 import Image from "next/image";
-import owner from "../../../public/private.png";
+import owner from "../../../public/owner.png";
 import dealer from "../../../public/commercial.png";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import RegisterContext from "../../../context/register-context";
+import { useState } from "react/cjs/react.development";
 
 const SellerType = () => {
   const router = useRouter();
 
+  const ctx = useContext(RegisterContext);
+
   const handleSubmit = () => {
     router.push("/register/seller-info");
+  };
+  const [isClicked, setIsClicked] = useState("");
+  const handleOnClick = (type) => {
+    setIsClicked(type);
+    ctx.getData({ sellerType: type });
   };
 
   return (
@@ -18,11 +28,23 @@ const SellerType = () => {
       <p>Provide some personal info for smooth and easy journey</p>
       <p className={styles.boldText}>What type of seller is it?</p>
       <div className={styles.container}>
-        <div className={styles.box}>
+        <div
+          style={{ backgroundColor: isClicked === "Owner" ? "#B1D0E0" : "" }}
+          onClick={() => {
+            handleOnClick("Owner");
+          }}
+          className={styles.box}
+        >
           <Image src={owner} alt="owner" />
           Owner
         </div>
-        <div className={styles.box}>
+        <div
+          style={{ backgroundColor: isClicked === "Dealer" ? "#B1D0E0" : "" }}
+          onClick={() => {
+            handleOnClick("Dealer");
+          }}
+          className={styles.box}
+        >
           <Image src={dealer} alt="dealer" />
           Dealer
         </div>

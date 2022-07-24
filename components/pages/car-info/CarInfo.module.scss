@@ -1,446 +1,473 @@
 .CarInfo {
-    padding: 0px 100px;
+  padding: 0px 100px;
 
-    .return {
+  .return {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 20px;
+    p {
+      font-family: Sora;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 18px;
+    }
+    margin: 28px 0px 16px;
+  }
+
+  .gridContainer {
+    display: flex;
+    justify-content: space-between;
+    height: 450px;
+    .imageSection {
+      margin-right: 20px;
+      position: relative;
+      width: 70%;
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
+      .imageScroller {
         display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 20px;
+        flex-direction: column;
+        .image {
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 450px;
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      }
+      .thumbnails {
+        display: flex;
+        // flex-direction: column;
+        // position: absolute;
+        // bottom: 0;
+        // top: 0;
+        .image {
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          height: 50px;
+          width: 50px;
+        }
+      }
+    }
+    .info {
+      width: 30%;
+      .basicInfo {
+        grid-row-start: 1;
+        grid-row-end: 4;
+        grid-column-start: 7;
+        grid-column-end: 10;
+        padding: 24px;
+        background: rgba(177, 208, 224, 0.1);
+        border-radius: 4px;
+
+        h1 {
+          font-family: Sora;
+          font-style: normal;
+          font-weight: bold;
+          font-size: 18px;
+          line-height: 150%;
+          letter-spacing: 0.05em;
+          color: #3d3d3d;
+        }
+
+        h3 {
+          font-family: Montserrat;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 24px;
+          line-height: 150%;
+          letter-spacing: 0.05em;
+          color: #1b1b1b;
+        }
+
         p {
-            font-family: Sora;
+          font-family: Montserrat;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 150%;
+          letter-spacing: 0.05em;
+          color: #1b1b1b;
+          margin: 4px 0px 8px;
+        }
+
+        .container {
+          padding-top: 12px;
+          display: flex;
+          justify-content: stretch;
+
+          p {
+            flex: 0.33;
+            text-align: center;
+            margin: 0px;
+            border-right: 1px solid #b1d0e0;
+
+            &:last-of-type {
+              border: none;
+            }
+          }
+        }
+      }
+
+      .sellerInfo {
+        grid-row-start: 4;
+        grid-row-end: 7;
+        grid-column-start: 7;
+        grid-column-end: 10;
+        padding: 24px;
+        background: rgba(177, 208, 224, 0.1);
+        border-radius: 4px;
+
+        .container {
+          display: flex;
+          align-items: center;
+          font-size: 24px;
+          color: #406882;
+          height: 40px;
+
+          .profile {
+            height: 40px;
+            width: 40px;
+            border-radius: 100%;
+            background-color: #3d3d3d;
+          }
+          svg {
+            margin: auto 8px;
+          }
+
+          p {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 150%;
+            letter-spacing: 0.05em;
+            color: #3d3d3d;
+            padding-left: 8px;
+          }
+        }
+      }
+    }
+
+    .btn {
+      margin-top: 10px;
+      grid-row-start: 7;
+      grid-row-end: 8;
+      grid-column-start: 7;
+      grid-column-end: 10;
+
+      button {
+        height: 100%;
+        width: 100%;
+        padding: 13px 20px;
+
+        p {
+          font-family: Sora;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 18px;
+          color: #f1f1f1;
+        }
+      }
+    }
+  }
+
+  .gridContainer2 {
+    margin-top: 20px;
+    display: grid;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: repeat(9, 1fr);
+    gap: 16px 20px;
+
+    .carDetails {
+      grid-row-start: 1;
+      grid-row-end: 2;
+      grid-column-start: 1;
+      grid-column-end: 7;
+      background: rgba(177, 208, 224, 0.1);
+      border-radius: 4px;
+      // padding: 24px 32px;
+
+      h4 {
+        font-family: Sora;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 30px;
+        color: #000000;
+        padding: 24px 32px 4px;
+      }
+
+      table {
+        width: 100%;
+        height: max-content;
+        td {
+          border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+          padding: 20px 56px;
+
+          h6 {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 17px;
+            color: #979797;
+          }
+
+          p {
+            font-family: Inter;
             font-style: normal;
             font-weight: 600;
             font-size: 14px;
-            line-height: 18px;
+            line-height: 17px;
+            color: #1b1b1b;
+            padding-top: 8px;
+          }
         }
-        margin: 28px 0px 16px;
+
+        tr {
+          &:last-child {
+            td {
+              border: none;
+            }
+          }
+        }
+      }
+    }
+    .benefits {
+      grid-row-start: 2;
+      grid-row-end: 3;
+      grid-column-start: 1;
+      grid-column-end: 7;
+      background: rgba(177, 208, 224, 0.1);
+      border-radius: 4px;
+      padding: 24px 32px;
+
+      h4 {
+        font-family: Sora;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 24px;
+        line-height: 30px;
+        color: #000000;
+        padding-bottom: 24px;
+      }
+
+      .container {
+        display: flex;
+        justify-content: space-between;
+
+        .box {
+          text-align: center;
+          flex: 0.3;
+
+          .roundImage {
+            height: 100px;
+            width: 100px;
+            background: rgba(177, 208, 224, 0.5);
+            border-radius: 100%;
+            margin: auto;
+          }
+
+          h6 {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 17px;
+            color: #1b1b1b;
+            padding: 16px 0px 6px;
+          }
+
+          p {
+            font-family: Inter;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 12px;
+            line-height: 15px;
+            color: #454545;
+          }
+        }
+      }
+    }
+    .sellCar {
+      grid-row-start: 3;
+      grid-row-end: 4;
+      grid-column-start: 1;
+      grid-column-end: 7;
+      background: rgba(177, 208, 224, 0.1);
+      border-radius: 4px;
+      padding: 24px 32px;
+      display: flex;
+      justify-content: space-between;
+
+      .container {
+        flex: 0.7;
+
+        h3 {
+          font-family: Sora;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 24px;
+          line-height: 30px;
+          color: #000000;
+          margin-bottom: 16px;
+        }
+
+        p {
+          font-family: Inter;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 20px;
+          color: #3d3d3d;
+        }
+
+        button {
+          width: 159px;
+          height: 48px;
+          background: #6998ab;
+          border-radius: 4px;
+          border: none;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 18px;
+
+          // Text
+          font-family: Sora;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 18px;
+          color: #ffffff;
+        }
+      }
+
+      // .image {
+      //     max-height: 100px;
+      // }
     }
 
-    .gridContainer {
-        display: grid;
-        grid-template-rows: repeat(7, 50px);
-        grid-template-columns: repeat(9, 1fr);
-        gap: 16px 20px;
-
-        .imageSection {
-            grid-row-start: 1;
-            grid-row-end: 8;
-            grid-column-start: 1;
-            grid-column-end: 7;
-            position: relative;
-            border-radius: 6px;
-            overflow: hidden;
-        }
-
-        .basicInfo {
-            grid-row-start: 1;
-            grid-row-end: 4;
-            grid-column-start: 7;
-            grid-column-end: 10;
-            padding: 24px;
-            background: rgba(177, 208, 224, 0.1);
-            border-radius: 4px;
-
-            h1 {
-                font-family: Sora;
-                font-style: normal;
-                font-weight: bold;
-                font-size: 18px;
-                line-height: 150%;
-                letter-spacing: 0.05em;
-                color: #3d3d3d;
-            }
-
-            h3 {
-                font-family: Montserrat;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 24px;
-                line-height: 150%;
-                letter-spacing: 0.05em;
-                color: #1b1b1b;
-            }
-
-            p {
-                font-family: Montserrat;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 14px;
-                line-height: 150%;
-                letter-spacing: 0.05em;
-                color: #1b1b1b;
-                margin: 4px 0px 8px;
-            }
-
-            .container {
-                padding-top: 12px;
-                display: flex;
-                justify-content: stretch;
-
-                p {
-                    flex: 0.33;
-                    text-align: center;
-                    margin: 0px;
-                    border-right: 1px solid #b1d0e0;
-
-                    &:last-of-type {
-                        border: none;
-                    }
-                }
-            }
-        }
-
-        .sellerInfo {
-            grid-row-start: 4;
-            grid-row-end: 7;
-            grid-column-start: 7;
-            grid-column-end: 10;
-            padding: 24px;
-            background: rgba(177, 208, 224, 0.1);
-            border-radius: 4px;
-
-            .container {
-                display: flex;
-                align-items: center;
-                font-size: 24px;
-                color: #406882;
-                height: 40px;
-
-                .profile {
-                    height: 40px;
-                    width: 40px;
-                    border-radius: 100%;
-                    background-color: #3d3d3d;
-                }
-                svg {
-                    margin: auto 8px;
-                }
-
-                p {
-                    font-family: Inter;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 16px;
-                    line-height: 150%;
-                    letter-spacing: 0.05em;
-                    color: #3d3d3d;
-                    padding-left: 8px;
-                }
-            }
-        }
-
-        .btn {
-            grid-row-start: 7;
-            grid-row-end: 8;
-            grid-column-start: 7;
-            grid-column-end: 10;
-
-            button {
-                height: 100%;
-                width: 100%;
-                padding: 13px 20px;
-
-                p {
-                    font-family: Sora;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 14px;
-                    line-height: 18px;
-                    color: #f1f1f1;
-                }
-            }
-        }
+    .financing {
+      grid-row-start: 4;
+      grid-row-end: 5;
+      grid-column-start: 1;
+      grid-column-end: 7;
+      background: rgba(177, 208, 224, 0.1);
+      border-radius: 4px;
     }
 
-    .gridContainer2 {
-        margin-top: 20px;
-        display: grid;
-        grid-template-rows: repeat(4, 1fr);
-        grid-template-columns: repeat(9, 1fr);
-        gap: 16px 20px;
-
-        .carDetails {
-            grid-row-start: 1;
-            grid-row-end: 2;
-            grid-column-start: 1;
-            grid-column-end: 7;
-            background: rgba(177, 208, 224, 0.1);
-            border-radius: 4px;
-            // padding: 24px 32px;
-
-            h4 {
-                font-family: Sora;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 24px;
-                line-height: 30px;
-                color: #000000;
-                padding: 24px 32px 4px;
-            }
-
-            table {
-                width: 100%;
-                height: max-content;
-                td {
-                    border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-                    padding: 20px 56px;
-
-                    h6 {
-                        font-family: Inter;
-                        font-style: normal;
-                        font-weight: normal;
-                        font-size: 14px;
-                        line-height: 17px;
-                        color: #979797;
-                    }
-
-                    p {
-                        font-family: Inter;
-                        font-style: normal;
-                        font-weight: 600;
-                        font-size: 14px;
-                        line-height: 17px;
-                        color: #1b1b1b;
-                        padding-top: 8px;
-                    }
-                }
-
-                tr {
-                    &:last-child {
-                        td {
-                            border: none;
-                        }
-                    }
-                }
-            }
-        }
-        .benefits {
-            grid-row-start: 2;
-            grid-row-end: 3;
-            grid-column-start: 1;
-            grid-column-end: 7;
-            background: rgba(177, 208, 224, 0.1);
-            border-radius: 4px;
-            padding: 24px 32px;
-
-            h4 {
-                font-family: Sora;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 24px;
-                line-height: 30px;
-                color: #000000;
-                padding-bottom: 24px;
-            }
-
-            .container {
-                display: flex;
-                justify-content: space-between;
-
-                .box {
-                    text-align: center;
-                    flex: 0.3;
-
-                    .roundImage {
-                        height: 100px;
-                        width: 100px;
-                        background: rgba(177, 208, 224, 0.5);
-                        border-radius: 100%;
-                        margin: auto;
-                    }
-
-                    h6 {
-                        font-family: Inter;
-                        font-style: normal;
-                        font-weight: 600;
-                        font-size: 14px;
-                        line-height: 17px;
-                        color: #1b1b1b;
-                        padding: 16px 0px 6px;
-                    }
-
-                    p {
-                        font-family: Inter;
-                        font-style: normal;
-                        font-weight: normal;
-                        font-size: 12px;
-                        line-height: 15px;
-                        color: #454545;
-                    }
-                }
-            }
-        }
-        .sellCar {
-            grid-row-start: 3;
-            grid-row-end: 4;
-            grid-column-start: 1;
-            grid-column-end: 7;
-            background: rgba(177, 208, 224, 0.1);
-            border-radius: 4px;
-            padding: 24px 32px;
-            display: flex;
-            justify-content: space-between;
-
-            .container {
-                flex: 0.7;
-
-                h3 {
-                    font-family: Sora;
-                    font-style: normal;
-                    font-weight: 600;
-                    font-size: 24px;
-                    line-height: 30px;
-                    color: #000000;
-                    margin-bottom: 16px;
-                }
-
-                p {
-                    font-family: Inter;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 14px;
-                    line-height: 20px;
-                    color: #3d3d3d;
-                }
-
-                button {
-                    width: 159px;
-                    height: 48px;
-                    background: #6998ab;
-                    border-radius: 4px;
-                    border: none;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    margin-top: 18px;
-
-                    // Text
-                    font-family: Sora;
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 14px;
-                    line-height: 18px;
-                    color: #ffffff;
-                }
-            }
-
-            // .image {
-            //     max-height: 100px;
-            // }
-        }
-
-        .financing {
-            grid-row-start: 4;
-            grid-row-end: 5;
-            grid-column-start: 1;
-            grid-column-end: 7;
-            background: rgba(177, 208, 224, 0.1);
-            border-radius: 4px;
-        }
-
-        .googleAd1 {
-            grid-row-start: 1;
-            grid-row-end: 3;
-            grid-column-start: 7;
-            grid-column-end: 10;
-            background: #848484;
-            border-radius: 4px;
-            display: grid;
-            place-items: center;
-        }
-
-        .googleAd2 {
-            grid-row-start: 3;
-            grid-row-end: 5;
-            grid-column-start: 7;
-            grid-column-end: 10;
-            background: #848484;
-            border-radius: 4px;
-            display: grid;
-            place-items: center;
-        }
+    .googleAd1 {
+      grid-row-start: 1;
+      grid-row-end: 3;
+      grid-column-start: 7;
+      grid-column-end: 10;
+      background: #848484;
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
     }
+
+    .googleAd2 {
+      grid-row-start: 3;
+      grid-row-end: 5;
+      grid-column-start: 7;
+      grid-column-end: 10;
+      background: #848484;
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
+    }
+  }
 }
 
 .finance {
-    padding: 24px 32px;
+  padding: 24px 32px;
 
-    h4 {
+  h4 {
+    font-family: Sora;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+    color: #000000;
+  }
+
+  .container {
+    .box {
+      .lgText,
+      .lgBoldText {
         font-family: Sora;
         font-style: normal;
-        font-weight: 600;
-        font-size: 24px;
-        line-height: 30px;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 23px;
         color: #000000;
-    }
+      }
 
-    .container {
-        .box {
-            .lgText,
-            .lgBoldText {
-                font-family: Sora;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 18px;
-                line-height: 23px;
-                color: #000000;
-            }
-
-            .lgBoldText{
-                font-weight: 500;
-            }
-        }
+      .lgBoldText {
+        font-weight: 500;
+      }
     }
+  }
 }
 
 .chooseUs {
-    padding: 36px 0px;
+  padding: 36px 0px;
 
-    h4 {
-        font-family: Sora;
+  h4 {
+    font-family: Sora;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+    color: #000000;
+    margin-bottom: 32px;
+  }
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 36px;
+
+    .box {
+      text-align: center;
+      max-width: 350px;
+
+      .image {
+        height: 100px;
+        width: 100px;
+        background: #c4c4c4;
+        border-radius: 4px;
+        margin: auto;
+      }
+
+      .title {
+        font-family: Inter;
         font-style: normal;
         font-weight: 600;
-        font-size: 24px;
-        line-height: 30px;
-        color: #000000;
-        margin-bottom: 32px;
+        font-size: 14px;
+        line-height: 17px;
+        color: #1b1b1b;
+        margin: 24px 0px 16px;
+      }
+
+      .body {
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 15px;
+        color: #454545;
+      }
     }
-
-    .container {
-        display: flex;
-        justify-content: space-between;
-        padding: 0px 36px;
-
-        .box {
-            text-align: center;
-            max-width: 350px;
-
-            .image {
-                height: 100px;
-                width: 100px;
-                background: #c4c4c4;
-                border-radius: 4px;
-                margin: auto;
-            }
-
-            .title {
-                font-family: Inter;
-                font-style: normal;
-                font-weight: 600;
-                font-size: 14px;
-                line-height: 17px;
-                color: #1b1b1b;
-                margin: 24px 0px 16px;
-            }
-
-            .body {
-                font-family: Inter;
-                font-style: normal;
-                font-weight: normal;
-                font-size: 12px;
-                line-height: 15px;
-                color: #454545;
-            }
-        }
-    }
+  }
 }
