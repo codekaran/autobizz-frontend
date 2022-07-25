@@ -7,7 +7,7 @@ const index = () => {
   return (
     <div>
       <Header />
-      <CarInfo />
+      {/* <CarInfo /> */}
       <Footer />
     </div>
   );
