@@ -73,6 +73,12 @@ const Step_3 = () => {
         }
       );
       console.log(result);
+      if (result.data == "Ad already exists") {
+        alert(result.data);
+      }
+      if (result.data.includes("Ad Id:")) {
+        alert("ad successfully uploaded");
+      }
     } catch (err) {
       console.log(err);
     }

@@ -50,11 +50,15 @@ const RegisterPage = (props) => {
   // This function updates the formData object
   const handleChange = (field) => (event) => {
     setFormData({ ...formData, [field]: event.target.value });
-    if (field === "emailExists") {
-      setFormValid({ ...formValid, [field]: false });
+    console.log(field);
+    if (field === "email") {
+      console.log("setting exist");
+      setFormValid({ ...formValid, ["emailExists"]: false, ["email"]: true });
     } else {
       setFormValid({ ...formValid, [field]: true });
     }
+
+    console.log(formValid);
   };
   const handlePasswordToggle = () => {
     let temp = passVisible ? false : true;
