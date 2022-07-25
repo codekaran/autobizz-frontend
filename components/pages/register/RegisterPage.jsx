@@ -33,7 +33,7 @@ const RegisterPage = (props) => {
 
   const [formValid, setFormValid] = useState({
     email: true,
-    emailExists: false,
+    emailExistsError: true,
     password: true,
     strongPassword: true,
     confirmPass: true,
@@ -73,10 +73,10 @@ const RegisterPage = (props) => {
     console.log(res.data);
     let userExists = res.data;
     if (userExists) {
-      setFormValid({ ...formValid, ["emailExists"]: true });
+      setFormValid({ ...formValid, ["emailExistsError"]: true });
       return false;
     } else {
-      setFormValid({ ...formValid, ["emailExists"]: false });
+      setFormValid({ ...formValid, ["emailExistsError"]: false });
     }
     if (!checkEmail(email)) {
       setFormValid({ ...formValid, ["email"]: false });
@@ -122,10 +122,10 @@ const RegisterPage = (props) => {
       <p className={styles.p}>
         Register now to start your journey as seller with company name
       </p>
-      {formValid.emailExists ? (
-        <p className={styles.errorMessage}>Email already exists !!</p>
-      ) : (
+      {formValid.emailExistsError ? (
         ""
+      ) : (
+        <p className={styles.errorMessage}>Email already exists !!</p>
       )}
       {formValid.email ? (
         ""
