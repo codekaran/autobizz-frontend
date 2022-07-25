@@ -33,7 +33,7 @@ const RegisterPage = (props) => {
 
   const [formValid, setFormValid] = useState({
     email: true,
-    emailExistsError: true,
+    emailExists: false,
     password: true,
     strongPassword: true,
     confirmPass: true,
@@ -50,7 +50,11 @@ const RegisterPage = (props) => {
   // This function updates the formData object
   const handleChange = (field) => (event) => {
     setFormData({ ...formData, [field]: event.target.value });
-    setFormValid({ ...formValid, [field]: true });
+    if (field === "email") {
+      setFormValid({ ...formValid, [field]: false });
+    } else {
+      setFormValid({ ...formValid, [field]: true });
+    }
   };
   const handlePasswordToggle = () => {
     let temp = passVisible ? false : true;
@@ -73,10 +77,10 @@ const RegisterPage = (props) => {
     console.log(res.data);
     let userExists = res.data;
     if (userExists) {
-      setFormValid({ ...formValid, ["emailExistsError"]: true });
+      setFormValid({ ...formValid, ["emailExists"]: true });
       return false;
     } else {
-      setFormValid({ ...formValid, ["emailExistsError"]: false });
+      setFormValid({ ...formValid, ["emailExists"]: false });
     }
     if (!checkEmail(email)) {
       setFormValid({ ...formValid, ["email"]: false });
@@ -122,10 +126,10 @@ const RegisterPage = (props) => {
       <p className={styles.p}>
         Register now to start your journey as seller with company name
       </p>
-      {formValid.emailExistsError ? (
-        ""
-      ) : (
+      {formValid.emailExists ? (
         <p className={styles.errorMessage}>Email already exists !!</p>
+      ) : (
+        ""
       )}
       {formValid.email ? (
         ""
