@@ -64,7 +64,7 @@ const SellerInfo = () => {
     if (isFormValid) {
       dataObject = { ...ctx.data, ...sellerInfo };
       let result = await axios.post(
-        "http://54.175.33.63:8000/seller-api/sellers/register",
+        "http://44.203.60.242:8000/seller-api/sellers/register",
         dataObject,
         {
           auth: {
@@ -73,9 +73,15 @@ const SellerInfo = () => {
           },
         }
       );
-      console.log(result);
+      console.log(result.data.message);
+
+      if (result.data.message === "Seller already exists") {
+        alert(result.data.message);
+      }
       // if (formValidate(sellerInfo)) {
-      router.push("/register/success");
+      else {
+        router.push("/register/success");
+      }
     }
   };
   return (
@@ -113,12 +119,15 @@ const SellerInfo = () => {
           <>
             {formValid.companyName}
             <input
-              style={{ border: formValid.companyName ? "" : "1px solid red" }}
+              style={{
+                border: formValid.companyName ? "" : "1px solid red",
+                flex: "1",
+              }}
               type="text"
               placeholder="Company Name"
               value={companyName}
               onChange={handleChange("companyName")}
-              style={{ flex: "1" }}
+              // style={{ }}
               required
             />
           </>
@@ -155,7 +164,7 @@ const SellerInfo = () => {
           onChange={handleChange("zipCode")}
         />
         <input
-          style={{}}
+          // style={{}}
           type="text"
           placeholder="City"
           value={city}

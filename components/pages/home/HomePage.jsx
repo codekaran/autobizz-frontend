@@ -11,7 +11,7 @@ const HomePage = () => {
   useEffect(async () => {
     // 192.168.1.7
     let result = await axios.get(
-      "http://54.175.33.63:8000/seller-api/ads/ads",
+      "http://44.203.60.242:8000/seller-api/ads/ads",
       {
         auth: {
           username: "karan",

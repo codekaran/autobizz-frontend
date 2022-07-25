@@ -14,7 +14,7 @@ export async function getStaticProps() {
   let data = {};
   try {
     let res = await axios.get(
-      "http://54.175.33.63:8000/seller-api/ref/getMakes"
+      "http://44.203.60.242:8000/seller-api/ref/getMakes"
     );
     // res = await res.json();
     // data = JSON.parse(res.data);

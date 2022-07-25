@@ -35,6 +35,7 @@ const RegisterPage = (props) => {
     email: true,
     emailExists: false,
     password: true,
+    strongPassword: true,
     confirmPass: true,
   });
 
@@ -64,33 +65,37 @@ const RegisterPage = (props) => {
 
   const handleValidation = async () => {
     console.log("inside handle validation");
-    // console.log(email);
-    // let res = await axios.get(
-    //   "http://54.175.33.63:8000/seller-api/sellers/emailExists?email=" + email
-    // );
-
-    // let userExists = res.data;
-    // if (userExists) {
-    //   setFormValid({ ...formValid, ["emailExists"]: true });
-    //   return false;
-    // } else {
-    //   setFormValid({ ...formValid, ["emailExists"]: false });
-    // }
-    // if (!checkEmail(email)) {
-    //   setFormValid({ ...formValid, ["email"]: false });
-    //   alert("Please enter a valid email");
-    //   return false;
-    // }
-    // // if (!checkPasswordStrength(password)) {
-    // //   setFormValid({ ...formValid, [password]: false });
-    // //   return false;
-    // // }
-    // if (password != confirmPass) {
-    //   console.log("checking the pass");
-    //   setFormValid({ ...formValid, [confirmPass]: false });
-    //   alert("Password mismatch");
-    //   return false;
-    // }
+    console.log(email);
+    let res = await axios.get(
+      // 44.203.60.242
+      "http://44.203.60.242:8000/seller-api/sellers/emailExists?email=" + email
+    );
+    console.log(res.data);
+    let userExists = res.data;
+    if (userExists) {
+      setFormValid({ ...formValid, ["emailExists"]: true });
+      return false;
+    } else {
+      setFormValid({ ...formValid, ["emailExists"]: false });
+    }
+    if (!checkEmail(email)) {
+      setFormValid({ ...formValid, ["email"]: false });
+      return false;
+    }
+    if (!checkPasswordStrength(password)) {
+      setFormValid({ ...formValid, ["strongPassword"]: false });
+      return false;
+    }
+    if (password === "") {
+      setFormValid({ ...formValid, [password]: false });
+      return false;
+    }
+    if (password != confirmPass && password != "") {
+      console.log("checking the pass");
+      setFormValid({ ...formValid, [confirmPass]: false });
+      alert("Password mismatch");
+      return false;
+    }
 
     return true;
   };
@@ -101,7 +106,7 @@ const RegisterPage = (props) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     let isFormValid = await handleValidation();
-
+    console.log("form valid status:" + isFormValid);
     if (isFormValid) {
       console.log("helllloooo");
       console.log(formData);
@@ -121,6 +126,19 @@ const RegisterPage = (props) => {
         <p className={styles.errorMessage}>Email already exists !!</p>
       ) : (
         ""
+      )}
+      {formValid.email ? (
+        ""
+      ) : (
+        <p className={styles.errorMessage}>Please enter a valid email !!</p>
+      )}
+      {formValid.strongPassword ? (
+        ""
+      ) : (
+        <p className={styles.errorMessage}>
+          Please enter a password with atleast: one Upper Case letter one small
+          case one number one special character and minmimum 8 characters !!
+        </p>
       )}
       <form>
         <div className={styles.formGroup}>

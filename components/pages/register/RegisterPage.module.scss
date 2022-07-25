@@ -6,8 +6,15 @@
 
   .errorMessage {
     color: red;
-    margin-top: 30px;
-    font-size: 16px;
+    // margin-top: 30px;
+    font-size: 10px;
+    .passwordList {
+      line-height: 10px;
+
+      list-style: none;
+
+      font-size: 10px;
+    }
   }
 
   h3 {
@@ -186,7 +193,7 @@
     }
 
     form {
-      margin: 0px;
+      margin: 20px 0px 0 0;
 
       .formGroup {
         input {

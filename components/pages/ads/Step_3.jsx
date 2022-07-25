@@ -63,7 +63,7 @@ const Step_3 = () => {
     console.log(...formData);
     try {
       let result = await axios.post(
-        "http://54.175.33.63:8000/seller-api/ads/1/ads",
+        "http://44.203.60.242:8000/seller-api/ads/1/ads",
         formData,
         {
           auth: {

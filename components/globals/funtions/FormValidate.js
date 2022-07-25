@@ -22,7 +22,7 @@ export const checkEmail = (email) => {
   }
   return false;
 };
-
+// atleast one CAP one small number and special character length >=8
 export const checkPasswordStrength = (password) => {
   if (
     password.match(
@@ -46,65 +46,65 @@ export const validateForm = (form, sellerType) => {
     city: true,
   };
 
-  // // if the Owner is getting registered
-  // if (sellerType === "Owner") {
-  //   console.log("checking for ", sellerType);
-  //   if (!form.fname.match(/^\w/)) {
-  //     validFieldsObj["fname"] = false;
-  //     return {
-  //       validFieldsObj,
-  //       isFormValid: false,
-  //       message: "Invalid First Name",
-  //     };
-  //   }
-  //   if (!form.lname.match(/^\w/)) {
-  //     validFieldsObj["lname"] = false;
-  //     return {
-  //       validFieldsObj,
-  //       isFormValid: false,
-  //       message: "Invalid Last Name",
-  //     };
-  //   }
-  // }
-  // // if Dealer is getting registered
-  // if (sellerType === "Dealer") {
-  //   if (!form.companyName.match(/^\w/)) {
-  //     validFieldsObj["companyName"] = false;
-  //     return {
-  //       validFieldsObj,
-  //       isFormValid: false,
-  //       message: "Invalid Company Name",
-  //     };
-  //   }
-  // }
-  // if (!form.phone.match(/[0-9]{10}/)) {
-  //   validFieldsObj["phone"] = false;
-  //   return {
-  //     validFieldsObj,
-  //     isFormValid: false,
-  //     message: "Invalid mobile number",
-  //   };
-  // }
-  // if (!form.street.match(/^\w/)) {
-  //   validFieldsObj["street"] = false;
-  //   return {
-  //     validFieldsObj,
-  //     isFormValid: false,
-  //     message: "Invalid Street Name",
-  //   };
-  // }
-  // if (!form.country.match(/^\w/)) {
-  //   validFieldsObj["country"] = false;
-  //   return {
-  //     validFieldsObj,
-  //     isFormValid: false,
-  //     message: "Invalid Country Name",
-  //   };
-  // }
-  // if (!form.city.match(/^\w/)) {
-  //   validFieldsObj["city"] = false;
-  //   return { validFieldsObj, isFormValid: false, message: "Invalid City Name" };
-  // }
+  // if the Owner is getting registered
+  if (sellerType === "Owner") {
+    console.log("checking for ", sellerType);
+    if (!form.fname.match(/^\w/)) {
+      validFieldsObj["fname"] = false;
+      return {
+        validFieldsObj,
+        isFormValid: false,
+        message: "Invalid First Name",
+      };
+    }
+    if (!form.lname.match(/^\w/)) {
+      validFieldsObj["lname"] = false;
+      return {
+        validFieldsObj,
+        isFormValid: false,
+        message: "Invalid Last Name",
+      };
+    }
+  }
+  // if Dealer is getting registered
+  if (sellerType === "Dealer") {
+    if (!form.companyName.match(/^\w/)) {
+      validFieldsObj["companyName"] = false;
+      return {
+        validFieldsObj,
+        isFormValid: false,
+        message: "Invalid Company Name",
+      };
+    }
+  }
+  if (!form.phone.match(/[0-9]{10}/)) {
+    validFieldsObj["phone"] = false;
+    return {
+      validFieldsObj,
+      isFormValid: false,
+      message: "Invalid mobile number",
+    };
+  }
+  if (!form.street.match(/^\w/)) {
+    validFieldsObj["street"] = false;
+    return {
+      validFieldsObj,
+      isFormValid: false,
+      message: "Invalid Street Name",
+    };
+  }
+  if (!form.country.match(/^\w/)) {
+    validFieldsObj["country"] = false;
+    return {
+      validFieldsObj,
+      isFormValid: false,
+      message: "Invalid Country Name",
+    };
+  }
+  if (!form.city.match(/^\w/)) {
+    validFieldsObj["city"] = false;
+    return { validFieldsObj, isFormValid: false, message: "Invalid City Name" };
+  }
 
   return { validFieldsObj, isFormValid: true, message: "no-error" };
 };
