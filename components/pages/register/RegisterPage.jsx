@@ -50,7 +50,7 @@ const RegisterPage = (props) => {
   // This function updates the formData object
   const handleChange = (field) => (event) => {
     setFormData({ ...formData, [field]: event.target.value });
-    if (field === "email") {
+    if (field === "emailExists") {
       setFormValid({ ...formValid, [field]: false });
     } else {
       setFormValid({ ...formValid, [field]: true });
