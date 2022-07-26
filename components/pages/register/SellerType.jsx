@@ -5,7 +5,7 @@ import dealer from "../../../public/commercial.png";
 import { useRouter } from "next/router";
 import { useContext } from "react";
 import RegisterContext from "../../../context/register-context";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 
 const SellerType = () => {
   const router = useRouter();

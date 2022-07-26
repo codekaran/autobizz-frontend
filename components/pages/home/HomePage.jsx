@@ -3,22 +3,19 @@ import GoogleAd from "./GoogleAd";
 import HeroSection from "./HeroSection";
 import TestimonialSection from "./TestimonialSection";
 import styles from "./HomePage.module.scss";
-import { useEffect, useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
 import axios from "axios";
 
 const HomePage = () => {
   const [carsArray, setCarsArray] = useState([]);
   useEffect(async () => {
     // 192.168.1.7
-    let result = await axios.get(
-      "http://44.203.60.242:8000/seller-api/ads/ads",
-      {
-        auth: {
-          username: "karan",
-          password: 123,
-        },
-      }
-    );
+    let result = await axios.get("http://localhost:8000/seller-api/ads/ads", {
+      auth: {
+        username: "karan",
+        password: 123,
+      },
+    });
     console.log(result.data);
     setCarsArray(result.data);
   }, []);

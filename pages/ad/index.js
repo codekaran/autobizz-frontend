@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Header from "../../components/globals/header/Header";
-import Advertisement from "../../components/pages/ads/Advertisement";
+// import Advertisement from "../../components/pages/ads/Advertisement";
 
 const Advertisements = () => {
   return (
@@ -12,7 +12,7 @@ const Advertisements = () => {
       </Head>
       <main>
         <Header />
-        <Advertisement />
+        {/* <Advertisement /> */}
       </main>
     </div>
   );

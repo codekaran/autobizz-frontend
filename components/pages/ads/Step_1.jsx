@@ -12,7 +12,7 @@ import Mercedes from "../../../public/Mercedes.png";
 import Kia from "../../../public/Kia.png";
 import { useEffect } from "react";
 import Image from "next/image";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 
 const Step_1 = (props) => {
   const ctx = useContext(AdContext);
@@ -78,7 +78,7 @@ const Step_1 = (props) => {
           </div>
         ))}
       </div>
-      <Link href="/ad/create/step-2" passHref>
+      <Link href="/ad/create/step-2">
         <Button>Next</Button>
       </Link>
     </div>

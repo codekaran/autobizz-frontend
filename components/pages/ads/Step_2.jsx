@@ -7,7 +7,7 @@ import { useEffect } from "react";
 import AdContext from "../../../context/ad-context";
 import { useContext } from "react";
 import axios from "axios";
-import { useState } from "react/cjs/react.development";
+import { useState } from "react";
 
 const Step_2 = () => {
   let ctx = useContext(AdContext);
@@ -26,7 +26,7 @@ const Step_2 = () => {
   useEffect(async () => {
     console.log(ctx);
     let result = await axios.get(
-      "http://44.203.60.242:8000/seller-api/ref/getModels/" + ctx.data.make
+      "http://localhost:8000/seller-api/ref/getModels/" + ctx.data.make
     );
     console.log(result.data);
     setData({ ...data, ["model"]: result.data[0].model });

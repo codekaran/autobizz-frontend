@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react/cjs/react.development";
+import { useEffect, useState } from "react";
 
 const handleScroll = (obj) => (event) => {
   console.log(obj.scrollDirection);

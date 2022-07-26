@@ -3,7 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import CarCard from "../../globals/cards/CarCard";
 import leftArrow from "../../../public/leftArrow.png";
 import rightArrow from "../../../public/rightArrow.png";
-import { useState, useRef } from "react/cjs/react.development";
+import { useState, useRef } from "react";
 import handleScroll from "./SmoothScroll";
 
 const Carousal = (props) => {

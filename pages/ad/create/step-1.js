@@ -13,9 +13,7 @@ const create = (props) => {
 export async function getStaticProps() {
   let data = {};
   try {
-    let res = await axios.get(
-      "http://44.203.60.242:8000/seller-api/ref/getMakes"
-    );
+    let res = await axios.get("http://localhost:8000/seller-api/ref/getMakes");
     // res = await res.json();
     // data = JSON.parse(res.data);
     console.log(res.data);
