@@ -4,7 +4,7 @@ import LoginPage from "../../components/pages/login/LoginPage";
 const buyer = () => {
   return (
     <AuthLayout>
-      <LoginPage title="Buyer" URL="http://localhost:4000/form" />
+      <LoginPage title="Buyer" URL="http://3.83.43.208:4000/form" />
     </AuthLayout>
   );
 };
