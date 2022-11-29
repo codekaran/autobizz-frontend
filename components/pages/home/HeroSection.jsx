@@ -3,17 +3,17 @@ import styles from "./HomePage.module.scss";
 import image from "../../../public/Hero.png";
 import Image from "next/image";
 
-const HeroSection = () => {
+const HeroSection = (props) => {
   return (
     <div className={styles.heroSection}>
-      <div className={styles.text}>Car Selling Solution</div>
+      <div className={styles.text}>{props.text}</div>
       <Image
         layout="responsive"
-        // objectFit="cover"
+        objectFit="contain"
         placeholder="blur"
         alt="sellCars"
         src={image}
-        height={1000}
+        // height={1000}
       ></Image>
     </div>
   );

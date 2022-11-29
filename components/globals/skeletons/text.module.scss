@@ -1,0 +1,29 @@
+.textWrapper {
+  width: 100px;
+  height: 22px;
+  background-color: rgb(168, 168, 168);
+  position: relative;
+  overflow: hidden;
+  margin-top: 10px;
+  .shimmer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.646);
+    animation: loading 2.5s infinite;
+  }
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-150%) skewX(20deg);
+  }
+  50% {
+    transform: translateX(-100%) skewX(20deg);
+  }
+  100% {
+    transform: translateX(200%) skewX(20deg);
+  }
+}

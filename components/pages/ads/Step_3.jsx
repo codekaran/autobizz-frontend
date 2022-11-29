@@ -1,23 +1,31 @@
 import React from "react";
+import { TailSpin } from "react-loader-spinner";
 import styles from "./Steps.module.scss";
 import Button from "../../globals/button/Button";
 import axios from "axios";
 import AdContext from "../../../context/ad-context";
+import AuthContext from "../../../context/auth-context";
 import { useContext, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 const Step_3 = () => {
+  // ############ component state ###########
+  const [isClicked, setIsClicked] = useState("");
+  const [isAdUploading, setIsAdUploading] = useState(false);
+  const [isAdUploaded, setIsAdUploaded] = useState(false);
   const [data, setData] = useState({
     condition: "",
     description: "",
     file: "",
   });
 
+  // ############ initialize ###########
   const router = useRouter();
   const ctx = useContext(AdContext);
+  const auth_ctx = useContext(AuthContext);
 
-  const [isClicked, setIsClicked] = useState("");
-
+  // ############ functions ###########
   const handleChange = (name) => (e) => {
     console.log("handeling changes");
     // value of description field if sent
@@ -58,12 +66,14 @@ const Step_3 = () => {
 
   const handleSubmit = async () => {
     // if(isFormValid)
-
+    setIsAdUploading(true);
     let formData = createFormData();
     console.log(...formData);
     try {
       let result = await axios.post(
-        "http://3.83.43.208:8000/seller-api/ads/1/ads",
+        "http://localhost:8000/seller-api/ads/" +
+          auth_ctx.isLoggedIn.decodedToken.id +
+          "/ads",
         formData,
         {
           auth: {
@@ -79,6 +89,8 @@ const Step_3 = () => {
       if (result.data.includes("Ad Id:")) {
         alert("ad successfully uploaded");
       }
+      setIsAdUploading(false);
+      setIsAdUploaded(true);
     } catch (err) {
       console.log(err);
     }
@@ -132,15 +144,32 @@ const Step_3 = () => {
             accept="image/jpeg, image/png"
           ></input>
         </form>
-        {/* <div className={styles.container}>
-          <div className={styles.uploadImage}></div>
-          <div className={styles.uploadImage}></div>
-          <div className={styles.uploadImage}></div>
-        </div> */}
       </div>
       {/* //TODO: Redirect to ad dashboard */}
-      {/* <Link href="/" passHref> */}
-      <Button onClick={handleSubmit}>Create Ad</Button>
+      {isAdUploaded ? (
+        <div className={styles.homeAd}>
+          <Link href="/ads/create/step-1">
+            <Button>New Ad</Button>
+          </Link>
+          <Link href="/">
+            <Button>Home</Button>
+          </Link>
+        </div>
+      ) : isAdUploading ? (
+        <TailSpin
+          height="50"
+          width="50"
+          color="#1a374d"
+          ariaLabel="tail-spin-loading"
+          radius="1"
+          wrapperStyle={{}}
+          wrapperClass=""
+          visible={true}
+        />
+      ) : (
+        <Button onClick={handleSubmit}>Create Ad</Button>
+      )}
+
       {/* </Link> */}
     </div>
   );

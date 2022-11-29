@@ -2,8 +2,10 @@ import Head from "next/head";
 import Header from "../components/globals/header/Header";
 import HomePage from "../components/pages/home/HomePage";
 import Footer from "../components/globals/footer/Footer";
+import axios from "axios";
+import { getCars } from "./apiCalls";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <div>
       <Head>
@@ -12,12 +14,18 @@ const Home = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <Header />
-        <HomePage />
-        <Footer />
+        <HomePage carsArray={props.data} />
       </main>
     </div>
   );
 };
+
+export async function getStaticProps() {
+  let result = await getCars();
+  console.log(result);
+  return {
+    props: { data: result.data },
+  };
+}
 
 export default Home;

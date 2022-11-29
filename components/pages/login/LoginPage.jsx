@@ -7,8 +7,13 @@ import Image from "next/image";
 import google from "../../../public/google.svg";
 import apple from "../../../public/apple.svg";
 import facebook from "../../../public/facebook.svg";
+import AuthContext from "../../../context/auth-context";
+import { useContext } from "react";
+import { useRouter } from "next/router";
 
 const LoginPage = (props) => {
+  const ctx = useContext(AuthContext);
+  const router = useRouter();
   // Form data is an object which stores email and password of the user from the input fields
   const [formData, setFormData] = useState({
     email: "",
@@ -26,17 +31,37 @@ const LoginPage = (props) => {
   // Function to send data to the backend
   //! If error:- Show the error
   //* If success:- Redirect to the user dashboard or homepage
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log(formData);
-    Axios.post(props.URL, formData)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        // Update error field of formData, if any
-        console.log(error);
+  const handleSubmit = async (event) => {
+    try {
+      event.preventDefault();
+      console.log(formData);
+      let res = await Axios.post(props.URL, formData, {
+        auth: {
+          username: "karan",
+          password: 123,
+        },
       });
+      console.log(res.status);
+      console.log(res);
+      if (res.status === 200) {
+        console.log("DONE");
+        ctx.setLoggedInStatus({
+          status: res.data.auth,
+          token: res.data.token,
+        });
+        router.push("/user");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+
+    // .then((response) => {
+    //   console.log(response);
+    // })
+    // .catch((error) => {
+    //   // Update error field of formData, if any
+    //   console.log(error);
+    // });
   };
 
   // Show when email is incorrect

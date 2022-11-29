@@ -1,0 +1,103 @@
+.car_image_scroller {
+  margin-top: 25px;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  .scroll_card_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 50vh;
+    position: relative;
+  }
+  .car_image_indicator {
+    overflow: hidden;
+    height: 100px;
+    width: 50%;
+    display: flex;
+    align-self: center;
+    justify-content: flex_start;
+    ul {
+      transition: 0.3s ease;
+      display: flex;
+      cursor: pointer;
+      .car_image_indicator_li {
+        position: relative;
+        width: 100px;
+        height: 100%;
+        transform: scale(0.9);
+        background-position: center;
+        background-size: contain;
+        opacity: 0.5;
+        background-repeat: no-repeat;
+        list-style: none;
+      }
+      #active {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  }
+}
+.close_image_pop_up {
+  display: none;
+  animation: fade 4s ease;
+}
+.car_image_pop_up {
+  position: absolute;
+  background-color: rgb(0, 0, 0, 0.9);
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: auto;
+  /* scroll-behavior: smooth; */
+  display: flex;
+  flex-direction: column;
+  .cross_car_pop_up {
+    cursor: pointer;
+    background-image: url(/cross.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 1.5%;
+    height: 5%;
+    float: right;
+    margin-right: 17px;
+    margin-top: 7px;
+    transition: 0.3s ease;
+    position: fixed;
+    right: 15px;
+    .pop_up_image {
+      position: relative;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      min-width: 50%;
+      min-height: 100%;
+      transform: scale(0.95);
+      transition: 0.3s ease;
+    }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+  100% {
+    display: none;
+  }
+}
+@media (max-width: 1000px) {
+  .car_image_scroller {
+    width: 100%;
+    .car_image_indicator {
+      width: 80%;
+    }
+  }
+}

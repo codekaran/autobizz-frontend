@@ -4,6 +4,7 @@
 
 .heroSection {
   //   height: 380px;
+  // height: 300px;
   width: 100%;
   background-color: #ccc;
   margin-bottom: 32px;
@@ -28,10 +29,12 @@
 }
 
 .testimonialSection {
+  padding: 0px 30px;
   width: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  // justify-content: center;
+  // align-items: center;
+  margin-bottom: 80px;
 
   .textSection {
     .chooseUs {
@@ -160,12 +163,13 @@
   }
   .adSection {
     width: 60%;
-    padding: 5px;
+    padding-left: 40px;
+
     .googleAd {
       width: 100%;
-
-      background-color: #111;
-      color: #ddd;
+      height: 100%;
+      background-color: rgb(197, 197, 197);
+      color: black;
       place-items: center;
     }
   }
@@ -201,10 +205,10 @@
     }
   }
   .home {
-    padding: 0px, 0px;
   }
   .testimonialSection {
     flex-direction: column;
+    padding: 0px 20px;
   }
 
   .adSection {

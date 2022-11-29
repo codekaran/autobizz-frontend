@@ -15,14 +15,37 @@ import Image from "next/image";
 import { useState } from "react";
 
 const Step_1 = (props) => {
-  const ctx = useContext(AdContext);
+  // checking if the sesssion contains data
+  // if it contains updating the state and context
   useEffect(() => {
-    ctx.setAdForm({ make: props.makes[0]["make"] });
+    let session = window.sessionStorage.getItem("auto_bizz_steps");
+    if (session) {
+      console.log("session exists");
+      console.log(JSON.parse(session));
+      session = JSON.parse(session);
+      ctx.setAdForm({ make: session.make });
+      setMake(session.make);
+    } else {
+      ctx.setAdForm({ make: props.makes[0]["make"] });
+    }
   }, []);
 
+  // ############ component state ###########
   const [make, setMake] = useState(props.makes[0]);
   const [isClicked, setIsClicked] = useState("");
 
+  // ############ initialize ###########
+  const ctx = useContext(AdContext);
+  const carImageArr = [
+    { name: "BMW", img: BMW },
+    { name: "Audi", img: Audi },
+    { name: "Mercedes", img: Mercedes },
+    { name: "Volvo", img: Volvo },
+    { name: "VW", img: Volkswagen },
+    { name: "Kia", img: Kia },
+  ];
+
+  // ############ functions ###########
   const handleChange = (value) => (event) => {
     console.log("handling chnage");
 
@@ -38,18 +61,11 @@ const Step_1 = (props) => {
       value = "Mercedes-Benz";
     }
     ctx.setAdForm({ make: value.toUpperCase() });
-
+    let obj = { make: value.toUpperCase() };
+    window.sessionStorage.setItem("auto_bizz_steps", JSON.stringify(obj));
+    console.log(window.sessionStorage.getItem("auto_bizz_steps"));
     setMake(value.toUpperCase());
   };
-
-  const carImageArr = [
-    { name: "BMW", img: BMW },
-    { name: "Audi", img: Audi },
-    { name: "Mercedes", img: Mercedes },
-    { name: "Volvo", img: Volvo },
-    { name: "VW", img: Volkswagen },
-    { name: "Kia", img: Kia },
-  ];
 
   console.log(props);
   return (
@@ -78,7 +94,7 @@ const Step_1 = (props) => {
           </div>
         ))}
       </div>
-      <Link href="/ad/create/step-2">
+      <Link href="/ads/create/step-2">
         <Button>Next</Button>
       </Link>
     </div>

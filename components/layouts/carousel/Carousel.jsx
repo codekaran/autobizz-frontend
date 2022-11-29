@@ -7,26 +7,7 @@ import { useState, useRef } from "react";
 import handleScroll from "./SmoothScroll";
 
 const Carousal = (props) => {
-  // const responsive = {
-  //   superLargeDesktop: {
-  //     // the naming can be any, depends on you.
-  //     breakpoint: { max: 4000, min: 1761 },
-  //     items: 4,
-  //   },
-  //   desktop: {
-  //     breakpoint: { max: 1761, min: 1354 },
-  //     items: 3,
-  //   },
-  //   tablet: {
-  //     breakpoint: { max: 1354, min: 938 },
-  //     items: 2,
-  //   },
-  //   mobile: {
-  //     breakpoint: { max: 938, min: 0 },
-  //     items: 1,
-  //   },
-  // };
-  // const carousel = null;
+  console.log(props);
 
   let carousel = useRef(null);
 

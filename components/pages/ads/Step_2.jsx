@@ -8,12 +8,47 @@ import AdContext from "../../../context/ad-context";
 import { useContext } from "react";
 import axios from "axios";
 import { useState } from "react";
+import { route } from "next/dist/server/router";
 
 const Step_2 = () => {
-  let ctx = useContext(AdContext);
-  const router = useRouter();
-  const [models, setModels] = useState([]);
+  // to fetch car makes and models
 
+  useEffect(async () => {
+    let result;
+    if (ctx.data.make) {
+      console.log("context is data ))))))))))))))");
+      result = await axios.get(
+        "http://localhost:8000/seller-api/ref/getModels/" + ctx.data.make
+      );
+      let ctx_obj = ctx.data;
+      ctx_obj["model"] = result.data[0].model;
+      console.log(ctx_obj);
+      handleSession(ctx_obj);
+      // setData({ ...data, ["model"]: result.data[0].model });
+    } else {
+      let session = window.sessionStorage.getItem("auto_bizz_steps");
+      if (session) {
+        console.log("got data from session");
+        session = JSON.parse(session);
+        console.log(session);
+        result = await axios.get(
+          "http://localhost:8000/seller-api/ref/getModels/" + session.make
+        );
+        session["model"] = result.data[0].model;
+        // set data stored in session as state
+        handleSession(session);
+      } else {
+        // if niether session nor context exists
+        router.push("/ads/create/step-1");
+        return;
+      }
+    }
+    console.log(result.data);
+    setModels(result.data);
+  }, []);
+
+  // ############ component state ###########
+  const [models, setModels] = useState([]);
   const [data, setData] = useState({
     model: "",
     firstRegistration: "",
@@ -22,19 +57,29 @@ const Step_2 = () => {
     fuel: "",
     gearbox: "",
   });
-  // to fetch car makes and models
-  useEffect(async () => {
-    console.log(ctx);
-    let result = await axios.get(
-      "http://3.83.43.208:8000/seller-api/ref/getModels/" + ctx.data.make
-    );
-    console.log(result.data);
-    setData({ ...data, ["model"]: result.data[0].model });
-    setModels(result.data);
-  }, []);
-
   // state to manage gearbox and fuel
   const [isClicked, setIsClicked] = useState({ gearbox: "", fuel: "" });
+  // ############ initialize ###########
+  let ctx = useContext(AdContext);
+  const router = useRouter();
+
+  // ############ functions ###########
+
+  // function to save data when back and refreshed
+  const handleSession = (obj) => {
+    setData({
+      model: obj.model || "",
+      firstRegistration: obj.firstRegistration || "",
+      power: obj.power || 0,
+      mileage: obj.mileage || 0,
+      fuel: obj.fuel || "",
+      gearbox: obj.gearbox || "",
+    });
+    setIsClicked({
+      fuel: obj.fuel || "",
+      gearbox: obj.gearbox || "",
+    });
+  };
 
   const handleChange = (name) => (e) => {
     console.log("handeling changes");
@@ -51,7 +96,9 @@ const Step_2 = () => {
   const handleSubmit = () => {
     // if(isFormValid)
     ctx.setAdForm(data);
-    router.push("/ad/create/step-3");
+    window.sessionStorage.setItem("auto_bizz_steps", JSON.stringify(ctx.data));
+    console.log(window.sessionStorage.getItem("auto_bizz_steps"));
+    router.push("/ads/create/step-3");
   };
 
   const { model, firstRegistration, power, mileage, fuel, gearbox } = data;

@@ -1,27 +1,53 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
+import AuthContext from "../../../context/auth-context";
+import { useContext } from "react";
 
 const Header = () => {
   useEffect(() => {
     console.log(window.innerWidth);
+    handleUserData();
     window.addEventListener("resize", handleResize);
     handleResize();
   }, []);
-
+  // let session = window.local;
+  let ctx = useContext(AuthContext);
   const [isBurgerMenuClicked, setIsBurgerMenuClicked] = useState(true);
-
+  const [mobileView, setMobileView] = useState(false);
+  const [userData, setUserData] = useState({});
   // function to handle the resize of the window.
   const handleResize = () => {
     if (window.innerWidth > 700) {
       console.log("setting true");
+      setIsBurgerMenuClicked(true);
+      setMobileView(false);
     } else {
       setIsBurgerMenuClicked(false);
+      setMobileView(true);
     }
   };
   const handleBurgerClick = () => {
-    let status = isBurgerMenuClicked ? false : true;
-    setIsBurgerMenuClicked(status);
+    if (mobileView) {
+      let status = isBurgerMenuClicked ? false : true;
+      setIsBurgerMenuClicked(status);
+    }
+    // let status = isBurgerMenuClicked ? false : true;
+    // setIsBurgerMenuClicked(status);
+  };
+  const handleUserData = () => {
+    if (window.localStorage.getItem("userData")) {
+      let sessionUser = JSON.parse(window.localStorage.getItem("userData"));
+      console.log("in session setting", sessionUser.decodedToken);
+      ctx.setLoggedInStatus({
+        status: sessionUser.status,
+        token: sessionUser.token,
+      });
+      setUserData({
+        status: sessionUser.status,
+        decodedToken: sessionUser.decodedToken,
+      });
+    }
   };
 
   return (
@@ -29,6 +55,7 @@ const Header = () => {
       <div className={styles.company_logo}>
         <div></div>
       </div>
+      {/* burger for mobile view */}
       <div
         onClick={handleBurgerClick}
         // style={{ display: this.state.burgerClass }}
@@ -55,6 +82,7 @@ const Header = () => {
           className={styles.big_line}
         ></div>
       </div>
+
       <div
         style={{
           transform: `${
@@ -64,14 +92,31 @@ const Header = () => {
         className={styles.flex_box}
       >
         <div className={styles.container}>
-          <p>About</p>
-          <p>Contact</p>
-          <p>Sell</p>
+          <Link href="/">
+            <p onClick={handleBurgerClick}>Home</p>
+          </Link>
+          <Link href="/about">
+            <p onClick={handleBurgerClick}>About</p>
+          </Link>
+          <Link href="/ads/create/step-1">
+            <p onClick={handleBurgerClick}>Sell</p>
+          </Link>
         </div>
         <div className={styles.container}>
-          <Link href="/login" passHref>
-            <button>Login/Register</button>
-          </Link>
+          {ctx.isLoggedIn.status ? (
+            <Link href="/user">
+              <button>Hi! {ctx.isLoggedIn.decodedToken.firstName}</button>
+            </Link>
+          ) : userData.status ? (
+            <Link href="/user">
+              <button>Hi! {userData.decodedToken.firstName}</button>
+            </Link>
+          ) : (
+            <Link href="/login" passHref>
+              <button>Login/Register</button>
+            </Link>
+          )}
+
           <select>
             <option value="0">En</option>
             <option value="1">Ln</option>

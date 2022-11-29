@@ -6,7 +6,7 @@ const buyer = () => {
     <AuthLayout>
       <LoginPage
         title="Seller"
-        URL="http://13.126.229.108/seller-api/sellers/login"
+        URL="http://localhost:8000/seller-api/sellers/login"
       />
     </AuthLayout>
   );

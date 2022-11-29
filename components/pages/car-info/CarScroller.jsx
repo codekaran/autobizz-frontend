@@ -1,21 +1,29 @@
-import styles from "./CarInfo.module.scss";
-import imagePaths from "./imageImport";
+import styles from "./CarScroller.module.scss";
+// import imagePaths from "./imageImport";
+import Image from "next/image";
 
-const CarScroller = () => {
+const CarScroller = (props) => {
   return (
     <div className={styles.imageContainer}>
       <div className={styles.imageSection}>
         <div className={styles.imageScroller}>
-          {imagePaths.map((image) => (
+          {props.images.map((image) => (
             <div
               key={image.src}
-              style={{ backgroundImage: `url(${image.src})` }}
+              // style={{ backgroundImage: `url(${image.src})` }}
               className={styles.image}
-            ></div>
+            >
+              <Image
+                src={image}
+                layout="fill"
+                objectFit="contain"
+                priority
+              ></Image>
+            </div>
           ))}
         </div>
       </div>
-      <div className={styles.thumbnails}>
+      {/* <div className={styles.thumbnails}>
         {imagePaths.map((image) => (
           <div
             key={image.src}
@@ -23,7 +31,7 @@ const CarScroller = () => {
             className={styles.image}
           ></div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,0 +1,10 @@
+.carList {
+  margin-top: 30px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  .carImage {
+    margin-left: 10px;
+    position: relative;
+  }
+}
