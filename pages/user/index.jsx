@@ -1,4 +1,4 @@
-import Profile from "../../components/pages/user/profile";
+import Profile from "../../components/pages/user/Profile";
 import Header from "../../components/globals/header/Header";
 import Footer from "../../components/globals/footer/Footer";
 import Head from "next/head";

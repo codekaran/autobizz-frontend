@@ -49,14 +49,10 @@ const UserAds = () => {
   };
 
   const handleEditMode = (index) => (event) => {
-    console.log(index);
-    console.log("helloerrrr ");
-    let adArr = userAds;
-    console.log(adArr);
-    adArr[index].editModeOn = adArr[index].editModeOn == 0 ? 1 : 0;
-    console.log(adArr[index]);
-    setUserAds(adArr);
-    console.log(userAds);
+    let arr=[...userAds];
+    arr[index].editModeOn = arr[index].editModeOn == 0 ? 1 : 0;    
+    setUserAds(arr);
+    console.log(userAds[index].editModeOn);
   };
 
   return (
@@ -64,7 +60,7 @@ const UserAds = () => {
       {userAds.map((item, index) => (
         <div key={index} className={styles.ads}>
           <h3>
-            {item.make + " " + item.model + item.editModeOn}
+            {item.make + " " + item.model}
             <span
               onClick={handleEditMode(index)}
               className={styles.edit}
@@ -75,48 +71,39 @@ const UserAds = () => {
             <div className={styles.row}>
               <div className={styles.col}>
                 <h6>Manufacturing year</h6>
-                {console.log(item.editModeOn)}
-                {item.editModeOn == 1 ? (
-                  <input value={item.firstRegistration} type="text" readOnly />
-                ) : (
-                  <p>{item.firstRegistration}</p>
-                )}
-              </div>
-              <div className={styles.col}>
-                <h6>Manufacturing year</h6>
-                <p>{item.firstRegistration}</p>
+                {item.editModeOn == 1 ? <input value={item.firstRegistration} type="text" /> : <p>{item.firstRegistration}</p>} 
               </div>
               <div className={styles.col}>
                 <h6>Fuel type</h6>
-                <p>{item.fuel}</p>
+                {item.editModeOn == 1 ? <input value={item.fuel} type="text" /> : <p>{item.fuel}</p>} 
               </div>
             </div>
             <div className={styles.row}>
               <div className={styles.col}>
                 <h6>KM's driven</h6>
-                <p>{item.mileage}</p>
+                {item.editModeOn == 1 ? <input value={item.mileage} type="text" /> : <p>{item.mileage}</p>} 
               </div>
               <div className={styles.col}>
                 <h6>Engine power</h6>
-                <p>{item.power} cc</p>
+                {item.editModeOn == 1 ? <input value={item.power} type="text" /> : <p>{item.power}</p>} 
               </div>
               <div className={styles.col}>
                 <h6>No. of owner’s</h6>
-                <p>{item.condition || "-"} </p>
+                {item.editModeOn == 1 ? <input value={item.condition} type="text" /> :<p>{item.condition || "-"} </p>} 
               </div>
             </div>
             <div className={styles.row}>
               <div className={styles.col}>
                 <h6>Transmission</h6>
-                <p>{item.gearbox}</p>
+                {item.editModeOn == 1 ? <input value={item.gearbox} type="text" /> : <p>{item.gearbox}</p>} 
               </div>
               <div className={styles.col}>
                 <h6>CO2</h6>
-                <p>{item.co2 || "-"}</p>
+                {item.editModeOn == 1 ? <input value={item.co2} type="text" /> : <p>{item.co2 || "-"}</p>} 
               </div>
               <div className={styles.col}>
                 <h6>VAT rate</h6>
-                <p>{item.vatRate || "-"}</p>
+                {item.editModeOn == 1 ? <input value={item.vatRate} type="text" /> : <p>{item.vatRate || "-"}</p>} 
               </div>
             </div>
 
