@@ -71,7 +71,7 @@ const UserAds = () => {
             <div className={styles.row}>
               <div className={styles.col}>
                 <h6>Manufacturing year</h6>
-                {item.editModeOn == 1 ? <input value={item.firstRegistration} type="text" /> : <p>{item.firstRegistration}</p>} 
+                {item.editModeOn == 1 ? <input className={styles.inputBox} value={item.firstRegistration} type="text" /> : <p>{item.firstRegistration}</p>} 
               </div>
               <div className={styles.col}>
                 <h6>Fuel type</h6>

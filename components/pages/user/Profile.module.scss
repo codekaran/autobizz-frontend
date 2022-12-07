@@ -39,7 +39,9 @@
   }
 }
 @media screen and (max-width: 750px) {
+  
   .profile {
+    padding: 0px 0px;
     flex-direction: column;
     .left {
       border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
@@ -51,7 +53,11 @@
       .navPersonalDetails,
       .navMyAds {
         width: 100%;
+        padding: 20px 0px;
         text-align: center;
+        &:last-of-type {
+          border-top: 0.0px
+        }
       }
       .navMyAds {
         border-left: 0.5px solid rgba(0, 0, 0, 0.1);

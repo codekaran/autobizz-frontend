@@ -20,12 +20,12 @@
         &:last-of-type {
           border-top: 0.5px solid rgba(0, 0, 0, 0.1);
         }
+        overflow: hidden;
         .col {
           display: flex;
           flex-direction: column;
-          margin-left: 50px;
-          width: 100px;
-
+          width: 33%;
+          
           h6 {
             font-family: "Inter";
             font-style: normal;
@@ -69,12 +69,14 @@
     }
     .changePassword {
       padding: 20px 30px;
+      max-width: 800px;
       .inputPassword {
         display: flex;
         justify-content: space-around;
         input {
           height: 35px;
-          width: 200px;
+          width: 33%;
+          margin-right: 10px;
           border: 1px solid #1b1b1b;
           border-radius: 4px;
         }
@@ -106,32 +108,48 @@
 @media screen and (max-width: 750px) {
   .userData {
     .userDetails {
+      padding: 10px;
       h3 {
       }
       .info {
         .row {
+          padding-left: 0;
+          padding-right: 0;
           width: 100%;
           flex-direction: column;
           .col {
             width: 100%;
             margin: 0;
+            overflow-wrap: break-word;
             flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            p {
-              text-align: right;
-            }
+              h6{
+                width: 30%;
+                margin-right: 10px;
+                float: left;
+              }
+              p{
+                width: 70%;
+                margin: 0;
+                float: left;
+              }
+            
           }
         }
       }
     }
     .password {
+      padding: 10px;
+      p{padding-left: 0;
+        padding-right: 0;}
       .changePassword {
+        padding-left: 0;
+        padding-right: 0;
         .inputPassword {
           flex-direction: column;
           align-items: center;
           input {
             width: 100%;
+            margin-right: 0px;
             margin-top: 20px;
           }
         }
