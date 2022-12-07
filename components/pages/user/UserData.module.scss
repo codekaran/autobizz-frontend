@@ -16,17 +16,23 @@
     .info {
       .row {
         display: flex;
+        flex-direction: column;
         padding: 20px 30px;
         &:last-of-type {
-          border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+        border-top: 0.5px solid rgba(0, 0, 0, 0.1);
+        flex-grow: 1;
+        flex-basis: 0;
         }
         overflow: hidden;
         .col {
           display: flex;
-          flex-direction: column;
-          width: 33%;
-          
+          flex-direction: row;
+          flex-grow: 1;
+          flex-basis: 0;
+          max-width: 750px;
+          padding: 5px 0 5px 0;
           h6 {
+            width: 30%;
             font-family: "Inter";
             font-style: normal;
             font-weight: 300;
@@ -35,13 +41,14 @@
             color: #979797;
           }
           p {
+            width: 70%;
             font-family: "Inter";
             font-style: normal;
             font-weight: 500;
             font-size: 14px;
             line-height: 17px;
             color: #1b1b1b;
-            margin-top: 10px;
+            
           }
         }
       }

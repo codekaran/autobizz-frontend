@@ -71,16 +71,16 @@ const UserData = (props) => {
               <p>{userData.lastName}</p>
               {!contentLoaded && <TextSkeleton></TextSkeleton>}
             </div>
-            <div className={styles.col}>
-              <h6>Email</h6>
-              <p>{userData.email}</p>
-              {!contentLoaded && <TextSkeleton></TextSkeleton>}
-            </div>
           </div>
           <div className={styles.row}>
             <div className={styles.col}>
               <h6>Phone</h6>
               <p>{userData.mobile}</p>
+              {!contentLoaded && <TextSkeleton></TextSkeleton>}
+            </div>
+            <div className={styles.col}>
+              <h6>Email</h6>
+              <p>{userData.email}</p>
               {!contentLoaded && <TextSkeleton></TextSkeleton>}
             </div>
             <div className={styles.col}>
