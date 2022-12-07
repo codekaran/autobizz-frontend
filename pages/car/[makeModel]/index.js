@@ -13,7 +13,7 @@ const index = (props) => {
 
 export async function getStaticPaths() {
   try {
-    let cars = await axios.get("http://localhost:8000/seller-api/ads/ads", {
+    let cars = await axios.get("http://192.168.1.8:8000/seller-api/ads/ads", {
       auth: {
         username: "karan",
         password: 123,
@@ -40,7 +40,7 @@ export async function getStaticProps(context) {
   console.log("indide prosp");
   let adId = context.params.makeModel.split("-").slice(-1)[0];
   let car = await axios.get(
-    "http://localhost:8000/seller-api/ads/singleAd/" + adId,
+    "http://192.168.1.8:8000/seller-api/ads/singleAd/" + adId,
     {
       auth: {
         username: "karan",

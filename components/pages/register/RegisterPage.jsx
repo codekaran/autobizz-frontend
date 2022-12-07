@@ -76,7 +76,7 @@ const RegisterPage = (props) => {
     console.log(email);
     let res = await axios.get(
       // localhost
-      "http://localhost:8000/seller-api/sellers/emailExists?email=" + email
+      "http://192.168.1.8:8000/seller-api/sellers/emailExists?email=" + email
     );
     console.log(res.data);
     let userExists = res.data;

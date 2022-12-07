@@ -21,7 +21,7 @@ const UserAds = () => {
       // setIsLoggedIn(data);
       console.log(data);
       let response = await axios.get(
-        "http://localhost:8000/seller-api/ads/" + data.decodedToken.id + "/ads",
+        "http://192.168.1.8:8000/seller-api/ads/" + data.decodedToken.id + "/ads",
         {
           auth: {
             username: "karan",

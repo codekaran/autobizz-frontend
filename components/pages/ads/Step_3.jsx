@@ -71,7 +71,7 @@ const Step_3 = () => {
     console.log(...formData);
     try {
       let result = await axios.post(
-        "http://localhost:8000/seller-api/ads/" +
+        "http://192.168.1.8:8000/seller-api/ads/" +
           auth_ctx.isLoggedIn.decodedToken.id +
           "/ads",
         formData,

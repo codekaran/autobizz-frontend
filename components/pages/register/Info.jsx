@@ -64,7 +64,7 @@ const SellerInfo = () => {
     if (isFormValid) {
       dataObject = { ...ctx.data, ...sellerInfo };
       let result = await axios.post(
-        "http://localhost:8000/seller-api/sellers/register",
+        "http://192.168.1.8:8000/seller-api/sellers/register",
         dataObject,
         {
           auth: {

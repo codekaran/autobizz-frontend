@@ -36,7 +36,7 @@ const UserData = (props) => {
       setIsLoggedIn(data);
       console.log(data);
       let response = await axios.get(
-        "http://localhost:8000/seller-api/sellers/userData/" +
+        "http://192.168.1.8:8000/seller-api/sellers/userData/" +
           data.decodedToken.id
       );
       console.log(response);
