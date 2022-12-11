@@ -1,8 +1,8 @@
 // import axios from "axios";
-
+//import { server } from "../../../variables/server";
 // export const getMakes = async () => {
 //   await axios
-//     .get("http://192.168.1.8:8000/seller-api/ref/getMakes")
+//     .get(`${server.serverURL}/seller-api/ref/getMakes`)
 //     .then((result) => {
 //       return result.data;
 //     })

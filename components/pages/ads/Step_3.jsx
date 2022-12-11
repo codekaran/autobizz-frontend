@@ -8,6 +8,7 @@ import AuthContext from "../../../context/auth-context";
 import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+import {server} from '../../../variables/server';
 
 const Step_3 = () => {
   // ############ component state ###########
@@ -71,7 +72,7 @@ const Step_3 = () => {
     console.log(...formData);
     try {
       let result = await axios.post(
-        "http://192.168.1.8:8000/seller-api/ads/" +
+        `${server.serverURL}/seller-api/ads/` +
           auth_ctx.isLoggedIn.decodedToken.id +
           "/ads",
         formData,

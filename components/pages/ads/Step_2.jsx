@@ -9,7 +9,8 @@ import { useContext } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { route } from "next/dist/server/router";
-
+import {server} from "../../../variables/server";
+ 
 const Step_2 = () => {
   // to fetch car makes and models
 
@@ -18,7 +19,7 @@ const Step_2 = () => {
     if (ctx.data.make) {
       console.log("context is data ))))))))))))))");
       result = await axios.get(
-        "http://192.168.1.8:8000/seller-api/ref/getModels/" + ctx.data.make
+        `${server.serverURL}/seller-api/ref/getModels/` + ctx.data.make
       );
       let ctx_obj = ctx.data;
       ctx_obj["model"] = result.data[0].model;
@@ -32,7 +33,7 @@ const Step_2 = () => {
         session = JSON.parse(session);
         console.log(session);
         result = await axios.get(
-          "http://192.168.1.8:8000/seller-api/ref/getModels/" + session.make
+          `${server.serverURL}/seller-api/ref/getModels/` + session.make
         );
         session["model"] = result.data[0].model;
         // set data stored in session as state

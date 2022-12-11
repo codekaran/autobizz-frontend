@@ -7,7 +7,7 @@ import formValidate from "../../globals/funtions/FormValidate";
 import { validateForm } from "../../globals/funtions/FormValidate";
 import { useContext } from "react";
 import RegisterContext from "../../../context/register-context";
-
+import { server } from "../../../variables/server";
 const SellerInfo = () => {
   const router = useRouter();
   // variables to store the form data
@@ -64,7 +64,7 @@ const SellerInfo = () => {
     if (isFormValid) {
       dataObject = { ...ctx.data, ...sellerInfo };
       let result = await axios.post(
-        "http://192.168.1.8:8000/seller-api/sellers/register",
+        `${server.serverURL}/seller-api/sellers/register`,
         dataObject,
         {
           auth: {

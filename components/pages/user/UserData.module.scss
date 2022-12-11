@@ -7,12 +7,14 @@
 }
 
 .userData {
+  
   .userDetails {
     padding: 10px 30px;
+    background: rgba(177, 208, 224, 0.1);
     h3 {
       @include heading();
     }
-    background: rgba(177, 208, 224, 0.1);
+    
     .info {
       .row {
         display: flex;
@@ -48,7 +50,7 @@
             font-size: 14px;
             line-height: 17px;
             color: #1b1b1b;
-            
+            text-align: left;
           }
         }
       }
@@ -115,7 +117,7 @@
 @media screen and (max-width: 750px) {
   .userData {
     .userDetails {
-      padding: 10px;
+      padding: 10px 30px;
       h3 {
       }
       .info {
@@ -127,17 +129,18 @@
           .col {
             width: 100%;
             margin: 0;
-            overflow-wrap: break-word;
             flex-direction: row;
+           
               h6{
                 width: 30%;
                 margin-right: 10px;
-                float: left;
+                text-align: left;
               }
               p{
                 width: 70%;
                 margin: 0;
-                float: left;
+                text-align: right;
+                overflow-wrap: break-word;
               }
             
           }
@@ -145,7 +148,7 @@
       }
     }
     .password {
-      padding: 10px;
+      padding: 10px 30px;
       p{padding-left: 0;
         padding-right: 0;}
       .changePassword {

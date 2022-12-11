@@ -16,6 +16,7 @@ import {
   checkPasswordStrength,
 } from "../../globals/funtions/FormValidate";
 import axios from "axios";
+import {server} from '../../../variables/server';
 
 // const router = useRouter();
 const RegisterPage = (props) => {
@@ -76,7 +77,7 @@ const RegisterPage = (props) => {
     console.log(email);
     let res = await axios.get(
       // localhost
-      "http://192.168.1.8:8000/seller-api/sellers/emailExists?email=" + email
+      `${server.serverURL}/seller-api/sellers/emailExists?email=` + email
     );
     console.log(res.data);
     let userExists = res.data;

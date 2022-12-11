@@ -4,7 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import AuthContext from "../../../context/auth-context";
 import { getSession } from "../../globals/funtions/helper";
-
+import { server } from "../../../variables/server";
 import AdImages from "./AdImages";
 
 const UserAds = () => {
@@ -21,7 +21,7 @@ const UserAds = () => {
       // setIsLoggedIn(data);
       console.log(data);
       let response = await axios.get(
-        "http://192.168.1.8:8000/seller-api/ads/" + data.decodedToken.id + "/ads",
+        `${server.serverURL}/seller-api/ads/` + data.decodedToken.id + "/ads",
         {
           auth: {
             username: "karan",

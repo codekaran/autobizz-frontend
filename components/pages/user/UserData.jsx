@@ -5,7 +5,7 @@ import { getSession } from "../../globals/funtions/helper";
 import { useRouter } from "next/router";
 import axios from "axios";
 import TextSkeleton from "../../globals/skeletons/text";
-
+import { server } from "../../../variables/server";
 const UserData = (props) => {
   let ctx = useContext(AuthContext);
   const router = useRouter();
@@ -36,7 +36,7 @@ const UserData = (props) => {
       setIsLoggedIn(data);
       console.log(data);
       let response = await axios.get(
-        "http://192.168.1.8:8000/seller-api/sellers/userData/" +
+        `${server.serverURL}/seller-api/sellers/userData/` +
           data.decodedToken.id
       );
       console.log(response);
