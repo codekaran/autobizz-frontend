@@ -105,15 +105,15 @@ const Header = () => {
         <div className={styles.container}>
           {ctx.isLoggedIn.status ? (
             <Link href="/user">
-              <button>Hi! {ctx.isLoggedIn.decodedToken.firstName}</button>
+              <button onClick={handleBurgerClick}>Hi! {ctx.isLoggedIn.decodedToken.firstName}</button>
             </Link>
           ) : userData.status ? (
             <Link href="/user">
-              <button>Hi! {userData.decodedToken.firstName}</button>
+              <button onClick={handleBurgerClick}>Hi! {userData.decodedToken.firstName}</button>
             </Link>
           ) : (
             <Link href="/login" passHref>
-              <button>Login/Register</button>
+              <button onClick={handleBurgerClick}>Login/Register</button>
             </Link>
           )}
 
