@@ -24,24 +24,27 @@
         cursor:pointer;
       }
     }
-    
-
-    .inputBox{
-      padding: 6px;
-      font-family: "Inter";
-      font-style: normal;
-      font-weight: 500;
-      font-size: 14px;
-      line-height: 17px;
-      color: #1b1b1b;
-      text-align: left;
-      border-radius: 5px;
-      width: 70%;
-      border: solid 1px black;
-    }
 
     .info {
+
+      .inputBox{
+        padding: 6px;
+        font-family: "Inter";
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 17px;
+        color: #1b1b1b;
+        text-align: left;
+        border-radius: 5px;
+        width: 100%;
+        border: solid 1px black;
+      }
+
+      
+    
       .row {
+        
         display: flex;
         flex-direction: column;
         padding: 20px 30px;
@@ -51,12 +54,34 @@
         flex-basis: 0;
         }
         overflow: hidden;
+
+        .btn{
+          display: flex;
+          width: 100%;
+          justify-content: flex-end;
+        .button{
+          padding: 16px 20px;
+          text-align: center;
+          color: white;
+          background: #1a374d;
+          border-radius: 4px;
+          font-family: "Inter";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          margin-top: 20px;
+          cursor: pointer;
+          width: 120px;
+          float: right;
+        }
+      }
+
         .col {
           display: flex;
           flex-direction: row;
           flex-grow: 1;
           flex-basis: 0;
-          max-width: 750px;
+          max-width: 100%;
           padding: 5px 0 5px 0;
           h6 {
             width: 30%;
@@ -161,6 +186,29 @@
         border: solid 1px black;
       }
       .info {
+
+        .btn{
+          display: flex;
+          width: 100%;
+          padding: 20px 0px;
+          justify-content: flex-end;s
+        .button{
+          position: relative;
+          padding: 16px 20px;
+          text-align: center;
+          color: white;
+          background: #1a374d;
+          border-radius: 4px;
+          font-family: "Inter";
+          font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          margin-top: 20px;
+          cursor: pointer;
+          width: 120px;
+          float: right;
+        }
+      }
         .row {
           padding-left: 0;
           padding-right: 0;

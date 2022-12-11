@@ -66,7 +66,7 @@ const UserData = (props) => {
     <div className={styles.userData}>
       {console.log(userData)}
       <div className={styles.userDetails}>
-        <h3>Profile details <span className={styles.edit} onClick={handleEditMode()}></span></h3>
+        <h3>Profile details {!profileEditMode && <span className={styles.edit} onClick={handleEditMode()}></span>}</h3>
         <div className={styles.info}>
           <div className={styles.row}>
             <div className={styles.col}>
@@ -96,6 +96,7 @@ const UserData = (props) => {
               {profileEditMode ? <input className={styles.inputBox} value={userData.address} type="text" onChange={(e)=>{setUserData({...userData,address:e.target.value})}}/> : <p>{userData.address + " " + userData.pincode }</p>}
               {!contentLoaded && <TextSkeleton></TextSkeleton>}
             </div>
+            {profileEditMode && <div className={styles.btn}><div className={styles.button} onClick={handleEditMode()}>Save</div></div>}
           </div>
         </div>
       </div>
