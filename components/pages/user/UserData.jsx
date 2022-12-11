@@ -45,7 +45,8 @@ const UserData = (props) => {
         lastName: response.data.lastName,
         email: response.data.email,
         mobile: response.data.mobile,
-        address: response.data.address + " " + response.data.postalCode,
+        address: response.data.address,
+        pincode: response.data.postalCode,
       });
       setContentLoaded(true);
     } else {
@@ -70,29 +71,29 @@ const UserData = (props) => {
           <div className={styles.row}>
             <div className={styles.col}>
               <h6>First Name</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.firstName} type="text" /> : <p>{userData.firstName}</p>}
+              {profileEditMode ? <input className={styles.inputBox} value={userData.firstName} type="text" onChange={(e)=>{setUserData({...userData,firstName:e.target.value})}}/> : <p>{userData.firstName}</p>}
               {!contentLoaded && <TextSkeleton></TextSkeleton>}
             </div>
             <div className={styles.col}>
               <h6>Last Name</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.lastName} type="text" /> : <p>{userData.lastName}</p>}
+              {profileEditMode ? <input className={styles.inputBox} value={userData.lastName} type="text" onChange={(e)=>{setUserData({...userData,lastName:e.target.value})}}/> : <p>{userData.lastName}</p>}
               {!contentLoaded && <TextSkeleton></TextSkeleton>}
             </div>
           </div>
           <div className={styles.row}>
             <div className={styles.col}>
               <h6>Phone</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.mobile} type="text" /> : <p>{userData.mobile}</p>}
+              {profileEditMode ? <input className={styles.inputBox} value={userData.mobile} type="number" onChange={(e)=>{setUserData({...userData,mobile:e.target.value})}}/> : <p>{userData.mobile}</p>}
               {!contentLoaded && <TextSkeleton></TextSkeleton>}
             </div>
             <div className={styles.col}>
               <h6>Email</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.email} type="text" /> : <p>{userData.email}</p>}
+              {profileEditMode ? <input className={styles.inputBox} value={userData.email} type="text" onChange={(e)=>{setUserData({...userData,email:e.target.value})}}/> : <p>{userData.email}</p>}
               {!contentLoaded && <TextSkeleton></TextSkeleton>}
             </div>
             <div className={styles.col}>
               <h6>Address</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.address} type="text" /> : <p>{userData.address  }</p>}
+              {profileEditMode ? <input className={styles.inputBox} value={userData.address} type="text" onChange={(e)=>{setUserData({...userData,address:e.target.value})}}/> : <p>{userData.address + " " + userData.pincode }</p>}
               {!contentLoaded && <TextSkeleton></TextSkeleton>}
             </div>
           </div>
