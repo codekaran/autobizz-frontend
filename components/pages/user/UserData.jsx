@@ -16,15 +16,10 @@ const UserData = (props) => {
     },
     status: false,
   });
-  const [userData, setUserData] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    address: "",
-    mobile: "",
-  });
+  const [userData, setUserData] = useState({});
   const [changePassword, setChangePassword] = useState(false);
   const [profileEditMode, setProfileEditMode] =useState(false);
+
   useEffect(async () => {
     userLoggedInStatus();
   }, []);
@@ -40,14 +35,7 @@ const UserData = (props) => {
           data.decodedToken.id
       );
       console.log(response);
-      setUserData({
-        firstName: response.data.firstName,
-        lastName: response.data.lastName,
-        email: response.data.email,
-        mobile: response.data.mobile,
-        address: response.data.address,
-        pincode: response.data.postalCode,
-      });
+      setUserData(response.data);
       setContentLoaded(true);
     } else {
       router.push("/login");
@@ -57,18 +45,28 @@ const UserData = (props) => {
     setChangePassword(true);
   };
 
-  const handleEditMode = () => (event) => {
-    setProfileEditMode(!profileEditMode);
-    console.log(profileEditMode);
-  };
+  const handleSaveProfile = () =>{
+    setProfileEditMode(false);
+  }
 
   return (
     <div className={styles.userData}>
-      {console.log(userData)}
       <div className={styles.userDetails}>
-        <h3>Profile details {!profileEditMode && <span className={styles.edit} onClick={handleEditMode()}></span>}</h3>
+        <h3>Profile details {profileEditMode ? <></>:<span className={styles.edit} onClick={(e)=>setProfileEditMode(true)}></span>}</h3>
         <div className={styles.info}>
           <div className={styles.row}>
+
+            {userData.sellerType === 'Dealer' ? 
+            //Dealer
+            <>
+            <div className={styles.col}>
+              <h6>Company Name</h6>
+              {profileEditMode ? <input className={styles.inputBox} value={userData.companyName} type="text" onChange={(e)=>{setUserData({...userData,companyName:e.target.value})}}/> : <p>{userData.companyName}</p>}
+              {!contentLoaded && <TextSkeleton></TextSkeleton>}
+            </div>
+            </> : 
+            //Owner
+            <>
             <div className={styles.col}>
               <h6>First Name</h6>
               {profileEditMode ? <input className={styles.inputBox} value={userData.firstName} type="text" onChange={(e)=>{setUserData({...userData,firstName:e.target.value})}}/> : <p>{userData.firstName}</p>}
@@ -79,6 +77,8 @@ const UserData = (props) => {
               {profileEditMode ? <input className={styles.inputBox} value={userData.lastName} type="text" onChange={(e)=>{setUserData({...userData,lastName:e.target.value})}}/> : <p>{userData.lastName}</p>}
               {!contentLoaded && <TextSkeleton></TextSkeleton>}
             </div>
+            </>
+          }
           </div>
           <div className={styles.row}>
             <div className={styles.col}>
@@ -88,15 +88,25 @@ const UserData = (props) => {
             </div>
             <div className={styles.col}>
               <h6>Email</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.email} type="text" onChange={(e)=>{setUserData({...userData,email:e.target.value})}}/> : <p>{userData.email}</p>}
+              {profileEditMode ? <input className={styles.inputBox} value={userData.email} type="email" onChange={(e)=>{setUserData({...userData,email:e.target.value})}}/> : <p>{userData.email}</p>}
               {!contentLoaded && <TextSkeleton></TextSkeleton>}
             </div>
             <div className={styles.col}>
-              <h6>Address</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.address} type="text" onChange={(e)=>{setUserData({...userData,address:e.target.value})}}/> : <p>{userData.address + " " + userData.pincode }</p>}
+              <h6>{userData.sellerType === 'Dealer' && 'Company '}Address</h6>
+              {profileEditMode ? <input className={styles.inputBox} value={userData.address} type="text" onChange={(e)=>{setUserData({...userData,address:e.target.value})}}/> : <p>{userData.address}</p>}
               {!contentLoaded && <TextSkeleton></TextSkeleton>}
             </div>
-            {profileEditMode && <div className={styles.btn}><div className={styles.button} onClick={handleEditMode()}>Save</div></div>}
+            <div className={styles.col}>
+              <h6>Postal Code</h6>
+              {profileEditMode ? <input className={styles.inputBox} value={userData.postalCode} type="text" onChange={(e)=>{setUserData({...userData,postalCode:e.target.value})}}/> : <p>{userData.postalCode }</p>}
+              {!contentLoaded && <TextSkeleton></TextSkeleton>}
+            </div>
+            <div className={styles.col}>
+              <h6>Country</h6>
+              {profileEditMode ? <input className={styles.inputBox} value={userData.country} type="text" onChange={(e)=>{setUserData({...userData,country:e.target.value})}}/> : <p>{userData.country }</p>}
+              {!contentLoaded && <TextSkeleton></TextSkeleton>}
+            </div>
+            {profileEditMode && <div className={styles.btn}><div className={styles.button} onClick={(e)=>{handleSaveProfile()}}>Save</div></div>}
           </div>
         </div>
       </div>

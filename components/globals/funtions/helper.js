@@ -2,7 +2,7 @@
 export const getSession = (ctx) => {
   console.log("in helper");
   if (ctx.isLoggedIn.status) {
-    console.log("setting from contex");
+    console.log("setting from context");
     return ctx.isLoggedIn;
   } else if (window.localStorage.getItem("userData")) {
     console.log("setting from local");

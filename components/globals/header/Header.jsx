@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import AuthContext from "../../../context/auth-context";
 import { useContext } from "react";
-
+import axios from "axios";
+import { server } from "../../../variables/server";
 const Header = () => {
   useEffect(() => {
     console.log(window.innerWidth);
@@ -35,7 +36,7 @@ const Header = () => {
     // let status = isBurgerMenuClicked ? false : true;
     // setIsBurgerMenuClicked(status);
   };
-  const handleUserData = () => {
+  const handleUserData = async () => {
     if (window.localStorage.getItem("userData")) {
       let sessionUser = JSON.parse(window.localStorage.getItem("userData"));
       console.log("in session setting", sessionUser.decodedToken);
@@ -43,15 +44,21 @@ const Header = () => {
         status: sessionUser.status,
         token: sessionUser.token,
       });
+      let response = await axios.get(
+        `${server.serverURL}/seller-api/sellers/userData/` +
+        sessionUser.decodedToken.id
+      );
       setUserData({
         status: sessionUser.status,
-        decodedToken: sessionUser.decodedToken,
+        ...response.data
       });
     }
   };
 
   return (
     <div className={styles.header}>
+      {console.log('header userdata')}
+      {console.log(userData)}
       <div className={styles.company_logo}>
         <div></div>
       </div>
@@ -105,11 +112,11 @@ const Header = () => {
         <div className={styles.container}>
           {ctx.isLoggedIn.status ? (
             <Link href="/user">
-              <button onClick={handleBurgerClick}>Hi! {ctx.isLoggedIn.decodedToken.firstName}</button>
+              <button onClick={handleBurgerClick}>Hi! {userData.sellerType==='Owner' ? userData.firstName : userData.companyName}</button>
             </Link>
           ) : userData.status ? (
             <Link href="/user">
-              <button onClick={handleBurgerClick}>Hi! {userData.decodedToken.firstName}</button>
+              <button onClick={handleBurgerClick}>Hi! {userData.sellerType==='Owner' ? userData.firstName : userData.companyName}</button>
             </Link>
           ) : (
             <Link href="/login" passHref>

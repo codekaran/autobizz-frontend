@@ -41,7 +41,6 @@ const LoginPage = (props) => {
           password: 123,
         },
       });
-      console.log(res.status);
       console.log(res);
       if (res.status === 200) {
         console.log("DONE");
