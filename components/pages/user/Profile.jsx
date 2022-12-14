@@ -12,7 +12,8 @@ const Profile = () => {
   const [rightPart, setRightPart] = useState(<UserData></UserData>);
   // state for highlighting active block
   const [activeNav, setActiveNav] = useState("personal");
-
+  const ctx = useContext(AuthContext);
+  const router = useRouter();
   // functions
   const handleClick = (data) => (event) => {
     console.log(data);
@@ -23,7 +24,7 @@ const Profile = () => {
     }
     setActiveNav(data);
   };
-
+  
   return (
     <div className={styles.profile}>
       <div className={styles.left}>

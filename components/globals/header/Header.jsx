@@ -5,15 +5,17 @@ import AuthContext from "../../../context/auth-context";
 import { useContext } from "react";
 import axios from "axios";
 import { server } from "../../../variables/server";
+import { getSession } from "../funtions/helper";
+import { useRouter } from "next/router";
 const Header = () => {
   useEffect(() => {
-    console.log(window.innerWidth);
     handleUserData();
     window.addEventListener("resize", handleResize);
     handleResize();
-  }, []);
+  },[]);
   // let session = window.local;
   let ctx = useContext(AuthContext);
+  const router = useRouter();
   const [isBurgerMenuClicked, setIsBurgerMenuClicked] = useState(true);
   const [mobileView, setMobileView] = useState(false);
   const [userData, setUserData] = useState({});
@@ -36,7 +38,8 @@ const Header = () => {
     // let status = isBurgerMenuClicked ? false : true;
     // setIsBurgerMenuClicked(status);
   };
-  const handleUserData = async () => {
+  
+  const handleUserData = () => {
     if (window.localStorage.getItem("userData")) {
       let sessionUser = JSON.parse(window.localStorage.getItem("userData"));
       console.log("in session setting", sessionUser.decodedToken);
@@ -44,21 +47,27 @@ const Header = () => {
         status: sessionUser.status,
         token: sessionUser.token,
       });
-      let response = await axios.get(
-        `${server.serverURL}/seller-api/sellers/userData/` +
-        sessionUser.decodedToken.id
-      );
+      console.log('coming from handle user data')
+      console.log(ctx);
       setUserData({
         status: sessionUser.status,
-        ...response.data
+        ...sessionUser.decodedToken
       });
+      console.log(userData)
     }
   };
+  
+  const handleLogout = ()=>{
+    ctx.setLoggedInStatus(
+      {decodedToken: {},
+      status: false,
+      token: "",});
+      setUserData({status:false})
+      router.push("/login");
+  }
 
   return (
     <div className={styles.header}>
-      {console.log('header userdata')}
-      {console.log(userData)}
       <div className={styles.company_logo}>
         <div></div>
       </div>
@@ -110,20 +119,19 @@ const Header = () => {
           </Link>
         </div>
         <div className={styles.container}>
+          {console.log('aaaaaaaa')}
+          {console.log(ctx)}
           {ctx.isLoggedIn.status ? (
             <Link href="/user">
-              <button onClick={handleBurgerClick}>Hi! {userData.sellerType==='Owner' ? userData.firstName : userData.companyName}</button>
+              <button onClick={handleBurgerClick}>Hi! {ctx.isLoggedIn.decodedToken.sellerType==='Owner' ? ctx.isLoggedIn.decodedToken.firstName : ctx.isLoggedIn.decodedToken .companyName}</button>
             </Link>
-          ) : userData.status ? (
-            <Link href="/user">
-              <button onClick={handleBurgerClick}>Hi! {userData.sellerType==='Owner' ? userData.firstName : userData.companyName}</button>
-            </Link>
-          ) : (
+            ) :
+             (
             <Link href="/login" passHref>
               <button onClick={handleBurgerClick}>Login/Register</button>
             </Link>
           )}
-
+          {ctx.isLoggedIn.status ? <button style={{backgroundColor:'#990000',}} onClick={(e)=>handleLogout()}>Logout</button> : userData.status ? <button style={{backgroundColor:'#990000',}} onClick={(e)=>handleLogout()}>Logout</button> : <></>}
           <select>
             <option value="0">En</option>
             <option value="1">Ln</option>

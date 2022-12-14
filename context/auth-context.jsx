@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import jwt_decode from "jwt-decode";
 
 const AuthContext = React.createContext({
@@ -23,7 +23,7 @@ export const AuthContexProvider = (props) => {
 
   return (
     <AuthContext.Provider
-      value={{ setLoggedInStatus: setLoggedInStatus, isLoggedIn: isLoggedIn }}
+      value={{ setLoggedInStatus, isLoggedIn}}
     >
       {props.children}
     </AuthContext.Provider>

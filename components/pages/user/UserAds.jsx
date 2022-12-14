@@ -1,5 +1,5 @@
 import styles from "./UserAds.module.scss";
-
+import Loader from "../../globals/skeletons/loader";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import AuthContext from "../../../context/auth-context";
@@ -14,6 +14,7 @@ const UserAds = () => {
   useEffect(() => {
     getUserAds();
   }, []);
+  const [adsLoading,setAdsLoading] = useState(true);
 
   const getUserAds = async () => {
     let data = getSession(ctx);
@@ -42,6 +43,7 @@ const UserAds = () => {
 
       console.log(response);
       setUserAds(response);
+      setAdsLoading(false);
       // console.log(userAds[0].firstRegistration);
     } else {
       router.push("/login");
@@ -57,6 +59,16 @@ const UserAds = () => {
 
   return (
     <>
+      {adsLoading ? 
+      <div style={{display:"flex",justifyContent:"center",textAlign:"center"}}><Loader/></div>
+      :
+      <>{(!adsLoading && userAds.length === 0)? 
+      <div className={styles.noAds}>
+        {console.log('empty array')}
+        <h3>You haven't posted an ad yet!</h3>
+      </div>
+      :
+      <>
       {userAds.map((item, index) => (
         <div key={index} className={styles.ads}>
           <h3>
@@ -114,6 +126,9 @@ const UserAds = () => {
           </div>
         </div>
       ))}
+      </>
+      }</>
+    }
     </>
   );
 };
