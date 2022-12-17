@@ -134,11 +134,6 @@ const Header = () => {
             </Link>
           )}
           {ctx.isLoggedIn.status ? <button style={{backgroundColor:'#990000',}} onClick={(e)=>handleLogout()}>Logout</button> : userData.status ? <button style={{backgroundColor:'#990000',}} onClick={(e)=>handleLogout()}>Logout</button> : <></>}
-          <select>
-            <option value="0">En</option>
-            <option value="1">Ln</option>
-            <option value="2">Fr</option>
-          </select>
         </div>
       </div>
     </div>
