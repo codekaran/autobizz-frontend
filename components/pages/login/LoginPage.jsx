@@ -45,7 +45,7 @@ const LoginPage = (props) => {
       if (res.status === 200) {
         console.log(res);
         ctx.setLoggedInStatus({
-          status: res.data.auth,
+          //status: res.data.auth,
           token: res.data.token,
         });
         router.push("/");

@@ -1,7 +1,14 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 import styles from "./Login.module.scss";
 
 const Login = () => {
+  const router = useRouter();
+  useEffect(() => {
+    if(localStorage.getItem('userData')){router.push('/')}
+  },[]);
+
   return (
     <div className={styles.login}>
       <h3>Seller - buyer</h3>

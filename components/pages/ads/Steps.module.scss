@@ -56,8 +56,8 @@
 }
 
 .step_1 {
-  padding: 0 72px;
-
+  padding: 100px;
+  margin: 80px 0; 
   select {
     height: 56px;
     width: 70%;
@@ -118,8 +118,8 @@
 }
 
 .step_2 {
-  padding: 0 72px;
-
+  padding: 100px;
+  margin: 80px 0px;
   .container:nth-child(1) {
     gap: 124px;
   }
@@ -189,9 +189,9 @@
 }
 
 .step_3 {
-  padding: 0 72px;
   width: 100%;
-
+  padding: 100px;
+  margin: 80px 0px;
   textarea {
     width: 100%;
     border: 1px solid #1b1b1b;
@@ -234,8 +234,8 @@
   .step_1,
   .step_2,
   .step_3 {
-    padding: 140px 20px 50px;
-
+    padding: 0 20px;
+    margin-top: 120px;
     button {
       height: 42px;
       width: 100%;

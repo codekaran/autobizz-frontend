@@ -1,8 +1,12 @@
 .header {
   width: 100%;
   padding: 12px clamp(24px, 6%, 90px);
+  position: fixed;
+  top: 0;
+  z-index: 1000;
   display: flex;
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: white;
   .burger {
     display: none;
   }
@@ -62,7 +66,9 @@
 @media (max-width: 700px) {
   .header {
     overflow: hidden;
-    position: relative;
+    position: fixed;
+    top:0;
+    z-index: 1000;
     justify-content: space-between;
     align-items: center;
     .burger {
@@ -98,7 +104,7 @@
       z-index: 101;
       position: fixed;
       left: 0;
-      top: 80px;
+      top: 0px;
       text-align: center;
       flex-direction: column;
       height: 100vh;
