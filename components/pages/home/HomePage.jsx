@@ -10,12 +10,12 @@ const HomePage = (props) => {
     <>
       <HeroSection text="Car Selling Solution" />
       <div className={styles.home}>
-        <Carousel cars={props.carsArray} title="Car details" />
+        <Carousel cars={props.carsArray} title="Featured cars" />
         <TestimonialSection />
-        <Carousel cars={props.carsArray} title="Car details" />
+        <Carousel cars={props.carsArray} title="Featured cars" />
         <GoogleAd />
-        <Carousel cars={props.carsArray} title="Car details" />
-        <Carousel cars={props.carsArray} title="Car details" />
+        <Carousel cars={props.carsArray} title="Featured cars" />
+        <Carousel cars={props.carsArray} title="Featured cars" />
       </div>
     </>
   );

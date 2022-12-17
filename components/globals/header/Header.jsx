@@ -68,8 +68,12 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
-      <div className={styles.company_logo}>
-        <div></div>
+      <div className={styles.company_logo} >
+        <div>
+          <Link href='/'>
+            <p>Home</p>
+          </Link>
+        </div>
       </div>
       {/* burger for mobile view */}
       <div
@@ -119,8 +123,6 @@ const Header = () => {
           </Link>
         </div>
         <div className={styles.container}>
-          {console.log('aaaaaaaa')}
-          {console.log(ctx)}
           {ctx.isLoggedIn.status ? (
             <Link href="/user">
               <button onClick={handleBurgerClick}>Hi! {ctx.isLoggedIn.decodedToken.sellerType==='Owner' ? ctx.isLoggedIn.decodedToken.firstName : ctx.isLoggedIn.decodedToken .companyName}</button>

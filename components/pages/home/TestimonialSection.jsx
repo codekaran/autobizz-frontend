@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./HomePage.module.scss";
+import styles from "./TestimonialSection.module.scss";
 import team from "../../../public/team.png";
 import thunderbolt from "../../../public/thunderbolt.png";
 import moneybag from "../../../public/money-bag.png";
@@ -12,25 +12,25 @@ const TestimonialSection = () => {
         <div className={styles.chooseUs}>
           <h3>Why choose us?</h3>
           <div className={styles.container}>
-            <div className={styles.box}>
+            <div id='chooseUs1' className={styles.box}>
               <div className={styles.circle}>
                 <Image placeholder="blur" src={team}></Image>
               </div>
               <p>Millions of customers ready to buy</p>
             </div>
-            <div className={styles.box}>
+            <div id='chooseUs2' className={styles.box}>
               <div className={styles.circle}>
                 <Image placeholder="blur" src={thunderbolt}></Image>
               </div>
               <p>Best price promised</p>
             </div>
-            <div className={styles.box}>
+            <div id='chooseUs3' className={styles.box}>
               <div className={styles.circle}>
                 <Image placeholder="blur" src={moneybag}></Image>
               </div>
               <p>Lightning fast deals</p>
             </div>
-            <div className={styles.box}>
+            <div id='chooseUs4' className={styles.box}>
               <div className={styles.circle}>
                 <Image placeholder="blur" src={team}></Image>
               </div>
