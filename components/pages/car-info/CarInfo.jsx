@@ -165,7 +165,7 @@ const CarInfo = (props) => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. A
                   tristique tortor commodo eget.
                 </li>
-                <Link href="/ad" passHref>
+                <Link href="/ads/create/step-1" passHref>
                   <button>
                     Sell Car &nbsp;&nbsp;
                     <FiArrowRight />

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import About from "../../components/pages/about/About";
 
 import { getCars } from "../apiCalls";
@@ -5,6 +6,9 @@ import { getCars } from "../apiCalls";
 const about = (props) => {
   return (
     <>
+     <Head>
+        <title>About</title>
+      </Head>
       <About carsArray={props.data}></About>
     </>
   );

@@ -2,34 +2,6 @@
   margin-top: 80px;
 }
 
-.heroSection {
-  //   height: 380px;
-  // height: 300px;
-  width: 100%;
-  background-color: #ccc;
-  margin-bottom: 32px;
-  display: block;
-  position: relative;
-  .text {
-    position: absolute;
-    left: 30%;
-    text-align: center;
-    transform: translateX(-50%);
-    top: 30%;
-    z-index: 1;
-    font-family: "Sora";
-    font-style: normal;
-    font-weight: 600;
-    font-size: 65px;
-    line-height: 60px;
-    color: rgb(32, 32, 32);
-    
-    display: flex;
-    align-items: center;
-    font-feature-settings: "pnum" on, "lnum" on;
-  }
-}
-
 .Ad {
   margin: 32px 0px;
   height: 240px;
@@ -41,24 +13,8 @@
   justify-content: center;
 }
 
-@media (max-width: 1350px) {
-  .heroSection {
-    .text {
-      left: 50%;
-      font-size: 50px;
-      top: 30%;
-    }
-  }
-}
 @media (max-width: 760px) {
-  .heroSection {
-    .text {
-      left: 50%;
-      font-size: 25px;
-      top: 30%;
-      line-height: 30px;
-    }
-  }
+  
   .home {
   }
 

@@ -7,6 +7,7 @@ import axios from "axios";
 import { server } from "../../../variables/server";
 import { getSession } from "../funtions/helper";
 import { useRouter } from "next/router";
+import SearchBar from "../search/SearchBar";
 const Header = () => {
   useEffect(() => {
     handleUserData();
@@ -16,13 +17,13 @@ const Header = () => {
   // let session = window.local;
   let ctx = useContext(AuthContext);
   const router = useRouter();
-  const [isBurgerMenuClicked, setIsBurgerMenuClicked] = useState(true);
+  const [isBurgerMenuClicked, setIsBurgerMenuClicked] = useState(false);
   const [mobileView, setMobileView] = useState(false);
   const [userData, setUserData] = useState({});
+  
   // function to handle the resize of the window.
   const handleResize = () => {
     if (window.innerWidth > 700) {
-      console.log("setting true");
       setIsBurgerMenuClicked(true);
       setMobileView(false);
     } else {
@@ -35,8 +36,6 @@ const Header = () => {
       let status = isBurgerMenuClicked ? false : true;
       setIsBurgerMenuClicked(status);
     }
-    // let status = isBurgerMenuClicked ? false : true;
-    // setIsBurgerMenuClicked(status);
   };
   
   const handleUserData = () => {
@@ -113,13 +112,13 @@ const Header = () => {
       >
         <div className={styles.container}>
           <Link href="/">
-            <p onClick={handleBurgerClick}>Home</p>
+            <p onClick={handleBurgerClick}>HOME</p>
           </Link>
           <Link href="/about">
-            <p onClick={handleBurgerClick}>About</p>
+            <p onClick={handleBurgerClick}>ABOUT</p>
           </Link>
           <Link href="/ads/create/step-1">
-            <p onClick={handleBurgerClick}>Sell</p>
+            <p onClick={handleBurgerClick}>SELL</p>
           </Link>
         </div>
         <div className={styles.container}>

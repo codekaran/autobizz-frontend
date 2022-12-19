@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./HomePage.module.scss";
+import styles from "./HeroSection.module.scss";
 import image from "../../../public/Hero.png";
 import Image from "next/image";
 
