@@ -8,6 +8,7 @@ import Image from "next/image";
 import CarScroller from "./CarScroller";
 import Carousal from "../../layouts/carousel/Carousel";
 import CarScrollNew from "./CarScrollNew";
+import Button from '../../globals/button/Button';
 
 const CarInfo = (props) => {
   const benefitsArr = [
@@ -78,8 +79,8 @@ const CarInfo = (props) => {
               <p>250 miles away</p>
             </div>
           </div>
-          <div className={styles.button}>
-            <button>Contact Seller</button>
+          <div>
+            <Button width='100%' padding='20px 10px'>Contact Seller</Button>
           </div>
         </div>
       </div>
@@ -166,10 +167,10 @@ const CarInfo = (props) => {
                   tristique tortor commodo eget.
                 </li>
                 <Link href="/ads/create/step-1" passHref>
-                  <button>
+                  <Button padding='10px 20px' margin='10px 0px 0px 0px'>
                     Sell Car &nbsp;&nbsp;
                     <FiArrowRight />
-                  </button>
+                  </Button>
                 </Link>
               </ul>
 

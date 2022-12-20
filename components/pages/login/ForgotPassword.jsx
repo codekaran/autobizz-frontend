@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./ForgotPassword.module.scss";
+import Button from '../../globals/button/Button';
 
 const ForgotPassword = () => {
   const [values, setValues] = useState({
@@ -54,7 +55,7 @@ const ForgotPassword = () => {
         {error && (
           <p className={styles.smallText}>Enter a valid email ID !!!</p>
         )}
-        <button type="submit">Send Link</button>
+        <Button type="submit">Send Link</Button>
         {resendState ? (
           <p className={styles.normalText} style={{ color: "#6998AB" }}>
             Resend

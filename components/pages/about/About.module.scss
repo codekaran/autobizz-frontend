@@ -160,6 +160,7 @@
       flex-direction: column;
       input {
         width: 350px;
+        padding: 10px;
         height: 45px;
         border-radius: 5px;
         border: 1px gray solid;
@@ -171,39 +172,12 @@
       }
       textarea {
         border: 1px gray solid;
+        padding: 10px;
         outline: none;
         border-radius: 5px;
         width: 350px;
         height: 150px;
         margin-bottom: 30px;
-      }
-      .btn {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: flex-end;
-        padding: 16px 40px;
-        background: #1a374d;
-        border:none;
-        border-radius: 4px;
-        // height: 56px;
-        width: 200px;
-        p {
-          font-family: Inter;
-          font-style: normal;
-          font-weight: 500;
-          font-size: 18px;
-          line-height: 22px;
-          color: #ffffff !important;
-          margin: 0px;
-        }
-
-        &:hover,
-        &:active,
-        &:focus {
-          cursor: pointer;
-          background-color: #406882;
-        }
       }
     }
   }
@@ -257,10 +231,6 @@
         input,
         textarea {
           width: auto;
-        }
-        .btn {
-          width: 100%;
-          padding: 10px 0px;
         }
       }
     }

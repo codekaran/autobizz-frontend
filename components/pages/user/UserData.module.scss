@@ -44,7 +44,6 @@
       
     
       .row {
-        
         display: flex;
         flex-direction: column;
         padding: 20px 30px;
@@ -54,26 +53,6 @@
         flex-basis: 0;
         }
         overflow: hidden;
-
-        .btn{
-          display: flex;
-          width: 100%;
-          justify-content: flex-end;
-        .button{
-          padding: 16px 20px;
-          text-align: center;
-          color: white;
-          background: #1a374d;
-          border-radius: 4px;
-          font-family: "Inter";
-          font-style: normal;
-          font-weight: 500;
-          font-size: 14px;
-          margin-top: 20px;
-          cursor: pointer;
-          width: 120px;
-          float: right;
-        }
       }
 
         .col {
@@ -140,29 +119,9 @@
           border-radius: 4px;
         }
       }
-      .btn {
-        display: flex;
-        justify-content: space-between;
-        .button {
-          padding: 16px 20px;
-          width: 120px;
-          text-align: center;
-          color: white;
-          background: #1a374d;
-          border-radius: 4px;
-          font-family: "Inter";
-          font-style: normal;
-          font-weight: 500;
-          font-size: 14px;
-          margin-top: 20px;
-          cursor: pointer;
-          // float: right;
-          margin-right: 35px;
-        }
-      }
     }
   }
-}
+
 
 @media screen and (max-width: 750px) {
   .userData {
@@ -186,29 +145,6 @@
         border: solid 1px black;
       }
       .info {
-
-        .btn{
-          display: flex;
-          width: 100%;
-          padding: 20px 0px;
-          justify-content: flex-end;s
-        .button{
-          position: relative;
-          padding: 16px 20px;
-          text-align: center;
-          color: white;
-          background: #1a374d;
-          border-radius: 4px;
-          font-family: "Inter";
-          font-style: normal;
-          font-weight: 500;
-          font-size: 14px;
-          margin-top: 20px;
-          cursor: pointer;
-          width: 120px;
-          float: right;
-        }
-      }
         .row {
           padding-left: 0;
           padding-right: 0;
@@ -249,15 +185,6 @@
             width: 100%;
             margin-right: 0px;
             margin-top: 20px;
-          }
-        }
-        .btn {
-          flex-direction: column;
-          .button {
-            order: 0;
-          }
-          p {
-            order: 1;
           }
         }
       }

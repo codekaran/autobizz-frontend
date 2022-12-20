@@ -1,12 +1,15 @@
+@import '../../../styles/colors';
+
 .searchBar{
     padding: 30px;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    background-color: $primary-bg;
     input,input:focus{
         border-radius: 0.5rem 0rem 0rem 0.5rem;
         padding: 10px;
-        border: 1px solid gray;
+        border: none;
         border-right: none;
         min-width: 40%;
         font-family: Sora;
@@ -14,28 +17,16 @@
         outline: none;
     }
     button{
-        padding: 10px;
-        font-size: 14px;
-        border: 1px solid gray;
-        border-radius: 0rem 0.5rem 0.5rem 0rem;
         min-width: 60px;
-        background-color: #1a374d;
-        color: white;
     }
 }
 
 @media (max-width: 760px){
     .searchBar{
-        padding: 20px 40px;
+        padding: 20px 54px;
         input,input:focus{
             min-width: 100%;
             font-size: 14px;
-        }
-        button{
-            padding: 10px;
-            font-size: 14px;
-            border: 1px solid gray;
-            border-radius: 0rem 0.5rem 0.5rem 0rem;
         }
     }
 } 

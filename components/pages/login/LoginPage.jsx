@@ -10,6 +10,7 @@ import facebook from "../../../public/facebook.svg";
 import AuthContext from "../../../context/auth-context";
 import { useContext } from "react";
 import { useRouter } from "next/router";
+import {BiLogInCircle} from 'react-icons/bi';
 
 const LoginPage = (props) => {
   const ctx = useContext(AuthContext);
@@ -103,7 +104,7 @@ const LoginPage = (props) => {
           <div></div>
           <p>Keep me remembered</p>
         </div>
-        <Button onClick={handleSubmit}>Log In</Button>
+        <Button theme='light' padding='10px 20px' margin='10px 0px' onClick={handleSubmit} icon={<BiLogInCircle/>}>Log In</Button>
       </form>
 
       <p className={styles.forgot}>

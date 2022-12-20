@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Steps.module.scss";
 import Button from "../../globals/button/Button";
-
+import { FaArrowRight } from "react-icons/fa";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import AdContext from "../../../context/ad-context";
@@ -208,7 +208,7 @@ const Step_2 = () => {
           </div>
         </div>
       </div>
-      <Button onClick={handleSubmit}>Next</Button>
+      <Button padding='10px 30px' onClick={handleSubmit} icon={<FaArrowRight/>}>Next</Button>
     </div>
   );
 };

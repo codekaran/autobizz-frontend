@@ -7,7 +7,9 @@ import axios from "axios";
 import { server } from "../../../variables/server";
 import { getSession } from "../funtions/helper";
 import { useRouter } from "next/router";
-import SearchBar from "../search/SearchBar";
+import Button from '../button/Button'
+import { BiLoginCircle } from 'react-icons/bi';
+
 const Header = () => {
   useEffect(() => {
     handleUserData();
@@ -124,15 +126,15 @@ const Header = () => {
         <div className={styles.container}>
           {ctx.isLoggedIn.status ? (
             <Link href="/user">
-              <button onClick={handleBurgerClick}>Hi! {ctx.isLoggedIn.decodedToken.sellerType==='Owner' ? ctx.isLoggedIn.decodedToken.firstName : ctx.isLoggedIn.decodedToken .companyName}</button>
+              <Button onClick={handleBurgerClick}>Hi! {ctx.isLoggedIn.decodedToken.sellerType==='Owner' ? ctx.isLoggedIn.decodedToken.firstName : ctx.isLoggedIn.decodedToken .companyName}</Button>
             </Link>
             ) :
              (
             <Link href="/login" passHref>
-              <button onClick={handleBurgerClick}>Login/Register</button>
+              <Button padding='10px 20px' onClick={handleBurgerClick}>Login/Register</Button>
             </Link>
           )}
-          {ctx.isLoggedIn.status ? <button style={{backgroundColor:'#990000',}} onClick={(e)=>handleLogout()}>Logout</button> : userData.status ? <button style={{backgroundColor:'#990000',}} onClick={(e)=>handleLogout()}>Logout</button> : <></>}
+          {ctx.isLoggedIn.status ? <Button style={{backgroundColor:'#990000',}} onClick={(e)=>handleLogout()}>Logout</Button> : userData.status ? <Button style={{backgroundColor:'#990000',}} onClick={(e)=>handleLogout()}>Logout</Button> : <></>}
         </div>
       </div>
     </div>

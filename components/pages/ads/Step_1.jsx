@@ -13,6 +13,7 @@ import Kia from "../../../public/Kia.png";
 import { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
+import { FaArrowRight } from "react-icons/fa";
 
 const Step_1 = (props) => {
   // checking if the sesssion contains data
@@ -95,7 +96,7 @@ const Step_1 = (props) => {
         ))}
       </div>
       <Link href="/ads/create/step-2">
-        <Button>Next</Button>
+        <Button padding='10px 30px' icon={<FaArrowRight/>}>Next</Button>
       </Link>
     </div>
   );

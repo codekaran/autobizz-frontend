@@ -52,7 +52,7 @@
         padding: 0px;
         order: 1;
         margin: 48px 90px 0px;
-
+        
         .formGroup {
             display: flex;
             flex-direction: column;
@@ -161,6 +161,10 @@
 
         form {
             margin: 0px;
+
+            Button{
+                min-width: 100%;
+            }
             .formGroup {
                 margin-bottom: 16px;
                 input {
@@ -176,18 +180,6 @@
                 p {
                     font-size: 14px;
                     line-height: 17px;
-                }
-            }
-            button {
-                margin: 16px auto;
-                height: 42px;
-                width: 100%;
-                max-width: 450px;
-                padding: 10px 0px;
-
-                p {
-                    font-size: 16px;
-                    line-height: 19px;
                 }
             }
         }

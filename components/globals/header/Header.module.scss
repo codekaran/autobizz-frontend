@@ -1,3 +1,5 @@
+@import '../../../styles/colors';
+
 .header {
   width: 100%;
   padding: 12px clamp(24px, 6%, 90px);
@@ -5,8 +7,7 @@
   top: 0;
   z-index: 1000;
   display: flex;
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.1);
-  background-color: white;
+  background-color: $primary-bg;
   .burger {
     display: none;
   }
@@ -17,7 +18,7 @@
       height: 56px;
       left: 84px;
       top: 12px;
-      background: #c4c4c4;
+      background: $grey-placeholder;
     }
   }
   .flex_box {
@@ -39,21 +40,10 @@
         font-weight: normal;
         font-size: 14px;
         line-height: 18px;
-        color: #000000;
+        color: $white;
         cursor: pointer;
       }
-      button {
-        padding: 10px 20px;
-        background: #1a374d;
-        border-radius: 4px;
-        border-color: transparent;
-        font-family: Sora;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 14px;
-        line-height: 18px;
-        color: #f4f4f4;
-      }
+      
       select {
         border: none;
         outline: none;
@@ -80,13 +70,13 @@
       cursor: pointer;
       z-index: 1000;
       .big_line {
-        background-color: black;
+        background-color: $white;
         height: 2px;
         transition: all 0.3s ease-in;
         width: 20px;
       }
       .small_line {
-        background-color: black;
+        background-color: $white;
         height: 2px;
         width: 15px;
         transition: all 0.3s ease-in;
@@ -97,8 +87,8 @@
       transition: 0.5s ease-in;
       margin-top: 80px;
       padding: 80px 0px;
-      background-color: #1a374d;
-      color: white;
+      background-color: $primary-bg;
+      color: $white;
       justify-content: center;
       align-items: center;
       width: 100vw;
@@ -116,11 +106,10 @@
         align-items: center;
         width: 100%;
         p {
-          color: white;
+          color: $white;
           font-size: 18px;
         }
         button{
-          background-color: #122736;
           margin-bottom: 20px;
         }
       }

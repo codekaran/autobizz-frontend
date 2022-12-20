@@ -1,7 +1,8 @@
 .login {
-    text-align: center;
+    display: flex;
     padding: 0 60px;
-
+    flex-direction: column;
+    align-items: center;
     h3 {
         font-family: Sora;
         font-style: normal;
@@ -32,32 +33,6 @@
         line-height: 24px;
         color: #1b1b1b;
         margin-bottom: 64px;
-    }
-
-    button {
-        width: 100%;
-        max-width: 400px;
-        height: 54px;
-        background: #ffffff;
-        border: 1px solid #1a374d;
-        border-radius: 4px;
-        margin-bottom: 36px;
-
-        // Text
-        font-family: Inter;
-        font-style: normal;
-        font-weight: 500;
-        font-size: 18px;
-        line-height: 22px;
-        color: #1a374d;
-
-        &:hover {
-            background: #f1f1f1;
-        }
-
-        &:active {
-            background: #b1d0e0;
-        }
     }
 
     .sm {
@@ -92,14 +67,6 @@
             line-height: 45px;
             margin-bottom: 50px;
         }
-
-        button {
-            margin-bottom: 16px;
-            height: 42px;
-            font-size: 16px;
-            line-height: 19px;
-        }
-
         .sm {
             display: block;
             width: 60%;

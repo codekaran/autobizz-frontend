@@ -1,27 +1,54 @@
-.btn {
+@import '../../../styles/colors';
+@mixin btn{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: flex-end;
-    padding: 16px 40px;
-    background: #1a374d;
-    border-radius: 4px;
-    height: 56px;
-    width: 200px;
-    p {
-        font-family: Inter;
-        font-style: normal;
-        font-weight: 500;
+    justify-content:center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 0.5rem;
+    min-width: 60px;
+    outline: none;
+    font-family: Sora;
+    font-style: normal;
+    font-size: 18px;
+    transition: all 0.2s;
+    .icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 18px;
-        line-height: 22px;
-        color: #ffffff !important;
-        margin: 0px;
+        margin-left: 10px;
     }
+}
 
+.btn_primary {
+    @include btn;
+    background: $primary-button-background;
+    border: none;
+    color: $white;
     &:hover,
     &:active,
     &:focus {
         cursor: pointer;
-        background-color: #406882;
+        background-color: $primary-button-focus;
+    }
+}
+
+.btn_light{
+    @include btn;
+    background: $light-button-background;
+    border: 1px solid $primary-button-background;
+    color: $primary-button-background;
+    &:hover,
+    &:active,
+    &:focus {
+        cursor: pointer;
+        background-color: $light-button-focus;
+    }
+}
+
+@media (max-width: 760px){
+    .btn_primary,.btn_light {
+    font-size: 16px;
     }
 }

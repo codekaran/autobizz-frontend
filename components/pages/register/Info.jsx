@@ -8,6 +8,8 @@ import { validateForm } from "../../globals/funtions/FormValidate";
 import { useContext } from "react";
 import RegisterContext from "../../../context/register-context";
 import { server } from "../../../variables/server";
+import {FaSign} from 'react-icons/fa';
+
 const SellerInfo = () => {
   const router = useRouter();
   // variables to store the form data
@@ -175,7 +177,7 @@ const SellerInfo = () => {
           }}
         />
 
-        <Button onClick={handleSubmit}>Get Started</Button>
+        <Button width='100%' onClick={handleSubmit} icon={<FaSign/>}>Get Started</Button>
       </form>
     </div>
   );

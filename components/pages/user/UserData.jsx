@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import TextSkeleton from "../../globals/skeletons/text";
 import { server } from "../../../variables/server";
+import Button from '../../globals/button/Button';
+
 const UserData = (props) => {
   let ctx = useContext(AuthContext);
   const router = useRouter();
@@ -106,7 +108,7 @@ const UserData = (props) => {
               {profileEditMode ? <input className={styles.inputBox} value={userData.country} type="text" onChange={(e)=>{setUserData({...userData,country:e.target.value})}}/> : <p>{userData.country }</p>}
               {!contentLoaded && <TextSkeleton></TextSkeleton>}
             </div>
-            {profileEditMode && <div className={styles.btn}><div className={styles.button} onClick={(e)=>{handleSaveProfile()}}>Save</div></div>}
+            {profileEditMode && <Button margin='10px 0px 0px 0px' onClick={(e)=>{handleSaveProfile()}}>Save</Button>}
           </div>
         </div>
       </div>

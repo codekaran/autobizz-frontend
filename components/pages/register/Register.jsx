@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "./Register.module.scss";
 import { useContext } from "react";
 import RegisterContext from "../../../context/register-context";
+import Button from '../../globals/button/Button'
 
 const Register = () => {
   let ctx = useContext(RegisterContext);
@@ -12,22 +13,28 @@ const Register = () => {
       <h1>Register</h1>
       <p>Register now to start your journey as seller with company name</p>
       <Link href="/register/seller" passHref>
-        <button
+        <Button 
+          theme='light'
+          padding='10px 60px'
+          margin='20px 0px 10px 0px'
           onClick={() => {
             ctx.getData({ RegistrationType: "Seller" });
           }}
         >
           Register as Seller
-        </button>
+        </Button>
       </Link>
       <Link href="/register/buyer" passHref>
-        <button
+        <Button 
+          theme='light'
+          padding='10px 60px'
+          margin='10px 0px 20px 0px'
           onClick={() => {
             ctx.getData({ RegistrationType: "Buyer" });
           }}
         >
           Register as Buyer
-        </button>
+        </Button>
       </Link>
       <p className={styles.sm}>
         Already registered?{" "}

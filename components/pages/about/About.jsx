@@ -2,6 +2,7 @@ import HeroSection from "../home/HeroSection";
 import styles from "./About.module.scss";
 import Carousel from "../../layouts/carousel/Carousel";
 import Button from "../../globals/button/Button";
+import {FaArrowRight} from 'react-icons/fa';
 
 const About = (props) => {
   return (
@@ -91,9 +92,9 @@ const About = (props) => {
           <input placeholder="Name" type="text" />
           <input placeholder="Email" type="text" />
           <textarea placeholder="Message" />
-          <button className={styles.btn}>
-            <p>send</p>
-          </button>
+          <Button icon={<FaArrowRight/>}>
+            Send
+          </Button>
         </div>
       </div>
     </div>

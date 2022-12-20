@@ -1,6 +1,10 @@
 .sellerType {
   text-align: center;
   padding: 0 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   h3 {
     font-family: Sora;
@@ -71,19 +75,6 @@
       }
     }
   }
-
-  button {
-    width: 200px;
-    height: 54px;
-    background: #1a374d;
-    border-radius: 4px;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 22px;
-    color: #ffffff;
-  }
 }
 
 @media (max-width: 700px) {
@@ -110,14 +101,6 @@
     .boldText {
       font-size: 16px;
       line-height: 20px;
-    }
-
-    button {
-      height: 42px;
-      width: 100%;
-      max-width: 450px;
-      font-size: 16px;
-      line-height: 19px;
     }
   }
 }

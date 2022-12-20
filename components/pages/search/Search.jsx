@@ -1,4 +1,5 @@
 import React from 'react'
+import search from '../../../pages/search';
 import SearchBar from '../../globals/search/SearchBar';
 import styles from './Search.module.scss'
 

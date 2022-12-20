@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { colors } from "../../../variables/colors";
 import styles from "./Login.module.scss";
-
+import Button from '../../globals/button/Button'
 const Login = () => {
   const router = useRouter();
   useEffect(() => {
@@ -15,10 +16,18 @@ const Login = () => {
       <h1>Log In</h1>
       <p>Register now to start your journey as seller with company name</p>
       <Link href="/login/seller" passHref>
-        <button>Log In as Seller</button>
+        <Button 
+        theme='light'
+        padding='10px 80px'
+        margin='10px 0px'
+        >Log In as Seller</Button>
       </Link>
       <Link href="/login/buyer" passHref>
-        <button>Log In as Buyer</button>
+        <Button 
+        theme='light'
+        padding='10px 80px'
+        margin='10px 0px'
+        >Log In as Buyer</Button>
       </Link>
       <p className={styles.sm}>
         Not yet registered?{" "}

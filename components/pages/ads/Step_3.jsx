@@ -9,6 +9,7 @@ import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 import {server} from '../../../variables/server';
+import { FaCarAlt } from "react-icons/fa";
 
 const Step_3 = () => {
   // ############ component state ###########
@@ -150,10 +151,10 @@ const Step_3 = () => {
       {isAdUploaded ? (
         <div className={styles.homeAd}>
           <Link href="/ads/create/step-1">
-            <Button>New Ad</Button>
+            <Button padding='10px 30px'>New Ad</Button>
           </Link>
           <Link href="/">
-            <Button>Home</Button>
+            <Button padding='10px 30px'>Home</Button>
           </Link>
         </div>
       ) : isAdUploading ? (
@@ -168,7 +169,7 @@ const Step_3 = () => {
           visible={true}
         />
       ) : (
-        <Button onClick={handleSubmit}>Create Ad</Button>
+        <Button padding='10px 30px' onClick={handleSubmit} icon={<FaCarAlt/>}>Create Ad</Button>
       )}
 
       {/* </Link> */}

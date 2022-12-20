@@ -17,6 +17,7 @@ import {
 } from "../../globals/funtions/FormValidate";
 import axios from "axios";
 import {server} from '../../../variables/server';
+import { FaSign } from "react-icons/fa";
 
 // const router = useRouter();
 const RegisterPage = (props) => {
@@ -193,7 +194,7 @@ const RegisterPage = (props) => {
           <div onClick={handleRemember}></div>
           <p>Keep me remembered</p>
         </div> */}
-        <Button onClick={handleSubmit}>Register</Button>
+        <Button padding='10px 20px' margin='10px 0px 0px 0px' onClick={handleSubmit} icon={<FaSign/>}>Register</Button>
       </form>
       {/* <p className={styles.or}>Or join with</p>
       <div className={styles.container}>

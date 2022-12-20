@@ -6,7 +6,8 @@ import { useRouter } from "next/router";
 import { useContext } from "react";
 import RegisterContext from "../../../context/register-context";
 import { useState } from "react";
-
+import Button from '../../globals/button/Button';
+import { FaArrowRight } from "react-icons/fa";
 const SellerType = () => {
   const router = useRouter();
 
@@ -49,7 +50,7 @@ const SellerType = () => {
           Dealer
         </div>
       </div>
-      <button onClick={handleSubmit}>Next</button>
+      <Button onClick={handleSubmit} icon={<FaArrowRight/>}>Next</Button>
     </div>
   );
 };

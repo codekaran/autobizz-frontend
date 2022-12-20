@@ -4,6 +4,7 @@ import styles from "./CarCard.module.scss";
 import { useRouter } from "next/router";
 import { TailSpin } from "react-loader-spinner";
 import { useState } from "react";
+import Button from '../button/Button'
 
 const CarCard = (props) => {
   const router = useRouter();
@@ -55,7 +56,7 @@ const CarCard = (props) => {
           </div>
         </div>
       </div>
-      <button>Contact seller</button>
+      <Button width='100%'>Contact seller</Button>
     </div>
   );
 };
