@@ -1,3 +1,4 @@
+import axios from "axios";
 import Head from "next/head";
 import Search from "../../components/pages/search/Search";
 

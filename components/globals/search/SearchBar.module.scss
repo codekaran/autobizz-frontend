@@ -3,30 +3,95 @@
 .searchBar{
     padding: 30px;
     display: flex;
-    flex-direction: row;
     justify-content: center;
     background-color: $primary-bg;
-    input,input:focus{
-        border-radius: 0.5rem 0rem 0rem 0.5rem;
-        padding: 10px;
-        border: none;
-        border-right: none;
+    font-family: Sora;
+    max-height: 101px ;
+    .searchInput{
         min-width: 40%;
-        font-family: Sora;
-        font-size: 18px;
-        outline: none;
-    }
-    button{
-        min-width: 60px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        .input{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            min-width: 100%;
+            input,input:focus{
+                border-radius: 0.5rem 0rem 0rem 0.5rem;
+                padding: 10px;
+                border: none;
+                border-right: none;
+                font-size: 18px;
+                outline: none;
+                flex-grow: 1;
+                color:$primary-bg;
+            }
+            button{
+                min-height: 100%;
+            }
+        }
+        .dropdown{
+            margin-top: 5px;
+            background-color: $white;
+            color: $primary-bg;
+            z-index: 10;
+            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-width: 100%;
+            //border: 0.5px solid $primary-bg;
+            border-radius: 0.5rem;
+            .dropdown_row{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                cursor: pointer;
+                min-width: 100%;
+                padding: 5px 10px;
+                transition: all 0.3s;
+                border-left: 0.5px solid $primary-bg;
+                border-right: 0.5px solid $primary-bg;
+                &:first-child{
+                    border-radius: 0.5rem 0.5rem 0rem 0rem;
+                    border-top: 0.5px solid $primary-bg;
+                    padding-top: 10px;
+                   }
+                &:last-child{    
+                    border-radius: 0rem 0rem 0.5rem 0.5rem;
+                    border-bottom: 0.5px solid $primary-bg;
+                    padding-bottom: 10px;
+                   }
+                &:hover{
+                    background-color: $light-button-focus;
+                }
+            }
+        }
     }
 }
 
 @media (max-width: 760px){
     .searchBar{
-        padding: 20px 54px;
-        input,input:focus{
+        padding: 20px;
+        max-height: 76px;
+        .searchInput{
             min-width: 100%;
-            font-size: 14px;
+            .input{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                min-width: 100%;
+                input,input:focus{
+                    font-size: 14px;
+                }
+            }
+            .dropdown{
+                font-size: 12px;
+            }
         }
     }
 } 

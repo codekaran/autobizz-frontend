@@ -1,4 +1,20 @@
 .search{
-    margin:80px 0px;
+    margin:80px 0px 0px 0px;
     min-height: 60vh;
+    display: flex;
+    flex-direction: column;
+    .bottom{
+        display: flex;
+        flex-direction: row;
+        flex-grow: 1;
+        .filterSection{
+            min-height: 100%;
+            width: 20%;
+            border-right:1px solid gray ;
+        }
+        .searchResults{
+            min-height: 100%;
+            width: 80%;
+        }
+    }
 }

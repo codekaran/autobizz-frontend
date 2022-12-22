@@ -1,0 +1,16 @@
+@import '../../../styles/colors';
+
+    .input{
+        padding: 10px;
+        border-radius: 0.5rem;
+        border: 1px solid $primary-bg;
+        width: 100%;
+    }
+    .input::-webkit-outer-spin-button,
+    .input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+    }
+    .input[type=number]{
+        -moz-appearance: textfield;
+    }

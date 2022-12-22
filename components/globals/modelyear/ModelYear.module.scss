@@ -1,0 +1,26 @@
+.container{
+    font-family: Sora;
+    h6{
+        font-size: 14px;
+        padding: 10px 0px;
+    }
+    .content{
+        display: flex;
+        flex-direction: row;
+        .left{
+            width: 30%;
+        }
+        .right{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 0px 10px;
+            width: 70%;
+            .inputs{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+        }
+    }
+}

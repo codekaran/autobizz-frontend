@@ -27,8 +27,7 @@
     border: none;
     color: $white;
     &:hover,
-    &:active,
-    &:focus {
+    &:active{
         cursor: pointer;
         background-color: $primary-button-focus;
     }
@@ -40,8 +39,7 @@
     border: 1px solid $primary-button-background;
     color: $primary-button-background;
     &:hover,
-    &:active,
-    &:focus {
+    &:active{
         cursor: pointer;
         background-color: $light-button-focus;
     }

@@ -3,12 +3,8 @@ import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import AuthContext from "../../../context/auth-context";
 import { useContext } from "react";
-import axios from "axios";
-import { server } from "../../../variables/server";
-import { getSession } from "../funtions/helper";
 import { useRouter } from "next/router";
 import Button from '../button/Button'
-import { BiLoginCircle } from 'react-icons/bi';
 
 const Header = () => {
   useEffect(() => {
@@ -134,7 +130,7 @@ const Header = () => {
               <Button padding='10px 20px' onClick={handleBurgerClick}>Login/Register</Button>
             </Link>
           )}
-          {ctx.isLoggedIn.status ? <Button style={{backgroundColor:'#990000',}} onClick={(e)=>handleLogout()}>Logout</Button> : userData.status ? <Button style={{backgroundColor:'#990000',}} onClick={(e)=>handleLogout()}>Logout</Button> : <></>}
+          {ctx.isLoggedIn.status ? <Button backgroundColor='#fff' color="#990000" onClick={(e)=>handleLogout()}>Logout</Button> : userData.status ? <Button style={{backgroundColor:'#990000',}} onClick={(e)=>handleLogout()}>Logout</Button> : <></>}
         </div>
       </div>
     </div>

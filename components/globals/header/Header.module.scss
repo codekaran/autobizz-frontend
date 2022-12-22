@@ -67,6 +67,7 @@
       flex-direction: column;
       height: 25px;
       justify-content: space-around;
+      
       cursor: pointer;
       z-index: 1000;
       .big_line {
@@ -84,8 +85,8 @@
     }
     // mobile menu
     .flex_box {
-      transition: 0.5s ease-in;
-      margin-top: 80px;
+      transition: 0.3s ease-in-out;
+      
       padding: 80px 0px;
       background-color: $primary-bg;
       color: $white;
