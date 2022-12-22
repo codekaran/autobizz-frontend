@@ -10,7 +10,7 @@ const FuelType = () => {
         <div className={styles.checkbox}><input className={styles.check} type="checkbox"/>Petrol</div>
         <div className={styles.checkbox}><input className={styles.check} type="checkbox"/>Diesel</div>
         <div className={styles.checkbox}><input className={styles.check} type="checkbox"/>CNG</div>
-        <Button theme='light' width='max-content' fontSize='10px' margin='5px 0px 0px 0px'>Apply</Button>
+        <Button theme='light' width='max-content' fontSize='10px' margin='5px 0px 0px auto'>Apply</Button>
     </div>
     </div>
   )
