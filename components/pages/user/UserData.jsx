@@ -33,8 +33,11 @@ const UserData = (props) => {
       setIsLoggedIn(data);
       console.log(data);
       let response = await axios.get(
-        `${server.serverURL}/seller-api/sellers/userData/` +
-          data.decodedToken.id
+        `${server.serverURL}/seller-api/sellers/userData/`,{
+          headers: {
+            'x-auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjcyMjI1OTI3LCJleHAiOjE2NzIyMjk1Mjd9.SCnw6eW01kpTJsBF9fqPdKNCmS8aKKIDN9J_tGfMrEM"
+
+          }}
       );
       console.log(response);
       setUserData(response.data);

@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
-import {inputs,container,content_open,content_close,left,right,filterName} from './ModelYear.module.scss';
+import React,{useState} from 'react'
+import {inputs,container,content_open,content_close,left,right,filterName} from './KilometersDriven.module.scss';
 import Button from '../button/Button';
 import Input from '../input/Input';
 import Link from 'next/link';
 import {AiOutlineDown} from 'react-icons/ai';
 
-const ModelYear = () => {
-
+const KilometersDriven = () => {
+  
   const [toggle,setToggle]=useState(false);
 
   const handleToggle= ()=>{
@@ -16,16 +16,16 @@ const ModelYear = () => {
   return (
     <div className={container}>
     <div className={filterName} onClick={()=>{handleToggle()}}>
-      <h6>Model Year</h6>
+      <h6>Kilometers Driven</h6>
       <AiOutlineDown/>
     </div>
     <div className={toggle ? content_open : content_close}>
         <div className={left}>
-        <Link href="#!">2019-2022</Link>
-        <Link href="#!">2017-2019</Link>
-        <Link href="#!">2012-2017</Link>
-        <Link href="#!">2007-2012</Link>
-        </div>
+        <Link href="#!">Under 30,000 KMs</Link>
+        <Link href="#!">30,000 KMs - 60,000 KMs</Link>
+        <Link href="#!">60,000 KMs - 90,000 KMs</Link>
+        <Link href="#!">90,000 KMs +</Link>
+        </div>  
         <div className={right}>
             <div>SLIDER</div>
             <div className={inputs}>
@@ -38,4 +38,4 @@ const ModelYear = () => {
   )
 }
 
-export default ModelYear;
+export default KilometersDriven;

@@ -1,7 +1,7 @@
 import React from 'react'
 import search from '../../../pages/search';
 import SearchBar from '../../globals/search/SearchBar';
-import FilterSection from '../../globals/filter/FilterSection';
+import FilterSection from '../../globals/filterSection/FilterSection';
 import styles from './Search.module.scss';
 import SearchResults from '../../globals/searchResults/SearchResults';
 

@@ -6,6 +6,7 @@
     .bottom{
         display: flex;
         flex-direction: row;
+        min-height: 80vh;
         flex-grow: 1;
         .filterSection{
             min-height: 100%;
