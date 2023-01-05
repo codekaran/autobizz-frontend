@@ -6,9 +6,9 @@ import Button from "../../globals/button/Button";
 import formValidate from "../../globals/funtions/FormValidate";
 import { validateForm } from "../../globals/funtions/FormValidate";
 import { useContext } from "react";
-import RegisterContext from "../../../context/register-context";
 import { server } from "../../../variables/server";
 import {FaSign} from 'react-icons/fa';
+import AuthContext from "../../../context/Auth/AuthContext";
 
 const SellerInfo = () => {
   const router = useRouter();
@@ -26,8 +26,9 @@ const SellerInfo = () => {
   const { companyName, fname, lname, phone, street, country, zipCode, city } =
     sellerInfo;
 
-  // register context
-  const ctx = useContext(RegisterContext);
+  //Contexts
+  const AuthCtx = useContext(AuthContext);
+  const {register, setRegisterForm, registerFormData} = AuthCtx;
 
   // variable to check valid form fields
   const [formValid, setFormValid] = useState({
@@ -49,41 +50,24 @@ const SellerInfo = () => {
     setFormValid({ ...formValid, [field]: true });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
 
-    ctx.getData(sellerInfo);
+    //setRegisterForm(sellerInfo);  
 
     let dataObject = {};
     // check if the form is valid
     let { validFieldsObj, isFormValid, message } = validateForm(
       sellerInfo,
-      ctx.data.sellerType
+      registerFormData.sellerType
     );
     console.log(validFieldsObj);
     setFormValid(validFieldsObj);
     setErrorMessage(message);
     if (isFormValid) {
-      dataObject = { ...ctx.data, ...sellerInfo };
-      let result = await axios.post(
-        `${server.serverURL}/seller-api/sellers/register`,
-        dataObject,
-        {
-          auth: {
-            username: "karan",
-            password: 123,
-          },
-        }
-      );
-      console.log(result.data.message);
-
-      if (result.data.message === "Seller already exists") {
-        alert(result.data.message);
-      }
-      // if (formValidate(sellerInfo)) {
-      else {
-        router.push("/register/success");
-      }
+      console.log('inside register submit');
+      console.log(registerFormData);
+      register({...registerFormData,...sellerInfo});
     }
   };
   return (
@@ -98,7 +82,7 @@ const SellerInfo = () => {
         {errorMessage}!
       </p>
       <form action="">
-        {ctx.data.sellerType == "Owner" ? (
+        {registerFormData.sellerType == "Owner" ? (
           <>
             {" "}
             <input
@@ -172,7 +156,7 @@ const SellerInfo = () => {
           value={city}
           onChange={handleChange("city")}
           style={{
-            flex: ctx.sellerType != "Owner" ? 1 : 0.5,
+            flex: registerFormData.sellerType != "Owner" ? 1 : 0.5,
             border: formValid.city ? "" : "1px solid red",
           }}
         />

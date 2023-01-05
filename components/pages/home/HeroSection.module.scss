@@ -1,37 +1,59 @@
+@import '../../../styles/colors';
+
 .heroSection {
-    //   height: 380px;
-    // height: 300px;
     width: 100%;
-    background-color: #ccc;
+    min-height: 60vh;
+    background-image: url(../../../public/car_herosection.png);
+    background-size: cover;
     margin-bottom: 32px;
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
     position: relative;
-    .text {
-      position: absolute;
-      left: 30%;
-      text-align: center;
-      transform: translateX(-50%);
-      top: 30%;
-      z-index: 1;
-      font-family: "Sora";
-      font-style: normal;
-      font-weight: 600;
-      font-size: 65px;
-      line-height: 60px;
-      color: rgb(255, 255, 255);
+    padding: 40px 90px;
+    gap: 40px;
+    font-family: Sora;
+    color: white;
+    h6{
+      font-size: 64px;
+      width: 60%;
+      span{
+        font-size: 72px;
+        font-weight: 900;
+        color: $primary-button-background;
+        text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+               1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+      }
+    }
+    p{
+      font-size: 24px;
+      width: 60%;
+    }
+    .buttonGroup{
       display: flex;
-      align-items: center;
-      font-feature-settings: "pnum" on, "lnum" on;
+      gap: 20px
     }
   }
 
   @media (max-width: 760px) {
     .heroSection {
-      .text {
-        left: 50%;
-        font-size: 25px;
-        top: 30%;
-        line-height: 30px;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      h6{
+        font-size: 32px;
+        width: 100%;
+        span{
+          font-size:38px;
+        }
+      }
+      p{
+        font-size: 16px;
+        width: 100%;
+      }
+      .buttonGroup{
+        flex-direction: column;
       }
     }
 }

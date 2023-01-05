@@ -6,6 +6,7 @@ const index = (props) => {
     <button style={{
       color:props.color,
       backgroundColor: props.backgroundColor,
+      backgroundImage:props.backgroundImage,
       border:props.border,
       borderRadius: props.radius,
       height:props.height,

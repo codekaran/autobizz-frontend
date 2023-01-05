@@ -10,7 +10,7 @@ const HomePage = (props) => {
   return (
     <div className={styles.home}>
       <SearchBar/>
-      <HeroSection text="Car Selling Solution" />
+      <HeroSection text="Sell and Buy Cars Hasslefree!"/>
       <div className={styles.home}>
         <Carousel cars={props.carsArray} title="Featured cars" />
         <TestimonialSection />

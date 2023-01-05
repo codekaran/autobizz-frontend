@@ -1,12 +1,11 @@
 import Link from "next/link";
 import styles from "./Register.module.scss";
 import { useContext } from "react";
-import RegisterContext from "../../../context/register-context";
+import AuthContext from "../../../context/Auth/AuthContext";
 import Button from '../../globals/button/Button'
 
 const Register = () => {
-  let ctx = useContext(RegisterContext);
-  console.log(ctx);
+  const {setRegisterForm} = useContext(AuthContext);
   return (
     <div className={styles.register}>
       <h3>Seller - buyer</h3>
@@ -18,7 +17,7 @@ const Register = () => {
           padding='10px 60px'
           margin='20px 0px 10px 0px'
           onClick={() => {
-            ctx.getData({ RegistrationType: "Seller" });
+            setRegisterForm({ RegistrationType: "Seller" });
           }}
         >
           Register as Seller
@@ -30,7 +29,7 @@ const Register = () => {
           padding='10px 60px'
           margin='10px 0px 20px 0px'
           onClick={() => {
-            ctx.getData({ RegistrationType: "Buyer" });
+            setRegisterForm({ RegistrationType: "Buyer" });
           }}
         >
           Register as Buyer

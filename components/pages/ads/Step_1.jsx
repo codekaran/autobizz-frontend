@@ -3,6 +3,7 @@ import styles from "./Steps.module.scss";
 import Button from "../../globals/button/Button";
 import Link from "next/link";
 import AdContext from "../../../context/ad-context";
+import AuthContext from '../../../context/Auth/AuthContext';
 import { useContext } from "react";
 import BMW from "../../../public/BMW.png";
 import Volkswagen from "../../../public/Volkswagen.png";
@@ -14,11 +15,15 @@ import { useEffect } from "react";
 import Image from "next/image";
 import { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
+import { useRouter } from "next/router";
 
 const Step_1 = (props) => {
   // checking if the sesssion contains data
   // if it contains updating the state and context
+  const {isAuthenticated} = useContext(AuthContext);
+  const router = useRouter();
   useEffect(() => {
+    if(!isAuthenticated) router.push('/login');
     let session = window.sessionStorage.getItem("auto_bizz_steps");
     if (session) {
       console.log("session exists");

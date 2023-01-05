@@ -1,5 +1,4 @@
 import styles from "./Profile.module.scss";
-import AuthContext from "../../../context/auth-context";
 import { useContext, useEffect, useState } from "react";
 import { getSession } from "../../globals/funtions/helper";
 import { useRouter } from "next/router";
@@ -12,7 +11,6 @@ const Profile = () => {
   const [rightPart, setRightPart] = useState(<UserData></UserData>);
   // state for highlighting active block
   const [activeNav, setActiveNav] = useState("personal");
-  const ctx = useContext(AuthContext);
   const router = useRouter();
   // functions
   const handleClick = (data) => (event) => {

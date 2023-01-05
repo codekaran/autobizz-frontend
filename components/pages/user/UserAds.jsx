@@ -2,7 +2,6 @@ import styles from "./UserAds.module.scss";
 import Loader from "../../globals/skeletons/loader";
 import { useEffect, useState, useContext } from "react";
 import axios from "axios";
-import AuthContext from "../../../context/auth-context";
 import { getSession } from "../../globals/funtions/helper";
 import { server } from "../../../variables/server";
 import AdImages from "./AdImages";

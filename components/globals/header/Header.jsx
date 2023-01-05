@@ -1,23 +1,24 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
-import AuthContext from "../../../context/auth-context";
+import AuthContext from "../../../context/Auth/AuthContext";
 import { useContext } from "react";
 import { useRouter } from "next/router";
 import Button from '../button/Button'
-
+import colors from '../../../variables/colors';
+import loadCustomRoutes from "next/dist/lib/load-custom-routes";
+import {BiLogInCircle, BiLogOutCircle} from 'react-icons/bi'
 const Header = () => {
+  const ctx  = useContext(AuthContext);
   useEffect(() => {
-    handleUserData();
     window.addEventListener("resize", handleResize);
     handleResize();
   },[]);
   // let session = window.local;
-  let ctx = useContext(AuthContext);
+  
   const router = useRouter();
   const [isBurgerMenuClicked, setIsBurgerMenuClicked] = useState(false);
   const [mobileView, setMobileView] = useState(false);
-  const [userData, setUserData] = useState({});
   
   // function to handle the resize of the window.
   const handleResize = () => {
@@ -35,33 +36,6 @@ const Header = () => {
       setIsBurgerMenuClicked(status);
     }
   };
-  
-  const handleUserData = () => {
-    if (window.localStorage.getItem("userData")) {
-      let sessionUser = JSON.parse(window.localStorage.getItem("userData"));
-      console.log("in session setting", sessionUser.decodedToken);
-      ctx.setLoggedInStatus({
-        status: sessionUser.status,
-        token: sessionUser.token,
-      });
-      console.log('coming from handle user data')
-      console.log(ctx);
-      setUserData({
-        status: sessionUser.status,
-        ...sessionUser.decodedToken
-      });
-      console.log(userData)
-    }
-  };
-  
-  const handleLogout = ()=>{
-    ctx.setLoggedInStatus(
-      {decodedToken: {},
-      status: false,
-      token: "",});
-      setUserData({status:false})
-      router.push("/login");
-  }
 
   return (
     <div className={styles.header}>
@@ -120,21 +94,23 @@ const Header = () => {
           </Link>
         </div>
         <div className={styles.container}>
-          {ctx.isLoggedIn.status ? (
+          {ctx.isAuthenticated && ctx.user!==null ? (
+            <div style={{display:'flex', gap:'10px'}}>
             <Link href="/user">
-              <Button onClick={handleBurgerClick}>Hi! {ctx.isLoggedIn.decodedToken.sellerType==='Owner' ? ctx.isLoggedIn.decodedToken.firstName : ctx.isLoggedIn.decodedToken .companyName}</Button>
+              <Button padding='10px 20px'>Hi! &nbsp; <span className={styles.name}>{ctx.user.sellerType==='Owner' ? ctx.user.firstName : ctx.user.companyName}</span></Button>
             </Link>
+            <Button onClick={()=>{ctx.logout()}} padding='10px 20px' backgroundColor={colors.red} icon={<BiLogOutCircle/>}>Logout</Button>
+            </div>
             ) :
              (
             <Link href="/login" passHref>
-              <Button padding='10px 20px' onClick={handleBurgerClick}>Login/Register</Button>
+              <Button padding='10px 20px' onClick={handleBurgerClick} icon={<BiLogInCircle/>}>Login/Register</Button>
             </Link>
           )}
-          {ctx.isLoggedIn.status ? <Button backgroundColor='#fff' color="#990000" onClick={(e)=>handleLogout()}>Logout</Button> : userData.status ? <Button style={{backgroundColor:'#990000',}} onClick={(e)=>handleLogout()}>Logout</Button> : <></>}
         </div>
       </div>
     </div>
   );
 };
 
-export default Header;
+export default Header;  

@@ -50,6 +50,9 @@
         padding: 0px 8px;
         text-transform: uppercase;
       }
+      Button{
+        span::first-letter{text-transform: uppercase;}
+      }
     }
   }
 }
@@ -86,7 +89,6 @@
     // mobile menu
     .flex_box {
       transition: 0.3s ease-in-out;
-      
       padding: 80px 0px;
       background-color: $primary-bg;
       color: $white;

@@ -12,7 +12,7 @@ const Success = () => {
       <div className={styles.image}>
         <Image src={Done} alt="Registration_success" />
       </div>
-      <Link href="/ad/create/step-1" passHref>
+      <Link href="/ads/create/step-1" passHref>
         <Button>Post an ad</Button>
       </Link>
       <Link href="/" passHref>

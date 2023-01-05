@@ -3,12 +3,7 @@ import styles from "./RegisterPage.module.scss";
 import Button from "../../globals/button/Button";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import Axios from "axios";
-import Image from "next/image";
-import google from "../../../public/google.svg";
-import apple from "../../../public/apple.svg";
-import facebook from "../../../public/facebook.svg";
-import RegisterContext from "../../../context/register-context";
+import AuthContext from "../../../context/Auth/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -22,8 +17,7 @@ import { FaSign } from "react-icons/fa";
 // const router = useRouter();
 const RegisterPage = (props) => {
   const router = useRouter();
-  const ctx = useContext(RegisterContext);
-  console.log(ctx);
+  const {setRegisterForm} = useContext(AuthContext);
   // Form data is an object which stores email and password of the user from the input fields
   const [formData, setFormData] = useState({
     email: "",
@@ -45,9 +39,7 @@ const RegisterPage = (props) => {
 
   const { email, password, confirmPass, error, remember } = formData;
 
-  useEffect(() => {
-    // console.log(formData);
-  }, [formData]);
+  
 
   // This function updates the formData object
   const handleChange = (field) => (event) => {
@@ -120,7 +112,7 @@ const RegisterPage = (props) => {
     if (isFormValid) {
       console.log("helllloooo");
       console.log(formData);
-      ctx.getData(formData);
+      setRegisterForm({email: formData.email,password: formData.password,confirmPass: formData.confirmPass});
       router.push("/register/seller-type");
     }
   };

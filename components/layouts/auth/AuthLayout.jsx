@@ -1,13 +1,11 @@
 import design from "../../../public/circles.png";
 import Image from "next/image";
 import styles from "./AuthLayout.module.scss";
-import { RegisterContextProvider } from "../../../context/register-context";
 import { AdContexProvider } from "../../../context/ad-context";
 
 const AuthLayout = ({ children }) => {
   return (
     <AdContexProvider>
-      <RegisterContextProvider>
         <div className={styles.auth_layout}>
           <div className={styles.container}>
             <div style={{ textAlign: "center" }}>
@@ -30,7 +28,6 @@ const AuthLayout = ({ children }) => {
             </div>
           </div>
         </div>
-      </RegisterContextProvider>
     </AdContexProvider>
   );
 };

@@ -1,5 +1,5 @@
 import styles from "./UserData.module.scss";
-import AuthContext from "../../../context/auth-context";
+import AuthContext from "../../../context/Auth/AuthContext";
 import { useContext, useEffect, useState } from "react";
 import { getSession } from "../../globals/funtions/helper";
 import { useRouter } from "next/router";
@@ -9,43 +9,13 @@ import { server } from "../../../variables/server";
 import Button from '../../globals/button/Button';
 
 const UserData = (props) => {
-  let ctx = useContext(AuthContext);
-  const router = useRouter();
-  const [contentLoaded, setContentLoaded] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState({
-    decodedToken: {
-      firstName: "",
-    },
-    status: false,
-  });
-  const [userData, setUserData] = useState({});
+  const ctx = useContext(AuthContext);
+  const [userData, setUserData]= useState({});
   const [changePassword, setChangePassword] = useState(false);
   const [profileEditMode, setProfileEditMode] =useState(false);
 
-  useEffect(async () => {
-    userLoggedInStatus();
-  }, []);
+  useEffect(setUserData(ctx.user), []);
 
-  // get data of the user from conttext or local storage
-  const userLoggedInStatus = async () => {
-    let data = getSession(ctx);
-    if (data) {
-      setIsLoggedIn(data);
-      console.log(data);
-      let response = await axios.get(
-        `${server.serverURL}/seller-api/sellers/userData/`,{
-          headers: {
-            'x-auth-token': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjcyMjI1OTI3LCJleHAiOjE2NzIyMjk1Mjd9.SCnw6eW01kpTJsBF9fqPdKNCmS8aKKIDN9J_tGfMrEM"
-
-          }}
-      );
-      console.log(response);
-      setUserData(response.data);
-      setContentLoaded(true);
-    } else {
-      router.push("/login");
-    }
-  };
   const handlePasswordChangeView = () => {
     setChangePassword(true);
   };
@@ -67,7 +37,7 @@ const UserData = (props) => {
             <div className={styles.col}>
               <h6>Company Name</h6>
               {profileEditMode ? <input className={styles.inputBox} value={userData.companyName} type="text" onChange={(e)=>{setUserData({...userData,companyName:e.target.value})}}/> : <p>{userData.companyName}</p>}
-              {!contentLoaded && <TextSkeleton></TextSkeleton>}
+
             </div>
             </> : 
             //Owner
@@ -75,12 +45,12 @@ const UserData = (props) => {
             <div className={styles.col}>
               <h6>First Name</h6>
               {profileEditMode ? <input className={styles.inputBox} value={userData.firstName} type="text" onChange={(e)=>{setUserData({...userData,firstName:e.target.value})}}/> : <p>{userData.firstName}</p>}
-              {!contentLoaded && <TextSkeleton></TextSkeleton>}
+              
             </div>
             <div className={styles.col}>
               <h6>Last Name</h6>
               {profileEditMode ? <input className={styles.inputBox} value={userData.lastName} type="text" onChange={(e)=>{setUserData({...userData,lastName:e.target.value})}}/> : <p>{userData.lastName}</p>}
-              {!contentLoaded && <TextSkeleton></TextSkeleton>}
+              
             </div>
             </>
           }
@@ -89,27 +59,27 @@ const UserData = (props) => {
             <div className={styles.col}>
               <h6>Phone</h6>
               {profileEditMode ? <input className={styles.inputBox} value={userData.mobile} type="number" onChange={(e)=>{setUserData({...userData,mobile:e.target.value})}}/> : <p>{userData.mobile}</p>}
-              {!contentLoaded && <TextSkeleton></TextSkeleton>}
+              
             </div>
             <div className={styles.col}>
               <h6>Email</h6>
               {profileEditMode ? <input className={styles.inputBox} value={userData.email} type="email" onChange={(e)=>{setUserData({...userData,email:e.target.value})}}/> : <p>{userData.email}</p>}
-              {!contentLoaded && <TextSkeleton></TextSkeleton>}
+              
             </div>
             <div className={styles.col}>
               <h6>{userData.sellerType === 'Dealer' && 'Company '}Address</h6>
               {profileEditMode ? <input className={styles.inputBox} value={userData.address} type="text" onChange={(e)=>{setUserData({...userData,address:e.target.value})}}/> : <p>{userData.address}</p>}
-              {!contentLoaded && <TextSkeleton></TextSkeleton>}
+              
             </div>
             <div className={styles.col}>
               <h6>Postal Code</h6>
               {profileEditMode ? <input className={styles.inputBox} value={userData.postalCode} type="text" onChange={(e)=>{setUserData({...userData,postalCode:e.target.value})}}/> : <p>{userData.postalCode }</p>}
-              {!contentLoaded && <TextSkeleton></TextSkeleton>}
+              
             </div>
             <div className={styles.col}>
               <h6>Country</h6>
               {profileEditMode ? <input className={styles.inputBox} value={userData.country} type="text" onChange={(e)=>{setUserData({...userData,country:e.target.value})}}/> : <p>{userData.country }</p>}
-              {!contentLoaded && <TextSkeleton></TextSkeleton>}
+              
             </div>
             {profileEditMode && <Button margin='10px 0px 0px 0px' onClick={(e)=>{handleSaveProfile()}}>Save</Button>}
           </div>

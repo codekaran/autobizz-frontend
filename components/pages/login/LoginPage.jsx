@@ -7,13 +7,13 @@ import Image from "next/image";
 import google from "../../../public/google.svg";
 import apple from "../../../public/apple.svg";
 import facebook from "../../../public/facebook.svg";
-import AuthContext from "../../../context/auth-context";
+import AuthContext from "../../../context/Auth/AuthContext";
 import { useContext } from "react";
 import { useRouter } from "next/router";
 import {BiLogInCircle} from 'react-icons/bi';
 
 const LoginPage = (props) => {
-  const ctx = useContext(AuthContext);
+  const {login} = useContext(AuthContext);
   const router = useRouter();
   // Form data is an object which stores email and password of the user from the input fields
   const [formData, setFormData] = useState({
@@ -33,35 +33,8 @@ const LoginPage = (props) => {
   //! If error:- Show the error
   //* If success:- Redirect to the user dashboard or homepage
   const handleSubmit = async (event) => {
-    try {
       event.preventDefault();
-      console.log(formData);
-      let res = await Axios.post(props.URL, formData, {
-        auth: {
-          username: "karan",
-          password: 123,
-        },
-      });
-      console.log(res);
-      if (res.status === 200) {
-        console.log(res);
-        ctx.setLoggedInStatus({
-          //status: res.data.auth,
-          token: res.data.token,
-        });
-        router.push("/");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-
-    // .then((response) => {
-    //   console.log(response);
-    // })
-    // .catch((error) => {
-    //   // Update error field of formData, if any
-    //   console.log(error);
-    // });
+      login(formData);
   };
 
   // Show when email is incorrect
