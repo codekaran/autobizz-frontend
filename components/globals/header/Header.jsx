@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import AuthContext from "../../../context/Auth/AuthContext";
+import AlertContext from '../../../context/Alert/AlertContext';
 import { useContext } from "react";
 import { useRouter } from "next/router";
 import Button from '../button/Button'
@@ -10,6 +11,7 @@ import loadCustomRoutes from "next/dist/lib/load-custom-routes";
 import {BiLogInCircle, BiLogOutCircle} from 'react-icons/bi'
 const Header = () => {
   const ctx  = useContext(AuthContext);
+  const {createAlert} = useContext(AlertContext);
   useEffect(() => {
     window.addEventListener("resize", handleResize);
     handleResize();
@@ -89,17 +91,17 @@ const Header = () => {
           <Link href="/about">
             <p onClick={handleBurgerClick}>ABOUT</p>
           </Link>
-          <Link href="/ads/create/step-1">
+          <Link href={ctx.isAuthenticated ? "/ads/create/step-1" : "/login/seller"}>
             <p onClick={handleBurgerClick}>SELL</p>
           </Link>
         </div>
         <div className={styles.container}>
           {ctx.isAuthenticated && ctx.user!==null ? (
-            <div style={{display:'flex', gap:'10px'}}>
+            <div>
             <Link href="/user">
               <Button padding='10px 20px'>Hi! &nbsp; <span className={styles.name}>{ctx.user.sellerType==='Owner' ? ctx.user.firstName : ctx.user.companyName}</span></Button>
             </Link>
-            <Button onClick={()=>{ctx.logout()}} padding='10px 20px' backgroundColor={colors.red} icon={<BiLogOutCircle/>}>Logout</Button>
+            <Button onClick={()=>{ctx.logout(); createAlert('Logged out successfully!',1);handleBurgerClick();}} padding='10px 20px' backgroundColor={colors.red} icon={<BiLogOutCircle/>}>Logout</Button>
             </div>
             ) :
              (

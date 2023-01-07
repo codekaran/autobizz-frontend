@@ -13,11 +13,13 @@ import {
 import axios from "axios";
 import {server} from '../../../variables/server';
 import { FaSign } from "react-icons/fa";
+import AlertContext from "../../../context/Alert/AlertContext";
 
 // const router = useRouter();
 const RegisterPage = (props) => {
   const router = useRouter();
   const {setRegisterForm} = useContext(AuthContext);
+  const {createAlert} = useContext(AlertContext);
   // Form data is an object which stores email and password of the user from the input fields
   const [formData, setFormData] = useState({
     email: "",
@@ -66,8 +68,10 @@ const RegisterPage = (props) => {
   // };
 
   const handleValidation = async () => {
-    console.log("inside handle validation");
-    console.log(email);
+    if(email===''||password===''||confirmPass===''){
+      createAlert("Please fill out all fields",2);
+      return;
+    }
     let res = await axios.get(
       // localhost
       `${server.serverURL}/seller-api/sellers/emailExists?email=` + email
@@ -76,26 +80,24 @@ const RegisterPage = (props) => {
     let userExists = res.data;
     if (userExists) {
       setFormValid({ ...formValid, ["emailExists"]: true });
+      createAlert('Account with this e-mail already exists!',2);
       return false;
     } else {
       setFormValid({ ...formValid, ["emailExists"]: false });
     }
     if (!checkEmail(email)) {
       setFormValid({ ...formValid, ["email"]: false });
+      createAlert('Please enter valid email!',2);
       return false;
     }
     if (!checkPasswordStrength(password)) {
       setFormValid({ ...formValid, ["strongPassword"]: false });
-      return false;
-    }
-    if (password === "") {
-      setFormValid({ ...formValid, [password]: false });
+      createAlert('Password doesnt comform to password policy!',2);
       return false;
     }
     if (password != confirmPass && password != "") {
-      console.log("checking the pass");
       setFormValid({ ...formValid, [confirmPass]: false });
-      alert("Password mismatch");
+      createAlert("Password do not match!", 2);
       return false;
     }
 
@@ -124,7 +126,7 @@ const RegisterPage = (props) => {
       <p className={styles.p}>
         Register now to start your journey as seller with company name
       </p>
-      {formValid.emailExists ? (
+      {/* {formValid.emailExists ? (
         <p className={styles.errorMessage}>Email already exists !!</p>
       ) : (
         ""
@@ -141,13 +143,10 @@ const RegisterPage = (props) => {
           Please enter a password with atleast: one Upper Case letter one small
           case one number one special character and minmimum 8 characters !!
         </p>
-      )}
+      )} */}
       <form>
         <div className={styles.formGroup}>
           <input
-            style={{
-              border: formValid.email ? "" : "1px solid red",
-            }}
             type="email"
             placeholder="Email"
             value={email}
@@ -176,9 +175,6 @@ const RegisterPage = (props) => {
             placeholder="Confirm Password"
             value={confirmPass}
             onChange={handleChange("confirmPass")}
-            style={{
-              border: formValid.confirmPass ? "" : "1px solid red",
-            }}
             required
           />
         </div>

@@ -23,7 +23,7 @@ const Step_1 = (props) => {
   const {isAuthenticated} = useContext(AuthContext);
   const router = useRouter();
   useEffect(() => {
-    if(!isAuthenticated) router.push('/login');
+    if(!isAuthenticated) router.push('/login/seller');
     let session = window.sessionStorage.getItem("auto_bizz_steps");
     if (session) {
       console.log("session exists");

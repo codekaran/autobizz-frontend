@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect} from "react";
 import styles from "./LoginPage.module.scss";
 import Button from "../../globals/button/Button";
 import Link from "next/link";
@@ -11,10 +11,24 @@ import AuthContext from "../../../context/Auth/AuthContext";
 import { useContext } from "react";
 import { useRouter } from "next/router";
 import {BiLogInCircle} from 'react-icons/bi';
+import AlertContext from "../../../context/Alert/AlertContext";
 
 const LoginPage = (props) => {
-  const {login} = useContext(AuthContext);
+  const {login,error,isAuthenticated} = useContext(AuthContext);
   const router = useRouter();
+  const {createAlert} = useContext(AlertContext);
+
+  //useEffect
+  useEffect(() => {
+  if(error==='password error' || error ==='Seller Does not exists'){
+    createAlert('Please use correct credentials',2);
+  }
+  if(isAuthenticated){
+    createAlert('Logged in successfully',1);
+  }
+  }, [error,isAuthenticated])
+  
+
   // Form data is an object which stores email and password of the user from the input fields
   const [formData, setFormData] = useState({
     email: "",
@@ -22,7 +36,7 @@ const LoginPage = (props) => {
     emailErr: false,
     passwordErr: false,
   });
-  const { email, password, emailErr, passwordErr } = formData;
+  const { email, password} = formData;
 
   // This function updates the formData object
   const handleChange = (field) => (event) => {
@@ -34,6 +48,8 @@ const LoginPage = (props) => {
   //* If success:- Redirect to the user dashboard or homepage
   const handleSubmit = async (event) => {
       event.preventDefault();
+      if(email==="" || password===""){ createAlert("Please fill all fields", 2); return;}
+      if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){ createAlert("Please enter valid E-mail", 2); return; }
       login(formData);
   };
 
@@ -62,7 +78,6 @@ const LoginPage = (props) => {
             value={email}
             onChange={handleChange("email")}
           />
-          {emailErr && errEmail()}
         </div>
         <div className={styles.formGroup}>
           <input
@@ -71,7 +86,6 @@ const LoginPage = (props) => {
             value={password}
             onChange={handleChange("password")}
           />
-          {passwordErr && errPassword()}
         </div>
         <div className={styles.remember}>
           <div></div>

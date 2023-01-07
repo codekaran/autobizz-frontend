@@ -4,6 +4,8 @@ import styles from "./Layout.module.scss";
 import AuthState from "../../context/Auth/AuthState";
 import setAuthToken from "../../utils/setAuthToken";
 import {useEffect} from 'react'
+import AlertState from "../../context/Alert/AlertState";
+import Alerts from "../globals/Alerts/Alerts";
 
 
 const Layout = ({ children }) => {
@@ -13,11 +15,16 @@ const Layout = ({ children }) => {
   
   return (
     <div className={styles.layout}>
+      
       <AuthState>
+      <AlertState>
         <Header></Header>
+        <Alerts/>
         {children}
         <Footer></Footer>
+        </AlertState>
       </AuthState>
+      
     </div>
   );
 };

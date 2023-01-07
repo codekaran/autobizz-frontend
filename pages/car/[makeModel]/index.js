@@ -39,15 +39,12 @@ export async function getStaticPaths() {
 export async function getStaticProps(context) {
   console.log("indide prosp");
   let adId = context.params.makeModel.split("-").slice(-1)[0];
-  let car = await axios.get(
-    `${server.serverURL}/seller-api/ads/singleAd/` + adId,
-    {
-      auth: {
-        username: "karan",
-        password: 123,
-      },
-    }
-  );
+  let car = await axios.get(`${server.serverURL}/seller-api/ads/ad/` + adId, {
+    auth: {
+      username: "karan",
+      password: 123,
+    },
+  });
   let result = await getCars();
 
   let tempImage = [];

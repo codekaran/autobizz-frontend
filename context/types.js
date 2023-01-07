@@ -10,3 +10,5 @@ export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const REGISTER_FORM_UPDATE = "REGISTER_FORM_UPDATE";
+export const CREATE_ALERT = "CREATE_ALERT";
+export const DELETE_ALERT = "DELETE_ALERT";

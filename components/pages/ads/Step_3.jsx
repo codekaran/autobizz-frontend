@@ -4,6 +4,7 @@ import styles from "./Steps.module.scss";
 import Button from "../../globals/button/Button";
 import axios from "axios";
 import AdContext from "../../../context/ad-context";
+import AuthContext from "../../../context/Auth/AuthContext";
 import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";

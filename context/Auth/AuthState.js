@@ -1,8 +1,10 @@
-import React, { useEffect, useReducer } from "react";
+import React, { useContext, useEffect, useReducer } from "react";
 import AuthContext from "./AuthContext";
 import AuthReducer from "./AuthReducer";
 import axios from "axios";
 import { server } from "../../variables/server";
+import AlertContext from "../Alert/AlertState";
+
 import {
   REGISTER_FAIL,
   REGISTER_SUCCESS,
@@ -20,6 +22,7 @@ import setAuthToken from "../../utils/setAuthToken";
 
 const AuthState = (props) => {
   const router = useRouter();
+  const AlertCtx = useContext(AlertContext);
 
   useEffect(() => {
     loadUser();
@@ -126,8 +129,10 @@ const AuthState = (props) => {
       loadUser();
       router.push("/");
     } catch (error) {
-      console.log(error);
       dispatch({ type: LOGIN_FAIL, payload: error.response.data.errMsg });
+      setTimeout(() => {
+        dispatch({ type: CLEAR_ERRORS });
+      }, 2000);
     }
   };
   //Logout

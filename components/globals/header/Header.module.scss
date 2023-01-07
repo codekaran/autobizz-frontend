@@ -41,14 +41,25 @@
         font-size: 14px;
         line-height: 18px;
         color: $white;
+        padding: 10px;
+        height: 100%;
+        border-radius: 0.5rem;
         cursor: pointer;
-      }
+        &:hover{
+          background-color: $primary-button-focus;
+        }
+        &:hover,&:active{text-decoration: none;}
+        }
       
       select {
         border: none;
         outline: none;
         padding: 0px 8px;
         text-transform: uppercase;
+      }
+      div{
+        display: flex;
+        gap: 10px;
       }
       Button{
         span::first-letter{text-transform: uppercase;}
@@ -111,9 +122,17 @@
         p {
           color: $white;
           font-size: 18px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
         }
         button{
           margin-bottom: 20px;
+        }
+        div{
+          display: flex;
+          flex-direction: column;
         }
       }
     }
