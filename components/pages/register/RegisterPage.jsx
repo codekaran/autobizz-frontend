@@ -69,18 +69,17 @@ const RegisterPage = (props) => {
 
   const handleValidation = async () => {
     if(email===''||password===''||confirmPass===''){
-      createAlert("Please fill out all fields",2);
+      createAlert("Please fill out all fields");
       return;
     }
     let res = await axios.get(
       // localhost
       `${server.serverURL}/seller-api/sellers/emailExists?email=` + email
     );
-    console.log(res.data);
     let userExists = res.data;
     if (userExists) {
       setFormValid({ ...formValid, ["emailExists"]: true });
-      createAlert('Account with this e-mail already exists!',2);
+      createAlert('Account with this e-mail already exists!');
       return false;
     } else {
       setFormValid({ ...formValid, ["emailExists"]: false });
@@ -92,12 +91,12 @@ const RegisterPage = (props) => {
     }
     if (!checkPasswordStrength(password)) {
       setFormValid({ ...formValid, ["strongPassword"]: false });
-      createAlert('Password doesnt comform to password policy!',2);
+      createAlert('Password doesnt comform to password policy!');
       return false;
     }
     if (password != confirmPass && password != "") {
       setFormValid({ ...formValid, [confirmPass]: false });
-      createAlert("Password do not match!", 2);
+      createAlert("Password do not match!");
       return false;
     }
 

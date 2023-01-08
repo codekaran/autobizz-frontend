@@ -21,10 +21,10 @@ const LoginPage = (props) => {
   //useEffect
   useEffect(() => {
   if(error==='password error' || error ==='Seller Does not exists'){
-    createAlert('Please use correct credentials',2);
+    createAlert('Please use correct credentials');
   }
   if(isAuthenticated){
-    createAlert('Logged in successfully',1);
+    createAlert('Logged in successfully');
   }
   }, [error,isAuthenticated])
   
@@ -49,7 +49,7 @@ const LoginPage = (props) => {
   const handleSubmit = async (event) => {
       event.preventDefault();
       if(email==="" || password===""){ createAlert("Please fill all fields", 2); return;}
-      if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){ createAlert("Please enter valid E-mail", 2); return; }
+      if(!(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email))){ createAlert("Please enter valid E-mail"); return; }
       login(formData);
   };
 

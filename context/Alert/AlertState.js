@@ -13,7 +13,7 @@ const AlertState = (props) => {
   //Create alert from context
 
   //Create new Alert from component
-  const createAlert = (message, time) => {
+  const createAlert = (message, time = 5) => {
     const id = uuid();
     dispatch({ type: CREATE_ALERT, payload: { id, message } });
     setTimeout(() => {

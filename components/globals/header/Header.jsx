@@ -101,7 +101,7 @@ const Header = () => {
             <Link href="/user">
               <Button padding='10px 20px'>Hi! &nbsp; <span className={styles.name}>{ctx.user.sellerType==='Owner' ? ctx.user.firstName : ctx.user.companyName}</span></Button>
             </Link>
-            <Button onClick={()=>{ctx.logout(); createAlert('Logged out successfully!',1);handleBurgerClick();}} padding='10px 20px' backgroundColor={colors.red} icon={<BiLogOutCircle/>}>Logout</Button>
+            <Button onClick={()=>{ctx.logout(); createAlert('Logged out successfully!');handleBurgerClick();}} padding='10px 20px' backgroundColor={colors.red} icon={<BiLogOutCircle/>}>Logout</Button>
             </div>
             ) :
              (

@@ -1,8 +1,7 @@
 @import '../../../styles/colors';
 
-.alert{
+.alertVisible{
     position: relative;
-    background-color: yellow;
     padding: 10px 20px;
     z-index: 4;
     background-color: $primary-button-focus;
@@ -15,4 +14,24 @@
     svg{
         font-size: 30px;
     }
+    transition: all 0.5s ease-in-out;
+    transform: translateY(0%);
+}
+
+.alertHidden{
+    position: relative;
+    padding: 10px 20px;
+    z-index: 4;
+    background-color: $primary-button-focus;
+    color: white;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    svg{
+        font-size: 30px;
+    }
+    transition: all 0.5s ease-in-out;
+    transform: translateY(-1000%);
 }
