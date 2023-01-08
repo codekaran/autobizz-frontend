@@ -13,10 +13,10 @@ const Alert = ({message,type}) => {
   return (
     <div className={show ? styles.alertVisible : styles.alertHidden} 
     style={type === 'S' ? 
-          {backgroundColor:colors.green} : 
+          {backgroundColor:colors.green,borderLeft:`10px solid ${colors.greenAccent}`} : 
           (type === 'E' ? 
-          {backgroundColor:colors.red} : 
-          {backgroundColor:colors.yellow})}>
+          {backgroundColor:colors.red,borderLeft:`10px solid ${colors.redAccent}`} : 
+          {backgroundColor:colors.yellow,borderLeft:`10px solid ${colors.yellowAccent}`})}>
         
         {type === 'S' ? 
           <BiCheckCircle/>: 
