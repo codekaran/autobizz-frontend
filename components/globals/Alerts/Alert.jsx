@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Alert.module.scss';
-import { BiInfoCircle } from 'react-icons/bi';
-const Alert = ({message}) => {
+import { BiInfoCircle, BiCheckCircle,BiXCircle } from 'react-icons/bi';
+import colors from '../../../variables/colors';
+
+const Alert = ({message,type}) => {
   const [show,setShow] = useState(false);
   useEffect(() => {
     setShow(true);
@@ -9,8 +11,19 @@ const Alert = ({message}) => {
   }, [])
   
   return (
-    <div className={show ? styles.alertVisible : styles.alertHidden}>
-        <BiInfoCircle></BiInfoCircle><p>
+    <div className={show ? styles.alertVisible : styles.alertHidden} 
+    style={type === 'S' ? 
+          {backgroundColor:colors.green} : 
+          (type === 'E' ? 
+          {backgroundColor:colors.red} : 
+          {backgroundColor:colors.yellow})}>
+        
+        {type === 'S' ? 
+          <BiCheckCircle/>: 
+          (type === 'E' ? 
+          <BiXCircle/> : 
+          <BiInfoCircle/>)}
+        <p>
         {message}
         </p>
     </div>

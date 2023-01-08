@@ -69,7 +69,7 @@ const RegisterPage = (props) => {
 
   const handleValidation = async () => {
     if(email===''||password===''||confirmPass===''){
-      createAlert("Please fill out all fields");
+      createAlert("Please fill out all fields",'W');
       return;
     }
     let res = await axios.get(
@@ -79,24 +79,24 @@ const RegisterPage = (props) => {
     let userExists = res.data;
     if (userExists) {
       setFormValid({ ...formValid, ["emailExists"]: true });
-      createAlert('Account with this e-mail already exists!');
+      createAlert('Account with this e-mail already exists!','E');
       return false;
     } else {
       setFormValid({ ...formValid, ["emailExists"]: false });
     }
     if (!checkEmail(email)) {
       setFormValid({ ...formValid, ["email"]: false });
-      createAlert('Please enter valid email!',2);
+      createAlert('Please enter valid email!','W');
       return false;
     }
     if (!checkPasswordStrength(password)) {
       setFormValid({ ...formValid, ["strongPassword"]: false });
-      createAlert('Password doesnt comform to password policy!');
+      createAlert('Password doesnt comform to password policy!','W');
       return false;
     }
     if (password != confirmPass && password != "") {
       setFormValid({ ...formValid, [confirmPass]: false });
-      createAlert("Password do not match!");
+      createAlert("Password do not match!",'W');
       return false;
     }
 

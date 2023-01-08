@@ -9,7 +9,7 @@ const Alerts = () => {
    const {alerts} =  useContext(AlertContext);
   return (
     <div className={styles.container}>
-    {alerts.slice(Math.max(alerts.length - 2, 0)).map(alert => <Alert key={alert.id} message={alert.message}/>)}
+    {alerts.slice(Math.max(alerts.length - 1, 0)).map(alert => <Alert key={alert.id} message={alert.message} type={alert.type}/>)}
     </div>
   )
 }

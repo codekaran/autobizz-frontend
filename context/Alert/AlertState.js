@@ -13,9 +13,9 @@ const AlertState = (props) => {
   //Create alert from context
 
   //Create new Alert from component
-  const createAlert = (message, time = 5) => {
+  const createAlert = (message, type = "S", time = 5) => {
     const id = uuid();
-    dispatch({ type: CREATE_ALERT, payload: { id, message } });
+    dispatch({ type: CREATE_ALERT, payload: { id, message, type } });
     setTimeout(() => {
       dispatch({ type: DELETE_ALERT, payload: { id } });
     }, time * 1000);
