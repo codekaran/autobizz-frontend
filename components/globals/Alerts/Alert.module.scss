@@ -17,12 +17,12 @@
 
 .alertVisible{
     @include alertCommon();
-    transition: all 0.5s ease-in-out;
-    transform: translateY(0%);
+    transition: all 0.3s ease-in-out;
+    transform: translateY(200%);
 }
 
 .alertHidden{
    @include alertCommon();
-    transition: all 0.5s ease-in-out;
-    transform: translateY(-1000%);
+    transition: all 0.3s ease-in-out;
+    transform: translateY(0%);
 }

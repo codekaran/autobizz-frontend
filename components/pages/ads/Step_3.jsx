@@ -10,6 +10,8 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import {server} from '../../../variables/server';
 import { FaCarAlt } from "react-icons/fa";
+import setAuthToken from "../../../utils/setAuthToken";
+import AlertContext from "../../../context/Alert/AlertContext";
 
 const Step_3 = () => {
   // ############ component state ###########
@@ -26,6 +28,7 @@ const Step_3 = () => {
   const router = useRouter();
   const ctx = useContext(AdContext);
   const auth_ctx = useContext(AuthContext);
+  const {createAlert} = useContext(AlertContext);
 
   // ############ functions ###########
   const handleChange = (name) => (e) => {
@@ -56,7 +59,7 @@ const Step_3 = () => {
           fd.append(key, image);
           let imageSize = image.size / 1000000;
           if (imageSize > 2) {
-            alert(`Image ${image.name} greater than 2mb`);
+            createAlert(`Image ${image.name} greater than 2mb`,'W');
           }
         }
       } else {
@@ -70,12 +73,11 @@ const Step_3 = () => {
     // if(isFormValid)
     setIsAdUploading(true);
     let formData = createFormData();
+    //setAuthToken();
     console.log(...formData);
     try {
       let result = await axios.post(
-        `${server.serverURL}/seller-api/ads/` +
-          auth_ctx.isLoggedIn.decodedToken.id +
-          "/ads",
+        `http://localhost:8000/seller-api/ads/ads`,
         formData,
         {
           auth: {
@@ -86,10 +88,10 @@ const Step_3 = () => {
       );
       console.log(result);
       if (result.data == "Ad already exists") {
-        alert(result.data);
+        createAlert("Ad already exists!",'E')
       }
       if (result.data.includes("Ad Id:")) {
-        alert("ad successfully uploaded");
+        createAlert("Ad successfully uploaded!",'S');
       }
       setIsAdUploading(false);
       setIsAdUploaded(true);

@@ -4,23 +4,26 @@ import owner from "../../../public/owner.png";
 import dealer from "../../../public/commercial.png";
 import { useRouter } from "next/router";
 import { useContext } from "react";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import Button from '../../globals/button/Button';
 import { FaArrowRight } from "react-icons/fa";
 import AuthContext from "../../../context/Auth/AuthContext";
 const SellerType = () => {
   const router = useRouter();
-  const {setRegisterForm} = useContext(AuthContext);
-  
+  const {setRegisterForm,registerFormData} = useContext(AuthContext);
+  const {page2Filled} = registerFormData;
   const handleSubmit = () => {
     router.push("/register/seller-info");
   };
-  const [isClicked, setIsClicked] = useState("");
+
+  const [isClicked, setIsClicked] = useState("Owner");
   const handleOnClick = (type) => {
     setIsClicked(type);
-    setRegisterForm({ sellerType: type });
   };
-
+  useEffect(() => {
+    !page2Filled && router.push('/register')
+    setRegisterForm({sellerType:isClicked});
+  }, [isClicked])
   return (
     <div className={styles.sellerType}>
       <h3>Seller</h3>

@@ -18,7 +18,8 @@ import AlertContext from "../../../context/Alert/AlertContext";
 // const router = useRouter();
 const RegisterPage = (props) => {
   const router = useRouter();
-  const {setRegisterForm} = useContext(AuthContext);
+  const {setRegisterForm,registerFormData} = useContext(AuthContext);
+  const {page1Filled} = registerFormData
   const {createAlert} = useContext(AlertContext);
   // Form data is an object which stores email and password of the user from the input fields
   const [formData, setFormData] = useState({
@@ -41,6 +42,10 @@ const RegisterPage = (props) => {
 
   const { email, password, confirmPass, error, remember } = formData;
 
+  useEffect(() => {
+  if(!page1Filled)router.push('/register')
+  }, [])
+  
   
 
   // This function updates the formData object
@@ -113,7 +118,7 @@ const RegisterPage = (props) => {
     if (isFormValid) {
       console.log("helllloooo");
       console.log(formData);
-      setRegisterForm({email: formData.email,password: formData.password,confirmPass: formData.confirmPass});
+      setRegisterForm({email: formData.email,password: formData.password,confirmPass: formData.confirmPass,page2Filled:true});
       router.push("/register/seller-type");
     }
   };

@@ -70,7 +70,7 @@
 @media (max-width: 700px) {
   .header {
     overflow: hidden;
-    position: fixed;
+    position: sticky;
     top:0;
     z-index: 1000;
     justify-content: space-between;

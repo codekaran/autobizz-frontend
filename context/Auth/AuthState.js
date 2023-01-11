@@ -48,6 +48,8 @@ const AuthState = (props) => {
       country: "",
       zipCode: "",
       city: "",
+      page1Filled: false,
+      page2Filled: false,
     },
   };
 
@@ -67,8 +69,6 @@ const AuthState = (props) => {
           },
         }
       );
-      console.log("load userrr");
-      console.log(res);
       dispatch({
         type: USER_LOADED,
         payload: {
@@ -77,7 +77,6 @@ const AuthState = (props) => {
         },
       });
     } catch (error) {
-      console.log(error);
       dispatch({ type: AUTH_ERROR, payload: error.response.data.errMsg });
     }
   };

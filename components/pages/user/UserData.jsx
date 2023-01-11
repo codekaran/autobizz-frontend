@@ -1,42 +1,34 @@
 import styles from "./UserData.module.scss";
 import AuthContext from "../../../context/Auth/AuthContext";
 import { useContext, useEffect, useState } from "react";
-import { getSession } from "../../globals/funtions/helper";
-import { useRouter } from "next/router";
-import axios from "axios";
-import TextSkeleton from "../../globals/skeletons/text";
-import { server } from "../../../variables/server";
 import Button from '../../globals/button/Button';
+import Loader from "../../globals/skeletons/loader";
 
 const UserData = (props) => {
-  const ctx = useContext(AuthContext);
-  const [userData, setUserData]= useState({});
+  const AuthCtx = useContext(AuthContext);
+  const {user} = AuthCtx;
   const [changePassword, setChangePassword] = useState(false);
-  const [profileEditMode, setProfileEditMode] =useState(false);
-
-  useEffect(setUserData(ctx.user), []);
 
   const handlePasswordChangeView = () => {
     setChangePassword(true);
   };
 
-  const handleSaveProfile = () =>{
-    setProfileEditMode(false);
-  }
-
   return (
     <div className={styles.userData}>
+
+      {user === null ? <Loader></Loader> :
+      <>
       <div className={styles.userDetails}>
-        <h3>Profile details {profileEditMode ? <></>:<span className={styles.edit} onClick={(e)=>setProfileEditMode(true)}></span>}</h3>
+        <h3>Profile details</h3>
         <div className={styles.info}>
           <div className={styles.row}>
 
-            {userData.sellerType === 'Dealer' ? 
+            {user && user.sellerType === 'Dealer' ? 
             //Dealer
             <>
             <div className={styles.col}>
               <h6>Company Name</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.companyName} type="text" onChange={(e)=>{setUserData({...userData,companyName:e.target.value})}}/> : <p>{userData.companyName}</p>}
+              {<p>{user.companyName}</p>}
 
             </div>
             </> : 
@@ -44,12 +36,12 @@ const UserData = (props) => {
             <>
             <div className={styles.col}>
               <h6>First Name</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.firstName} type="text" onChange={(e)=>{setUserData({...userData,firstName:e.target.value})}}/> : <p>{userData.firstName}</p>}
+              {<p>{user.firstName}</p>}
               
             </div>
             <div className={styles.col}>
               <h6>Last Name</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.lastName} type="text" onChange={(e)=>{setUserData({...userData,lastName:e.target.value})}}/> : <p>{userData.lastName}</p>}
+              {<p>{user.lastName}</p>}
               
             </div>
             </>
@@ -58,30 +50,29 @@ const UserData = (props) => {
           <div className={styles.row}>
             <div className={styles.col}>
               <h6>Phone</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.mobile} type="number" onChange={(e)=>{setUserData({...userData,mobile:e.target.value})}}/> : <p>{userData.mobile}</p>}
+              {<p>{user.mobile}</p>}
               
             </div>
             <div className={styles.col}>
               <h6>Email</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.email} type="email" onChange={(e)=>{setUserData({...userData,email:e.target.value})}}/> : <p>{userData.email}</p>}
+              {<p>{user.email}</p>}
               
             </div>
             <div className={styles.col}>
-              <h6>{userData.sellerType === 'Dealer' && 'Company '}Address</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.address} type="text" onChange={(e)=>{setUserData({...userData,address:e.target.value})}}/> : <p>{userData.address}</p>}
+              <h6>{user.sellerType === 'Dealer' && 'Company '}Address</h6>
+              {<p>{user.address}</p>}
               
             </div>
             <div className={styles.col}>
               <h6>Postal Code</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.postalCode} type="text" onChange={(e)=>{setUserData({...userData,postalCode:e.target.value})}}/> : <p>{userData.postalCode }</p>}
+              {<p>{user.postalCode }</p>}
               
             </div>
             <div className={styles.col}>
               <h6>Country</h6>
-              {profileEditMode ? <input className={styles.inputBox} value={userData.country} type="text" onChange={(e)=>{setUserData({...userData,country:e.target.value})}}/> : <p>{userData.country }</p>}
+              {<p>{user.country }</p>}
               
             </div>
-            {profileEditMode && <Button margin='10px 0px 0px 0px' onClick={(e)=>{handleSaveProfile()}}>Save</Button>}
           </div>
         </div>
       </div>
@@ -103,6 +94,8 @@ const UserData = (props) => {
           <p onClick={handlePasswordChangeView}>Change Password</p>
         )}
       </div>
+      </>
+      }
     </div>
   );
 };

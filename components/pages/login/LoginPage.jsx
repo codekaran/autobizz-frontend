@@ -12,11 +12,14 @@ import { useContext } from "react";
 import { useRouter } from "next/router";
 import {BiLogInCircle} from 'react-icons/bi';
 import AlertContext from "../../../context/Alert/AlertContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const LoginPage = (props) => {
   const {login,error,isAuthenticated} = useContext(AuthContext);
   const router = useRouter();
   const {createAlert} = useContext(AlertContext);
+  const [passwordVisibile, setPasswordVisible] = useState(false);
 
   //useEffect
   useEffect(() => {
@@ -81,17 +84,20 @@ const LoginPage = (props) => {
         </div>
         <div className={styles.formGroup}>
           <input
-            type="password"
+            type={passwordVisibile ? "text" : "password"}
             placeholder="Password"
             value={password}
             onChange={handleChange("password")}
           />
+          <span className={styles.toggleVisible} onClick={()=>{setPasswordVisible(!passwordVisibile)}}>
+            <FontAwesomeIcon icon={passwordVisibile ? faEye : faEyeSlash} />
+          </span>
         </div>
         <div className={styles.remember}>
           <div></div>
           <p>Keep me remembered</p>
         </div>
-        <Button theme='light' padding='10px 20px' margin='10px 0px' onClick={handleSubmit} icon={<BiLogInCircle/>}>Log In</Button>
+        <Button theme='light' padding='10px 20px' margin='10px 0px 20px 0px' onClick={handleSubmit} icon={<BiLogInCircle/>}>Log In</Button>
       </form>
 
       <p className={styles.forgot}>
@@ -99,22 +105,9 @@ const LoginPage = (props) => {
           Forget password
         </Link>
       </p>
-
-      <p className={styles.or}>Or join with</p>
-      <div className={styles.container}>
-        <div className={styles.icon}>
-          <Image src={google} />
-        </div>
-        <div className={styles.icon}>
-          <Image src={apple} />
-        </div>
-        <div className={styles.icon}>
-          <Image src={facebook} />
-        </div>
-      </div>
       <p className={styles.redirect}>
         Not yet registered?{" "}
-        <Link href="/register/seller" passHref>
+        <Link href="/register" passHref>
           Register
         </Link>
       </p>

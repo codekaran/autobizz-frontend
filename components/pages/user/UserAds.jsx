@@ -5,50 +5,21 @@ import axios from "axios";
 import { getSession } from "../../globals/funtions/helper";
 import { server } from "../../../variables/server";
 import AdImages from "./AdImages";
+import AuthContext from "../../../context/Auth/AuthContext";
+import AdContext from "../../../context/Ad/AdContext";
 
 const UserAds = () => {
-  const ctx = useContext(AuthContext);
+  
+  //contexts
+  const AuthCtx = useContext(AuthContext);
+  const {token} = AuthContext;
+  const AdCtx = useContext(AdContext);
+  const {userAds,loadingUserAds} = AdCtx;
 
-  const [userAds, setUserAds] = useState([]);
   useEffect(() => {
-    getUserAds();
+    if(token !== null) AdCtx.getUserAds(token)
   }, []);
-  const [adsLoading,setAdsLoading] = useState(true);
-
-  const getUserAds = async () => {
-    let data = getSession(ctx);
-    if (data) {
-      // setIsLoggedIn(data);
-      console.log(data);
-      let response = await axios.get(
-        `${server.serverURL}/seller-api/ads/` + data.decodedToken.id + "/ads",
-        {
-          auth: {
-            username: "karan",
-            password: 123,
-          },
-        }
-      );
-      response = response.data;
-      let imagesWithLoadStatus = [];
-      for (let ad of response) {
-        imagesWithLoadStatus = [];
-
-        for (let image of ad.images)
-          imagesWithLoadStatus.push({ url: image, loaded: false });
-        ad.images = imagesWithLoadStatus;
-        ad.editModeOn = 0;
-      }
-
-      console.log(response);
-      setUserAds(response);
-      setAdsLoading(false);
-      // console.log(userAds[0].firstRegistration);
-    } else {
-      router.push("/login");
-    }
-  };
-
+  
   const handleEditMode = (index) => (event) => {
     let arr=[...userAds];
     arr[index].editModeOn = arr[index].editModeOn == 0 ? 1 : 0;    
@@ -58,10 +29,10 @@ const UserAds = () => {
 
   return (
     <>
-      {adsLoading ? 
+      {loadingUserAds ? 
       <div style={{display:"flex",justifyContent:"center",textAlign:"center"}}><Loader/></div>
       :
-      <>{(!adsLoading && userAds.length === 0)? 
+      <>{(!loadingUserAds && userAds.length === 0)? 
       <div className={styles.noAds}>
         {console.log('empty array')}
         <h3>You haven't posted an ad yet!</h3>
@@ -72,10 +43,6 @@ const UserAds = () => {
         <div key={index} className={styles.ads}>
           <h3>
             {item.make + " " + item.model}
-            <span
-              onClick={handleEditMode(index)}
-              className={styles.edit}
-            ></span>
           </h3>
 
           <div className={styles.carDetails}>

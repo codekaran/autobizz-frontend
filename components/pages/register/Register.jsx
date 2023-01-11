@@ -17,7 +17,7 @@ const Register = () => {
           padding='10px 60px'
           margin='20px 0px 10px 0px'
           onClick={() => {
-            setRegisterForm({ RegistrationType: "Seller" });
+            setRegisterForm({ RegistrationType: "Seller",page1Filled:true });
           }}
         >
           Register as Seller
@@ -29,7 +29,7 @@ const Register = () => {
           padding='10px 60px'
           margin='10px 0px 20px 0px'
           onClick={() => {
-            setRegisterForm({ RegistrationType: "Buyer" });
+            setRegisterForm({ RegistrationType: "Buyer",page1Filled:true });
           }}
         >
           Register as Buyer

@@ -1,14 +1,12 @@
-import { createContext, useState } from "react";
-import axios from "axios";
+import {useState,useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "./Info.module.scss";
 import Button from "../../globals/button/Button";
-import formValidate from "../../globals/funtions/FormValidate";
 import { validateForm } from "../../globals/funtions/FormValidate";
 import { useContext } from "react";
-import { server } from "../../../variables/server";
 import {FaSign} from 'react-icons/fa';
 import AuthContext from "../../../context/Auth/AuthContext";
+import AlertContext from "../../../context/Alert/AlertContext";
 
 const SellerInfo = () => {
   const router = useRouter();
@@ -29,7 +27,15 @@ const SellerInfo = () => {
   //Contexts
   const AuthCtx = useContext(AuthContext);
   const {register, setRegisterForm, registerFormData} = AuthCtx;
+  const {page2Filled}= registerFormData;
+  const {createAlert} = useContext(AlertContext);
 
+  //
+  useEffect(() => {
+    !page2Filled && router.push('/register');
+  }, [])
+  
+  
   // variable to check valid form fields
   const [formValid, setFormValid] = useState({
     companyName: true,
@@ -57,17 +63,19 @@ const SellerInfo = () => {
 
     let dataObject = {};
     // check if the form is valid
+    
     let { validFieldsObj, isFormValid, message } = validateForm(
       sellerInfo,
       registerFormData.sellerType
     );
     console.log(validFieldsObj);
     setFormValid(validFieldsObj);
-    setErrorMessage(message);
+    
     if (isFormValid) {
-      console.log('inside register submit');
-      console.log(registerFormData);
       register({...registerFormData,...sellerInfo});
+    }
+    else{
+      createAlert(message,'W');
     }
   };
   return (

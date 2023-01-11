@@ -22,6 +22,7 @@ export const checkEmail = (email) => {
   }
   return false;
 };
+
 // atleast one CAP one small number and special character length >=8
 export const checkPasswordStrength = (password) => {
   if (
@@ -54,7 +55,7 @@ export const validateForm = (form, sellerType) => {
       return {
         validFieldsObj,
         isFormValid: false,
-        message: "Invalid First Name",
+        message: "Invalid First Name!",
       };
     }
     if (!form.lname.match(/^\w/)) {
@@ -62,7 +63,7 @@ export const validateForm = (form, sellerType) => {
       return {
         validFieldsObj,
         isFormValid: false,
-        message: "Invalid Last Name",
+        message: "Invalid Last Name!",
       };
     }
   }
@@ -73,16 +74,16 @@ export const validateForm = (form, sellerType) => {
       return {
         validFieldsObj,
         isFormValid: false,
-        message: "Invalid Company Name",
+        message: "Invalid Company Name!",
       };
     }
   }
-  if (!form.phone.match(/[0-9]{10}/)) {
+  if (!form.phone.match(/[0-9]{10}/i) || form.phone.length !== 10) {
     validFieldsObj["phone"] = false;
     return {
       validFieldsObj,
       isFormValid: false,
-      message: "Invalid mobile number",
+      message: "Invalid mobile number!",
     };
   }
   if (!form.street.match(/^\w/)) {
@@ -90,7 +91,7 @@ export const validateForm = (form, sellerType) => {
     return {
       validFieldsObj,
       isFormValid: false,
-      message: "Invalid Street Name",
+      message: "Invalid Street Name!",
     };
   }
   if (!form.country.match(/^\w/)) {
@@ -98,12 +99,24 @@ export const validateForm = (form, sellerType) => {
     return {
       validFieldsObj,
       isFormValid: false,
-      message: "Invalid Country Name",
+      message: "Invalid Country Name!",
+    };
+  }
+  if (!form.zipCode.match(/[0-9]{4}/) || form.zipCode.length !== 4) {
+    validFieldsObj["zipCode"] = false;
+    return {
+      validFieldsObj,
+      isFormValid: false,
+      message: "Invalid Zipcode!",
     };
   }
   if (!form.city.match(/^\w/)) {
     validFieldsObj["city"] = false;
-    return { validFieldsObj, isFormValid: false, message: "Invalid City Name" };
+    return {
+      validFieldsObj,
+      isFormValid: false,
+      message: "Invalid City Name!",
+    };
   }
 
   return { validFieldsObj, isFormValid: true, message: "no-error" };

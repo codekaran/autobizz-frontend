@@ -5,10 +5,11 @@ import Button from "../../globals/button/Button";
 import Done from "../../../public/done.png";
 
 const Success = () => {
+  
   return (
     <div className={styles.success}>
       <h3>Seller</h3>
-      <p>Congratulation, Now you have become seller with company name</p>
+      <p>Congratulation, Now you have become a seller with us.</p>
       <div className={styles.image}>
         <Image src={Done} alt="Registration_success" />
       </div>

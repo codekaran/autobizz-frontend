@@ -8,6 +8,7 @@ import UserAds from "./UserAds";
 const Profile = () => {
   // variables
   // state for the right seciton
+  const menuArr = [<UserData></UserData>,<UserAds></UserAds>];
   const [rightPart, setRightPart] = useState(<UserData></UserData>);
   // state for highlighting active block
   const [activeNav, setActiveNav] = useState("personal");
@@ -22,7 +23,7 @@ const Profile = () => {
     }
     setActiveNav(data);
   };
-  
+
   return (
     <div className={styles.profile}>
       <div className={styles.left}>
