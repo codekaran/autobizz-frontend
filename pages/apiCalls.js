@@ -1,7 +1,6 @@
-import axios from "axios";
-import { server } from "../variables/server";
+import axios from "/axios/index.js";
 export async function getCars() {
-  let result = await axios.get(`${server.serverURL}/seller-api/ads/ads`, {
+  let result = await axios.get(`/seller-api/ads/ads`, {
     auth: {
       username: "karan",
       password: 123,

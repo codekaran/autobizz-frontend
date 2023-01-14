@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "/axios/index.js";
 import Head from "next/head";
 import Search from "../../components/pages/search/Search";
 

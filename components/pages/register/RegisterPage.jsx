@@ -10,8 +10,7 @@ import {
   checkEmail,
   checkPasswordStrength,
 } from "../../globals/funtions/FormValidate";
-import axios from "axios";
-import {server} from '../../../variables/server';
+import axios from "/axios/index.js";
 import { FaSign } from "react-icons/fa";
 import AlertContext from "../../../context/Alert/AlertContext";
 
@@ -79,7 +78,7 @@ const RegisterPage = (props) => {
     }
     let res = await axios.get(
       // localhost
-      `${server.serverURL}/seller-api/sellers/emailExists?email=` + email
+      `/seller-api/sellers/emailExists?email=` + email
     );
     let userExists = res.data;
     if (userExists) {

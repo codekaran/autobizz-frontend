@@ -1,6 +1,5 @@
 import AuthLayout from "../../components/layouts/auth/AuthLayout";
 import LoginPage from "../../components/pages/login/LoginPage";
-import { server } from "../../variables/server";
 
 const buyer = () => {
   return (

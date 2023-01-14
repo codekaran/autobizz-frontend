@@ -1,9 +1,8 @@
 import styles from "./UserAds.module.scss";
 import Loader from "../../globals/skeletons/loader";
 import { useEffect, useState, useContext } from "react";
-import axios from "axios";
+import axios from "/axios/index.js";
 import { getSession } from "../../globals/funtions/helper";
-import { server } from "../../../variables/server";
 import AdImages from "./AdImages";
 import AuthContext from "../../../context/Auth/AuthContext";
 import AdContext from "../../../context/Ad/AdContext";
@@ -17,7 +16,7 @@ const UserAds = () => {
   const {userAds,loadingUserAds} = AdCtx;
 
   useEffect(() => {
-    if(token !== null) AdCtx.getUserAds(token)
+    AdCtx.getUserAds()
   }, []);
   
   const handleEditMode = (index) => (event) => {

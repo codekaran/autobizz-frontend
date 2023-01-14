@@ -2,13 +2,12 @@ import React from "react";
 import { TailSpin } from "react-loader-spinner";
 import styles from "./Steps.module.scss";
 import Button from "../../globals/button/Button";
-import axios from "axios";
+import axios from "/axios/index.js";
 import AdContext from "../../../context/ad-context";
 import AuthContext from "../../../context/Auth/AuthContext";
 import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import {server} from '../../../variables/server';
 import { FaCarAlt } from "react-icons/fa";
 import setAuthToken from "../../../utils/setAuthToken";
 import AlertContext from "../../../context/Alert/AlertContext";
@@ -77,7 +76,7 @@ const Step_3 = () => {
     console.log(...formData);
     try {
       let result = await axios.post(
-        `http://localhost:8000/seller-api/ads/ads`,
+        `/seller-api/ads/ads`,
         formData,
         {
           auth: {

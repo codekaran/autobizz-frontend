@@ -1,9 +1,7 @@
 import React, { useReducer } from "react";
 import AdContext from "./AdContext";
 import AdReducer from "./AdReducer";
-import { v1 as uuid } from "uuid";
-import axios from "axios";
-import { server } from "../../variables/server";
+import axios from "/axios/index.js";
 import { GET_USERADS_SUCCESS, GET_USERADS_FALIURE } from "../types";
 
 const AdState = (props) => {
@@ -12,17 +10,14 @@ const AdState = (props) => {
   const [state, dispatch] = useReducer(AdReducer, initialState);
 
   //Get ads of logged in user
-  const getUserAds = async (token) => {
+  const getUserAds = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:8000/seller-api/ads/userAds/`,
-        {
-          auth: {
-            username: "karan",
-            password: 123,
-          },
-        }
-      );
+      const response = await axios.get(`/seller-api/ads/userAds`, {
+        auth: {
+          username: "karan",
+          password: 123,
+        },
+      });
       response = response.data;
       let imagesWithLoadStatus = [];
       for (let ad of response) {

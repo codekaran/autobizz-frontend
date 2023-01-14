@@ -1,8 +1,7 @@
 import React, { useContext, useEffect, useReducer } from "react";
 import AuthContext from "./AuthContext";
 import AuthReducer from "./AuthReducer";
-import axios from "axios";
-import { server } from "../../variables/server";
+import axios from "/axios/index.js";
 import AlertContext from "../Alert/AlertState";
 
 import {
@@ -60,15 +59,12 @@ const AuthState = (props) => {
     localStorage.getItem("token") &&
       setAuthToken(localStorage.getItem("token"));
     try {
-      const res = await axios.get(
-        `${server.serverURL}/seller-api/sellers/userData`,
-        {
-          auth: {
-            username: "karan",
-            password: 123,
-          },
-        }
-      );
+      const res = await axios.get(`/seller-api/sellers/userData`, {
+        auth: {
+          username: "karan",
+          password: 123,
+        },
+      });
       dispatch({
         type: USER_LOADED,
         payload: {
@@ -83,16 +79,12 @@ const AuthState = (props) => {
   //Register User
   const register = async (formData) => {
     try {
-      const res = await axios.post(
-        `${server.serverURL}/seller-api/sellers/register`,
-        formData,
-        {
-          auth: {
-            username: "karan",
-            password: 123,
-          },
-        }
-      );
+      const res = await axios.post(`/seller-api/sellers/register`, formData, {
+        auth: {
+          username: "karan",
+          password: 123,
+        },
+      });
       dispatch({
         type: REGISTER_SUCCESS,
         payload: res.data.token,
@@ -110,16 +102,12 @@ const AuthState = (props) => {
   //Login User
   const login = async (formData) => {
     try {
-      const res = await axios.post(
-        `${server.serverURL}/seller-api/sellers/login`,
-        formData,
-        {
-          auth: {
-            username: "karan",
-            password: 123,
-          },
-        }
-      );
+      const res = await axios.post(`/seller-api/sellers/login`, formData, {
+        auth: {
+          username: "karan",
+          password: 123,
+        },
+      });
       console.log(res);
       dispatch({
         type: LOGIN_SUCCESS,

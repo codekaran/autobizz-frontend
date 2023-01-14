@@ -1,8 +1,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import styles from "./SearchBar.module.scss";
-import axios from "axios";
-import { server } from "../../../variables/server";
+import axios from "/axios/index.js";
 import { FaSearch } from "react-icons/fa";
 import Button from '../button/Button';
 import {useRouter} from "next/router";
@@ -14,7 +13,7 @@ const SearchBar = () => {
 
   useEffect(()=>{
      const getCars = async ()=> {
-      const result = await axios.get(`${server.serverURL}/seller-api/ref/getModels/`)
+      const result = await axios.get(`/seller-api/ref/getModels/`)
       setCars(result.data);
     }
     getCars();
