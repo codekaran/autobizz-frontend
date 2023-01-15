@@ -4,10 +4,7 @@ import LoginPage from "../../components/pages/login/LoginPage";
 const buyer = () => {
   return (
     <AuthLayout>
-      <LoginPage
-        title="Seller"
-        URL={server.serverURL + "/seller-api/sellers/login"}
-      />
+      <LoginPage title="Seller" URL={"/seller-api/sellers/login"} />
     </AuthLayout>
   );
 };

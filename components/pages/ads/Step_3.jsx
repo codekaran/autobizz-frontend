@@ -3,7 +3,7 @@ import { TailSpin } from "react-loader-spinner";
 import styles from "./Steps.module.scss";
 import Button from "../../globals/button/Button";
 import axios from "/axios/index.js";
-import AdContext from "../../../context/ad-context";
+import AdContext from "../../../context/Ad/AdContext";
 import AuthContext from "../../../context/Auth/AuthContext";
 import { useContext, useState } from "react";
 import { useRouter } from "next/router";
@@ -48,9 +48,7 @@ const Step_3 = () => {
   };
 
   const createFormData = () => {
-    console.log("creating form data");
-    let finalData = { ...ctx.data, ...data };
-    console.log(finalData);
+    let finalData = { ...ctx.adFormData, ...data };
     let fd = new FormData();
     for (let key in finalData) {
       if (key === "file") {
@@ -69,11 +67,9 @@ const Step_3 = () => {
   };
 
   const handleSubmit = async () => {
-    // if(isFormValid)
-    setIsAdUploading(true);
-    let formData = createFormData();
-    //setAuthToken();
-    console.log(...formData);
+   setIsAdUploading(true);
+   let formData = createFormData();
+   
     try {
       let result = await axios.post(
         `/seller-api/ads/ads`,

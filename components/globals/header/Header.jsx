@@ -99,7 +99,7 @@ const Header = () => {
           {ctx.isAuthenticated && ctx.user!==null ? (
             <div>
             <Link href="/user">
-              <Button padding='10px 20px'>Hi! &nbsp; <span className={styles.name}>{ctx.user.sellerType==='Owner' ? ctx.user.firstName : ctx.user.companyName}</span></Button>
+              <Button padding='10px 20px' onClick={handleBurgerClick}>Hi! &nbsp; <span className={styles.name}>{ctx.user.sellerType==='Owner' ? ctx.user.firstName : ctx.user.companyName}</span></Button>
             </Link>
             <Button onClick={()=>{ctx.logout(); createAlert('Logged out successfully!','S');handleBurgerClick();}} padding='10px 20px' backgroundColor={colors.red} icon={<BiLogOutCircle/>}>Logout</Button>
             </div>

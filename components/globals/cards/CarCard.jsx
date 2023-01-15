@@ -8,14 +8,13 @@ import Button from '../button/Button'
 
 const CarCard = (props) => {
   const router = useRouter();
-  const { make, model, gearbox, power, mileage, images, id } = props.carData;
+  const { make, model, gearbox, power, mileage, images, id, condition, fuel } = props.carData;
   const [loaded, setLoaded] = useState(false);
   const handleRedirect = () => {
     router.push("/car/" + make + "-" + model + "-" + id);
     // console.log();
   };
   const handleImageLoad = () => {
-    console.log("sdkjfhsdkjfhasdkjfah ");
     setLoaded(true);
   };
 
@@ -25,11 +24,8 @@ const CarCard = (props) => {
         <Image
           src={images[0]}
           alt={make + " " + model}
-          // layout="fill"
-          width={350}
-          height={300}
-          objectFit="cover"
-          // priority
+          width="350px"
+          height="250px"
           onLoadingComplete={handleImageLoad}
         />
         {!loaded && (
@@ -40,23 +36,19 @@ const CarCard = (props) => {
       </div>
       <div className={styles.bottom}>
         <div className={styles.name}>{make + " " + model}</div>
-        <div className={styles.cost}>€ 1.150</div>
-        <div className={styles.container}>
-          <div className={styles.box}>
-            <p className={styles.text}>Distance travelled</p>
-            <p className={styles.boldText}>{mileage} km</p>
-          </div>
-          <div className={styles.box}>
-            <p className={styles.text}>Engine capacity</p>
-            <p className={styles.boldText}>{power} cc</p>
-          </div>
-          <div className={styles.box}>
-            <p className={styles.text}>Engine type</p>
-            <p className={styles.boldText}>{gearbox}</p>
-          </div>
+        <div className={styles.gearbox}>{gearbox}</div>
+        <div className={styles.tags}>
+          <div className={styles.tag}>{mileage+" Km"}</div>
+          <div className={styles.tag}>{condition}</div>
+          <div className={styles.tag}>{fuel}</div>
+          <div className={styles.tag}>{power+" CC"}</div>
+        </div>
+        <hr />
+        <div className={styles.action}>
+          <div className={styles.price}>€1440</div>
+          <Button>Contact seller</Button>
         </div>
       </div>
-      <Button width='100%'>Contact seller</Button>
     </div>
   );
 };

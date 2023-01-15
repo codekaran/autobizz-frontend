@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Steps.module.scss";
 import Button from "../../globals/button/Button";
 import Link from "next/link";
-import AdContext from "../../../context/ad-context";
+import AdContext from "../../../context/Ad/AdContext";
 import AuthContext from '../../../context/Auth/AuthContext';
 import { useContext } from "react";
 import BMW from "../../../public/BMW.png";
@@ -24,24 +24,16 @@ const Step_1 = (props) => {
   const router = useRouter();
   useEffect(() => {
     if(!isAuthenticated) router.push('/login/seller');
-    let session = window.sessionStorage.getItem("auto_bizz_steps");
-    if (session) {
-      console.log("session exists");
-      console.log(JSON.parse(session));
-      session = JSON.parse(session);
-      ctx.setAdForm({ make: session.make });
-      setMake(session.make);
-    } else {
-      ctx.setAdForm({ make: props.makes[0]["make"] });
-    }
+    AdCtx.setAdForm({ make: props.makes[0]["make"],step1Completed:true });
   }, []);
 
   // ############ component state ###########
-  const [make, setMake] = useState(props.makes[0]);
+  const [make, setMake] = useState(props.makes[0]["make"]);
   const [isClicked, setIsClicked] = useState("");
 
   // ############ initialize ###########
-  const ctx = useContext(AdContext);
+  const AdCtx = useContext(AdContext);
+  
   const carImageArr = [
     { name: "BMW", img: BMW },
     { name: "Audi", img: Audi },
@@ -53,25 +45,23 @@ const Step_1 = (props) => {
 
   // ############ functions ###########
   const handleChange = (value) => (event) => {
-    console.log("handling chnage");
-
-    console.log(event.target.value);
     setMake(event.target.value);
-    ctx.setAdForm({ make: event.target.value });
   };
 
   const handleClick = (value) => (event) => {
-    console.log(value);
     setIsClicked(value);
     if (value === "Mercedes") {
       value = "Mercedes-Benz";
     }
-    ctx.setAdForm({ make: value.toUpperCase() });
-    let obj = { make: value.toUpperCase() };
-    window.sessionStorage.setItem("auto_bizz_steps", JSON.stringify(obj));
-    console.log(window.sessionStorage.getItem("auto_bizz_steps"));
     setMake(value.toUpperCase());
   };
+
+  const handleSubmit = (e) =>{
+    AdCtx.setAdForm({
+      make:make,
+      step1Completed:true
+    })
+  }
 
   console.log(props);
   return (
@@ -101,7 +91,7 @@ const Step_1 = (props) => {
         ))}
       </div>
       <Link href="/ads/create/step-2">
-        <Button padding='10px 30px' icon={<FaArrowRight/>}>Next</Button>
+        <Button padding='10px 30px' icon={<FaArrowRight/>} onClick={handleSubmit}>Next</Button>
       </Link>
     </div>
   );

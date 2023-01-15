@@ -2,10 +2,29 @@ import React, { useReducer } from "react";
 import AdContext from "./AdContext";
 import AdReducer from "./AdReducer";
 import axios from "/axios/index.js";
-import { GET_USERADS_SUCCESS, GET_USERADS_FALIURE } from "../types";
+import {
+  GET_USERADS_SUCCESS,
+  GET_USERADS_FALIURE,
+  SET_AD_FORM_DATA,
+} from "../types";
 
 const AdState = (props) => {
-  const initialState = { userAds: [], loadingUserAds: true, error: null };
+  const initialState = {
+    userAds: [],
+    loadingUserAds: true,
+    adFormData: {
+      make: "",
+      model: "",
+      firstRegistration: "",
+      power: 0,
+      mileage: 0,
+      fuel: "",
+      gearbox: "",
+      step1Completed: false,
+      step2Completed: false,
+    },
+    error: null,
+  };
 
   const [state, dispatch] = useReducer(AdReducer, initialState);
 
@@ -37,6 +56,11 @@ const AdState = (props) => {
       });
     }
   };
+  //Set ad form data
+  const setAdForm = (value) => {
+    dispatch({ type: SET_AD_FORM_DATA, payload: value });
+  };
+  //Post ad
 
   return (
     <AdContext.Provider
@@ -44,6 +68,8 @@ const AdState = (props) => {
         userAds: state.userAds,
         loadingUserAds: state.loadingUserAds,
         error: state.error,
+        adFormData: state.adFormData,
+        setAdForm,
         getUserAds,
       }}
     >
