@@ -4,6 +4,7 @@ import HeroSection from "./HeroSection";
 import TestimonialSection from "./TestimonialSection";
 import styles from "./HomePage.module.scss";
 import SearchBar from "../../globals/search/SearchBar";
+import BuyFromUs from "../../globals/buyFromUs/BuyFromUs";
 
 const HomePage = (props) => {
   console.log(props.carsArray);
@@ -13,6 +14,7 @@ const HomePage = (props) => {
       <HeroSection text="Sell and Buy Cars Hasslefree!"/>
       <div className={styles.home}>
         <Carousel cars={props.carsArray} title="Featured cars" />
+        <BuyFromUs/>
         <TestimonialSection />
         <GoogleAd />
       </div>
