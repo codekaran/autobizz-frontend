@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import AdContext from "./AdContext";
 import AdReducer from "./AdReducer";
-import { v1 as uuid } from "uuid";
+// import { v1 as uuid } from "uuid";
 import axios from "axios";
 import { server } from "../../variables/server";
 import { GET_USERADS_SUCCESS, GET_USERADS_FALIURE } from "../types";
