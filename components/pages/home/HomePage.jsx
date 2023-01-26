@@ -10,8 +10,9 @@ const HomePage = (props) => {
   console.log(props.carsArray);
   return (
     <div className={styles.home}>
-      <SearchBar/>
+      {/* <SearchBar/> */}
       <HeroSection text="Sell and Buy Cars Hasslefree!"/>
+      <SearchBar/>
       <div className={styles.home}>
         <Carousel cars={props.carsArray} title="Featured cars" />
         <BuyFromUs/>

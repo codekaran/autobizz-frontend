@@ -2,19 +2,25 @@
 
 .header {
   width: 100%;
-  padding: 12px clamp(24px, 6%, 90px);
+  height: clamp(80px, 100px, 100px);
+  padding: 15px clamp(24px, 6%, 90px);
   position:sticky;
   top: 0px;
   z-index: 1000;
   display: flex;
+  align-items: center;
+  justify-content: left;
+  // -webkit-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.75);
+  //    -moz-box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.75);
+  //         box-shadow: 0px 2px 8px 0px rgba(0,0,0,0.75);
   background-color: $primary-bg;
   .burger {
     display: none;
   }
   .company_logo {
-    flex: 0.5;
+    cursor: pointer;
     div {
-      max-width: 189px;
+      min-width: 160px;
       height: 56px;
       left: 84px;
       top: 12px;
@@ -22,39 +28,37 @@
     }
   }
   .flex_box {
-    flex: 0.5;
     display: flex;
+    justify-content: left;
     align-items: center;
-    
+    gap:10px;
+    flex-grow: 1;
+    height: 100%;
     .container {
       flex: 0.5;
       display: flex;
       height: 100%;
       gap: 10px;
-      justify-content: space-evenly;
+      justify-content: right;
       align-items: center;
       &:first-of-type {
-        justify-content: space-around;
+        justify-content: space-evenly;
       }
       p {
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family: Sora;
         font-style: normal;
         font-weight: normal;
-        background-color: $primary-bg;
+        //background-color: $primary-bg;
         font-size: 14px;
         line-height: 18px;
-        color: $white;
-        padding: 10px 50px;
+        color: $primary-text;
         height: 100%;
-        width: 160px;
-        border-radius: 0.5rem;
         cursor: pointer;
         transition: all 0.3s ease-in-out;
         &:hover{
-          background-color: $primary-button-focus;
+          scale:1.2;
         }
         &:hover,&:active{text-decoration: none;}
         }
@@ -75,12 +79,12 @@
     }
   }
 }
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .header {
     overflow: hidden;
     position: sticky;
     top:0;
-    z-index: 1000;
+    z-index: 10;
     justify-content: space-between;
     align-items: center;
     .burger {
@@ -93,13 +97,15 @@
       cursor: pointer;
       z-index: 1000;
       .big_line {
-        background-color: $white;
+        background-color: $primary-text;
         height: 2px;
+        z-index: 11;
         transition: all 0.3s ease-in;
         width: 20px;
       }
       .small_line {
-        background-color: $white;
+        background-color: $primary-text;
+        z-index: 11;
         height: 2px;
         width: 15px;
         transition: all 0.3s ease-in;
@@ -109,8 +115,8 @@
     .flex_box {
       transition: 0.3s ease-in-out;
       padding: 80px 0px;
-      background-color: $primary-bg;
-      color: $white;
+      background-color: $secondary-bg;
+      color: $light-text;
       justify-content: center;
       align-items: center;
       width: 100vw;
@@ -128,15 +134,21 @@
         align-items: center;
         width: 100%;
         p {
-          color: $white;
-          font-size: 18px;
+          color: $light-text;
+          background-color: $secondary-bg;
+          font-size: 14px;
           width: 100%;
           display: flex;
           justify-content: center;
           align-items: center;
+          &:hover{
+            scale:1;
+          }
         }
         button{
           margin-bottom: 20px;
+          background-color: $light-button-background;
+          color: $primary-text;
         }
         div{
           display: flex;

@@ -5,7 +5,6 @@
     display: flex;
     justify-content: center;
     background-color: $primary-bg;
-    font-family: Sora;
     max-height: 101px ;
     .searchInput{
         min-width: 40%;
@@ -19,14 +18,15 @@
             align-items: center;
             min-width: 100%;
             input,input:focus{
+                background-color: $white;
                 border-radius: 0.5rem 0rem 0rem 0.5rem;
                 padding: 10px;
-                border: none;
+                border: 1px solid $secondary-bg;
                 border-right: none;
                 font-size: 18px;
                 outline: none;
                 flex-grow: 1;
-                color:$primary-bg;
+                color:$primary-text;
             }
             button{
                 min-height: 100%;
@@ -34,8 +34,8 @@
         }
         .dropdown{
             margin-top: 5px;
-            background-color: $white;
-            color: $primary-bg;
+            background-color: $primary-bg;
+            color: $primary-text;
             z-index: 10;
             font-size: 16px;
             display: flex;
@@ -43,7 +43,7 @@
             justify-content: flex-start;
             align-items: center;
             min-width: 100%;
-            //border: 0.5px solid $primary-bg;
+            //border: 0.5px solid $secondary-bg;
             border-radius: 0.5rem;
             .dropdown_row{
                 display: flex;
@@ -53,16 +53,16 @@
                 min-width: 100%;
                 padding: 5px 10px;
                 transition: all 0.3s;
-                border-left: 0.5px solid $primary-bg;
-                border-right: 0.5px solid $primary-bg;
+                border-left: 0.5px solid $secondary-bg;
+                border-right: 0.5px solid $secondary-bg;
                 &:first-child{
                     border-radius: 0.5rem 0.5rem 0rem 0rem;
-                    border-top: 0.5px solid $primary-bg;
+                    border-top: 0.5px solid $secondary-bg;
                     padding-top: 10px;
                    }
                 &:last-child{    
                     border-radius: 0rem 0rem 0.5rem 0.5rem;
-                    border-bottom: 0.5px solid $primary-bg;
+                    border-bottom: 0.5px solid $secondary-bg;
                     padding-bottom: 10px;
                    }
                 &:hover{

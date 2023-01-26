@@ -1,0 +1,68 @@
+@import '../../../../../styles/colors';
+
+.container{
+    padding: 10px;
+    color: $primary-button-background;
+    width: 100%;
+    max-width: 700px;
+    .main{
+        border: 1px solid $primary-button-focus;
+        margin-top: 10px;
+        border-radius:0.5rem ;
+        display: flex;
+        flex-direction: column;
+        background: white;
+        .section{
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid $primary-button-focus;
+            padding: 10px;
+            .subsection{
+                margin-right: auto;
+                h4{
+                    margin-bottom: 4px;
+                }
+                p{
+                    color: $primary-button-focus;
+                }
+            }
+            &:last-child{
+                border: none;
+            }
+        }
+        
+    }
+}
+
+@media (max-width: 768px){
+    .container{
+        padding: 5px;
+        color: $primary-button-background;
+        .main{
+            border: 1px solid $primary-button-focus;
+            margin-top: 10px;
+            border-radius:0.5rem ;
+            display: flex;
+            flex-direction: column;
+            background: white;
+            .section{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                align-items: flex-start;
+                border-bottom: 1px solid $primary-button-focus;
+                padding: 10px;
+                .subsection{
+                    margin-right: auto;
+                    p{
+                        color: $primary-button-focus;
+                    }
+                }
+                &:last-child{
+                    border: none;
+                }
+            }
+            
+        }
+    }
+}

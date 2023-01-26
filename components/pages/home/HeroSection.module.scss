@@ -3,27 +3,24 @@
 .heroSection {
     width: 100%;
     min-height: 60vh;
-    background-image: url(../../../public/car_herosection.png);
-    background-size: cover;
-    margin-bottom: 32px;
     display: flex;
     flex-direction: column;
     align-items: left;
-    justify-content: center;
+    justify-content: space-around;
     position: relative;
     padding: 40px 90px;
     gap: 40px;
-    font-family: Sora;
+    
     color: white;
     h6{
-      font-size: 64px;
+      font-size: 3vw;
       width: 60%;
       span{
-        font-size: 72px;
+        font-size:5vw;
         font-weight: 900;
-        color: $primary-button-background;
-        text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
-               1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+        color: white;
+        // text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff,
+        //        1px 1px #fff, -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
       }
     }
     p{
@@ -32,20 +29,20 @@
     }
     .buttonGroup{
       display: flex;
-      gap: 20px
+      gap: 20px;
+      Button {
+        padding: 20px;
+      }
     }
   }
 
-  @media (max-width: 760px) {
+  @media (max-width: 1028px) {
     .heroSection {
-      align-items: center;
-      justify-content: center;
-      padding: 40px;
       h6{
-        font-size: 32px;
+        font-size: 5vw;
         width: 100%;
         span{
-          font-size:38px;
+         font-size: 6vw;
         }
       }
       p{
@@ -53,7 +50,64 @@
         width: 100%;
       }
       .buttonGroup{
-        flex-direction: column;
+        flex-direction: row;
+        Button{
+         
+          font-size: 14px;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 800px) {
+    .heroSection {
+      h6{
+        font-size: 8vw;
+        width: 100%;
+        span{
+         font-size: 10vw;
+        }
+      }
+      p{
+        font-size: 16px;
+        width: 100%;
+      }
+      .buttonGroup{
+        flex-direction: row;
+        Button{
+         
+          font-size: 14px;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+  @media (max-width: 560px) {
+    .heroSection {
+      align-items: center;
+      padding: 0px;
+      min-height: 60vh;
+      justify-content: center;
+      h6{
+        text-align: center;
+        font-size: 8vw;
+        width: 100%;
+        span{
+          font-size: 10vw;
+        }
+      }
+      p{
+        font-size: 16px;
+        width: 100%;
+      }
+      .buttonGroup{
+        flex-direction: row;
+        Button{
+          padding: 12px;
+          font-size: 14px;
+          justify-content: space-between;
+        }
       }
     }
 }

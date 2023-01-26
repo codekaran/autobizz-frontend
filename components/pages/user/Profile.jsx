@@ -2,14 +2,14 @@ import styles from "./Profile.module.scss";
 import { useContext, useEffect, useState } from "react";
 import { getSession } from "../../globals/funtions/helper";
 import { useRouter } from "next/router";
-import UserData from "./UserData";
 import UserAds from "./UserAds";
+import ProfileDetails from "../../globals/profileDetails/ProfileDetails";
 
 const Profile = () => {
   // variables
   // state for the right seciton
-  const menuArr = [<UserData></UserData>,<UserAds></UserAds>];
-  const [rightPart, setRightPart] = useState(<UserData></UserData>);
+  const menuArr = [<ProfileDetails/>,<UserAds></UserAds>];
+  const [rightPart, setRightPart] = useState(<ProfileDetails/>);
   // state for highlighting active block
   const [activeNav, setActiveNav] = useState("personal");
   const router = useRouter();
@@ -19,7 +19,7 @@ const Profile = () => {
     if (data == "ad") {
       setRightPart(<UserAds></UserAds>);
     } else if (data == "personal") {
-      setRightPart(<UserData></UserData>);
+      setRightPart(<ProfileDetails/>);
     }
     setActiveNav(data);
   };
@@ -32,7 +32,7 @@ const Profile = () => {
           className={styles.navPersonalDetails}
           id={activeNav == "personal" ? styles.active : ""}
         >
-          Personal details
+          Account details
         </div>
         <div
           id={activeNav == "ad" ? styles.active : ""}
