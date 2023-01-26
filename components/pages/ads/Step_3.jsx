@@ -2,13 +2,12 @@ import React from "react";
 import { TailSpin } from "react-loader-spinner";
 import styles from "./Steps.module.scss";
 import Button from "../../globals/button/Button";
-import axios from "axios";
-import AdContext from "../../../context/ad-context";
+import axios from "/axios/index.js";
+import AdContext from "../../../context/Ad/AdContext";
 import AuthContext from "../../../context/Auth/AuthContext";
 import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-import {server} from '../../../variables/server';
 import { FaCarAlt } from "react-icons/fa";
 import setAuthToken from "../../../utils/setAuthToken";
 import AlertContext from "../../../context/Alert/AlertContext";
@@ -49,9 +48,7 @@ const Step_3 = () => {
   };
 
   const createFormData = () => {
-    console.log("creating form data");
-    let finalData = { ...ctx.data, ...data };
-    console.log(finalData);
+    let finalData = { ...ctx.adFormData, ...data };
     let fd = new FormData();
     for (let key in finalData) {
       if (key === "file") {
@@ -70,14 +67,12 @@ const Step_3 = () => {
   };
 
   const handleSubmit = async () => {
-    // if(isFormValid)
-    setIsAdUploading(true);
-    let formData = createFormData();
-    //setAuthToken();
-    console.log(...formData);
+   setIsAdUploading(true);
+   let formData = createFormData();
+   
     try {
       let result = await axios.post(
-        `http://localhost:8000/seller-api/ads/ads`,
+        `/seller-api/ads/ads`,
         formData,
         {
           auth: {

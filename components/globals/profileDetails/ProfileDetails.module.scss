@@ -1,0 +1,47 @@
+@import '../../../styles/colors';
+.container{
+    height: 100%;
+    padding: 20px;
+    background-color: $grey-background;
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.3);
+    .main{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:10px;
+        padding: 10px;
+        width: 100%;
+        height: 100%;
+        .heading{
+            width: 700px;
+            display: flex;
+            h2{
+                color:$primary-button-background;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px){
+    .container{
+        padding: 20px 10px;
+        background-color: $grey-background;
+        width: 100vw;
+        .main{
+            display: flex;
+            flex-direction: column;
+            gap:10px;
+            padding: 10px 0px;
+            width: 100%;
+            height: 100%;
+            .heading{
+                width: 100%;
+                display: flex;
+                h2{
+                    color:$primary-button-background;
+            }
+        }
+    }
+}
+}

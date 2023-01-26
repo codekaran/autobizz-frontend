@@ -7,6 +7,7 @@ import {useEffect} from 'react'
 import AlertState from "../../context/Alert/AlertState";
 import Alerts from "../globals/Alerts/Alerts";
 import AdState from "../../context/Ad/AdState";
+import ProfilePageState from "../../context/ProfilePage/ProfilePageState";
 
 
 const Layout = ({ children }) => {
@@ -16,18 +17,18 @@ const Layout = ({ children }) => {
   
   return (
     <div className={styles.layout}>
-      
       <AuthState>
       <AlertState>
       <AdState>
+        <ProfilePageState>
         <Header></Header>
         <Alerts/>
         {children}
         <Footer></Footer>
+        </ProfilePageState>
       </AdState>
       </AlertState>
       </AuthState>
-      
     </div>
   );
 };

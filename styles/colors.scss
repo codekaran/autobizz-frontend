@@ -1,11 +1,18 @@
 $white:#fff;
 $black:#000;
-$primary-bg:#1a374d;
+$primary-bg:#fdfdfd;
+$secondary-bg:#122736;
 $grey-placeholder:#c4c4c4;
+$grey-background:rgba(177, 208, 224, 0.1);
 
 //button
 $primary-button-background:#122736;
-$primary-button-focus:#406882;
-$light-button-background:#fff;
-$light-button-focus:#f1f1f1;
+$primary-button-focus:#003e6b;
+$light-button-background:#fdfdfd;
+$light-button-focus:#D7EAFE;
 $danger-button-text:#990000;
+
+//Text colors
+$primary-text:#122736;
+$secondary-text:#122736;
+$light-text:#fdfdfd;

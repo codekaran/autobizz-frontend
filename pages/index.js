@@ -2,7 +2,7 @@ import Head from "next/head";
 import Header from "../components/globals/header/Header";
 import HomePage from "../components/pages/home/HomePage";
 import Footer from "../components/globals/footer/Footer";
-import axios from "axios";
+import axios from "/axios/index.js";
 import { getCars } from "./apiCalls";
 
 const Home = (props) => {

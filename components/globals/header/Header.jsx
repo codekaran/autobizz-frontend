@@ -41,13 +41,13 @@ const Header = () => {
 
   return (
     <div className={styles.header}>
+      <Link href='/'>
       <div className={styles.company_logo} >
         <div>
-          <Link href='/'>
             <p>Home</p>
-          </Link>
         </div>
       </div>
+      </Link>
       {/* burger for mobile view */}
       <div
         onClick={handleBurgerClick}
@@ -56,6 +56,7 @@ const Header = () => {
       >
         <div
           style={{
+            backgroundColor:`${isBurgerMenuClicked? 'white':'black'}`,
             transform: `${
               isBurgerMenuClicked ? "rotate(45deg) translateY(12px)" : ""
             }`,
@@ -63,11 +64,14 @@ const Header = () => {
           className={styles.big_line}
         ></div>
         <div
-          style={{ opacity: `${isBurgerMenuClicked ? 0 : 1}` }}
+          style={{ 
+            backgroundColor:`${isBurgerMenuClicked? 'white':'black'}`,
+            opacity: `${isBurgerMenuClicked ? 0 : 1}` }}
           className={styles.small_line}
         ></div>
         <div
           style={{
+            backgroundColor:`${isBurgerMenuClicked? 'white':'black'}`,
             transform: `${
               isBurgerMenuClicked ? "rotate(-45deg) translateY(-12px)" : ""
             }`,
@@ -98,10 +102,8 @@ const Header = () => {
         <div className={styles.container}>
           {ctx.isAuthenticated && ctx.user!==null ? (
             <div>
-            <Link href="/user">
-              <Button padding='10px 20px'>Hi! &nbsp; <span className={styles.name}>{ctx.user.sellerType==='Owner' ? ctx.user.firstName : ctx.user.companyName}</span></Button>
-            </Link>
-            <Button onClick={()=>{ctx.logout(); createAlert('Logged out successfully!','S');handleBurgerClick();}} padding='10px 20px' backgroundColor={colors.red} icon={<BiLogOutCircle/>}>Logout</Button>
+            <Button padding='10px 20px' onClick={()=>{handleBurgerClick();router.push('/user')}}>Profile</Button>
+            <Button onClick={()=>{ctx.logout(); createAlert('Logged out successfully!','S');handleBurgerClick();}} padding='10px 20px' backgroundColor={colors.red} color='#F5F7FA' icon={<BiLogOutCircle/>}>Logout</Button>
             </div>
             ) :
              (

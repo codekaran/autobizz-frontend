@@ -4,20 +4,20 @@ import HeroSection from "./HeroSection";
 import TestimonialSection from "./TestimonialSection";
 import styles from "./HomePage.module.scss";
 import SearchBar from "../../globals/search/SearchBar";
+import BuyFromUs from "../../globals/buyFromUs/BuyFromUs";
 
 const HomePage = (props) => {
   console.log(props.carsArray);
   return (
     <div className={styles.home}>
-      <SearchBar/>
+      {/* <SearchBar/> */}
       <HeroSection text="Sell and Buy Cars Hasslefree!"/>
+      <SearchBar/>
       <div className={styles.home}>
         <Carousel cars={props.carsArray} title="Featured cars" />
+        <BuyFromUs/>
         <TestimonialSection />
-        <Carousel cars={props.carsArray} title="Featured cars" />
         <GoogleAd />
-        <Carousel cars={props.carsArray} title="Featured cars" />
-        <Carousel cars={props.carsArray} title="Featured cars" />
       </div>
     </div>
   );

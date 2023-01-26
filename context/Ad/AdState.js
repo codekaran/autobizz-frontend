@@ -1,28 +1,40 @@
 import React, { useReducer } from "react";
 import AdContext from "./AdContext";
 import AdReducer from "./AdReducer";
-// import { v1 as uuid } from "uuid";
+import { v1 as uuid } from "uuid";
 import axios from "axios";
 import { server } from "../../variables/server";
 import { GET_USERADS_SUCCESS, GET_USERADS_FALIURE } from "../types";
 
 const AdState = (props) => {
-  const initialState = { userAds: [], loadingUserAds: true, error: null };
+  const initialState = {
+    userAds: [],
+    loadingUserAds: true,
+    adFormData: {
+      make: "",
+      model: "",
+      firstRegistration: "",
+      power: 0,
+      mileage: 0,
+      fuel: "",
+      gearbox: "",
+      step1Completed: false,
+      step2Completed: false,
+    },
+    error: null,
+  };
 
   const [state, dispatch] = useReducer(AdReducer, initialState);
 
   //Get ads of logged in user
-  const getUserAds = async (token) => {
+  const getUserAds = async () => {
     try {
-      const response = await axios.get(
-        `http://localhost:8000/seller-api/ads/userAds/`,
-        {
-          auth: {
-            username: "karan",
-            password: 123,
-          },
-        }
-      );
+      const response = await axios.get(`/seller-api/ads/userAds`, {
+        auth: {
+          username: "karan",
+          password: 123,
+        },
+      });
       response = response.data;
       let imagesWithLoadStatus = [];
       for (let ad of response) {
@@ -42,6 +54,11 @@ const AdState = (props) => {
       });
     }
   };
+  //Set ad form data
+  const setAdForm = (value) => {
+    dispatch({ type: SET_AD_FORM_DATA, payload: value });
+  };
+  //Post ad
 
   return (
     <AdContext.Provider
@@ -49,6 +66,8 @@ const AdState = (props) => {
         userAds: state.userAds,
         loadingUserAds: state.loadingUserAds,
         error: state.error,
+        adFormData: state.adFormData,
+        setAdForm,
         getUserAds,
       }}
     >
