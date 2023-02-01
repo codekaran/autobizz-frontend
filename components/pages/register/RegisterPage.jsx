@@ -185,7 +185,7 @@ const RegisterPage = (props) => {
           <div onClick={handleRemember}></div>
           <p>Keep me remembered</p>
         </div> */}
-        <Button padding='10px 20px' margin='10px 0px 0px 0px' onClick={handleSubmit} icon={<FaSign/>}>Register</Button>
+        <Button margin='10px 0px 0px 0px' onClick={handleSubmit} icon={<FaSign/>}>Register</Button>
       </form>
       {/* <p className={styles.or}>Or join with</p>
       <div className={styles.container}>

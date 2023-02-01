@@ -1,9 +1,10 @@
-import React from 'react'
-import styles from './Input.module.scss';
+import React, { useState,useEffect } from 'react'
+import {input} from './Input.module.scss';
 
-const Input = ({placeholder,value,type,style}) => {
+const Input = (props) => {
+
   return (
-        <input style={style} type={type} className={styles.input} placeholder={placeholder} value={value}/>
+        <input className={input} {...props}/>
   )
 }
 

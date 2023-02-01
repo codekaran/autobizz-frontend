@@ -9,6 +9,8 @@ import Button from '../button/Button'
 import colors from '../../../variables/colors';
 import loadCustomRoutes from "next/dist/lib/load-custom-routes";
 import {BiLogInCircle, BiLogOutCircle} from 'react-icons/bi'
+import {CgProfile} from 'react-icons/cg';
+
 const Header = () => {
   const ctx  = useContext(AuthContext);
   const {createAlert} = useContext(AlertContext);
@@ -24,7 +26,7 @@ const Header = () => {
   
   // function to handle the resize of the window.
   const handleResize = () => {
-    if (window.innerWidth > 700) {
+    if (window.innerWidth > 768) {
       setIsBurgerMenuClicked(true);
       setMobileView(false);
     } else {
@@ -102,13 +104,13 @@ const Header = () => {
         <div className={styles.container}>
           {ctx.isAuthenticated && ctx.user!==null ? (
             <div>
-            <Button padding='10px 20px' onClick={()=>{handleBurgerClick();router.push('/user')}}>Profile</Button>
-            <Button onClick={()=>{ctx.logout(); createAlert('Logged out successfully!','S');handleBurgerClick();}} padding='10px 20px' backgroundColor={colors.red} color='#F5F7FA' icon={<BiLogOutCircle/>}>Logout</Button>
+            <Button padding='10px 20px' onClick={()=>{handleBurgerClick();router.push('/user')}} theme={mobileView && 'light'} icon={<CgProfile/>}>Profile</Button>
+            <Button onClick={()=>{ctx.logout(); createAlert('Logged out successfully!','S');handleBurgerClick();}} theme='danger' padding='10px 20px' icon={<BiLogOutCircle/>}>Logout</Button>
             </div>
             ) :
              (
             <Link href="/login" passHref>
-              <Button padding='10px 20px' onClick={handleBurgerClick} icon={<BiLogInCircle/>}>Login/Register</Button>
+              <Button padding='10px 20px' onClick={handleBurgerClick} icon={<BiLogInCircle/>} theme={mobileView && 'light'}>Login/Register</Button>
             </Link>
           )}
         </div>

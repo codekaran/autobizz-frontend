@@ -1,16 +1,24 @@
 $white:#fff;
 $black:#000;
-$primary-bg:#fdfdfd;
+$primary-bg:#E8F1F6;
 $secondary-bg:#122736;
 $grey-placeholder:#c4c4c4;
-$grey-background:rgba(177, 208, 224, 0.1);
+
+$selected-bg: #c0d8e9;
+$unselected-bg:#E8F1F6;
+
+$unselected:#848484;
+$selected: #122736;
+
+$grey-background:rgba(198, 225, 238, 0.1);
 
 //button
 $primary-button-background:#122736;
 $primary-button-focus:#003e6b;
 $light-button-background:#fdfdfd;
-$light-button-focus:#D7EAFE;
-$danger-button-text:#990000;
+$light-button-focus:#c0d8e9;
+$danger-button-bg:rgb(204, 51, 0);
+$danger-button-hover-bg:#990000;
 
 //Text colors
 $primary-text:#122736;

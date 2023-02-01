@@ -3,10 +3,10 @@
     .input{
         padding: 10px;
         border-radius: 0.5rem;
-        border: 1px solid $secondary-bg;
-        width: 100%;
+        border: 2px solid $selected-bg;
+        // max-width: 450px;
         &:focus{
-            border: 1px solid $primary-bg;
+            border: 2px solid $selected;
             outline: none;
         }
     }
@@ -18,3 +18,54 @@
     .input[type=number]{
         -moz-appearance: textfield;
     }
+
+    /* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 481px) {
+    .input{
+        font-size: 12px;
+    }
+}
+
+/* Tablets----------- */
+@media only screen 
+and (min-device-width : 481px)
+and (max-device-width : 769px) {
+    .input{
+        font-size: 14px;
+    }
+}
+
+/* Small laptops ----------- */
+@media only screen 
+and (min-device-width : 769px) 
+and (max-device-width : 1025px) {
+    .input{
+        font-size: 16px;
+    }
+}
+
+/* Large Desktops and laptops ----------- */
+@media only screen 
+and (min-device-width : 1025px) {
+    .input{
+        font-size: 16px;
+    }
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-device-width : 1441px) {
+    .input{
+        font-size: 16px;
+    }
+}
+
+/* 4k Large screens ----------- */
+@media only screen 
+and (min-device-width : 1921px) {
+    .input{
+        font-size: 20px;
+    }
+}

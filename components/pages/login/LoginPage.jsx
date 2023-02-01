@@ -92,7 +92,7 @@ const LoginPage = (props) => {
           <div></div>
           <p>Keep me remembered</p>
         </div>
-        <Button theme='light' padding='10px 20px' margin='10px 0px 20px 0px' onClick={handleSubmit} icon={<BiLogInCircle/>}>Log In</Button>
+        <Button theme='light' margin='10px 0px 20px 0px' onClick={handleSubmit} icon={<BiLogInCircle/>}>Log In</Button>
       </form>
 
       <p className={styles.forgot}>

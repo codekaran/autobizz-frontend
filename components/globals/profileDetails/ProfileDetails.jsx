@@ -25,7 +25,7 @@ const ProfileDetails = (props) => {
     </div> 
     :
     <div className={main}>    
-    <div className={heading}><h2>Your account details and settings</h2></div>
+    {/* <div className={heading}><h2>Your account details and settings</h2></div> */}
         <ProfilePhoto completed={false}/>
         <LoginData/>
         <ContactData/>

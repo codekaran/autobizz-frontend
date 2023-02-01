@@ -5,66 +5,51 @@
     color: $primary-button-background;
     width: 100%;
     max-width: 700px;
+    
     .main{
-        border: 1px solid $primary-button-focus;
-
+        border: 1px solid $selected-bg;
+        border-bottom: none;
         margin-top: 10px;
+        overflow: hidden;
         border-radius:0.5rem ;
         display: flex;
         flex-direction: column;
-        background: white;
+        background: $white;
         .section{
             display: flex;
             flex-direction: column;
             align-items: center;
-            border-bottom: 1px solid $primary-button-focus;
+            justify-content: center;
+            border-bottom: 1px solid $selected-bg;
             padding: 10px;
             .subsection{
-                h4{
-                    margin-bottom: 4px;
-                }
-                margin-right: auto;
-                p{
-                    color: $primary-button-focus;
+                
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                .details{
+                    overflow: hidden;
+                    h4{
+                        margin-bottom: 4px;
+                    }
+                    margin-right: auto;
+                    p{
+                        color: $primary-button-focus;
+                        overflow-wrap: break-word;
+                    }
                 }
             }
-            &:last-child{
-                border: none;
+            .modal{
+                width: 100%;
             }
-        }
-        
+        } 
     }
 }
 
 @media (max-width: 768px){
     .container{
-        padding: 5px;
-        color: $primary-button-background;
-        .main{
-            border: 1px solid $primary-button-focus;
-            margin-top: 10px;
-            border-radius:0.5rem ;
-            display: flex;
-            flex-direction: column;
-            background: white;
-            .section{
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-                border-bottom: 1px solid $primary-button-focus;
-                padding: 10px;
-                .subsection{
-                    margin-right: auto;
-                    p{
-                        color: $primary-button-focus;
-                    }
-                }
-                &:last-child{
-                    border: none;
-                }
-            }
-            
-        }
+        padding: 5px;            
     }
 }

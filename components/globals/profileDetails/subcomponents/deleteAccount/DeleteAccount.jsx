@@ -4,10 +4,12 @@ import Image from "next/image";
 import Button from '../../../button/Button';
 import AuthContext from '../../../../../context/Auth/AuthContext';
 import { useContext } from "react";
-import colors from "../../../../../variables/colors";
+import {BiTrash} from 'react-icons/bi';
+import ProfilePageContext from "../../../../../context/ProfilePage/ProfilePageContext";
 
 const DeleteAccount = (props) => {
   const {user} = useContext(AuthContext);
+  const {editing} = useContext(ProfilePageContext)
   const createdAt = new Date(user.createdAt);
   const monthName = ['January','February','March','April','May','June','July','August','September','October','November','December']
   return (
@@ -23,7 +25,7 @@ const DeleteAccount = (props) => {
                     <p>Member since {monthName[createdAt.getUTCMonth()]+' '+createdAt.getUTCFullYear()}</p>
                 </div>
             </div>
-            <Button backgroundColor={colors.red}>Delete Account</Button>
+            <Button theme='danger' disabled={editing} icon={<BiTrash/>}>Delete Account</Button>
         </div>
     </div>
   );

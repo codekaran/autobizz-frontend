@@ -18,7 +18,7 @@
 .alertVisible{
     @include alertCommon();
     transition: all 0.3s ease-in-out;
-    transform: translateY(200%);
+    transform: translateY(250%);
 }
 
 .alertHidden{

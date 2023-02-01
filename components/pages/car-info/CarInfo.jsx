@@ -167,7 +167,7 @@ const CarInfo = (props) => {
                   tristique tortor commodo eget.
                 </li>
                 <Link href="/ads/create/step-1" passHref>
-                  <Button padding='10px 20px' margin='10px 0px 0px 0px'>
+                  <Button margin='10px 0px 0px 0px'>
                     Sell Car &nbsp;&nbsp;
                     <FiArrowRight />
                   </Button>

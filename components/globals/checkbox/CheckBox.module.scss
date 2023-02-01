@@ -1,0 +1,91 @@
+@import '../../../styles/colors';
+@import '../../../styles/fontsize';
+.checkbox{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+.check{
+  margin-right: 5px;
+  width: 22px;
+  height:22px;
+  background-color: black;
+  accent-color: $primary-bg;
+  cursor: pointer;
+}
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 481px) {
+    .checkbox{
+        font-size: $normal-mobile;
+
+      .check{
+        width: $normal-mobile;
+        height:$normal-mobile;
+      }
+    }
+}
+
+/* Tablets----------- */
+@media only screen 
+and (min-device-width : 481px)
+and (max-device-width : 769px) {
+    .checkbox{
+        font-size: $normal-pad;
+        .check{
+          width: $normal-pad;
+          height:$normal-pad;
+        }
+    }
+}
+
+/* Small laptops ----------- */
+@media only screen 
+and (min-device-width : 769px) 
+and (max-device-width : 1025px) {
+    .checkbox{
+        font-size: $normal-pc;
+        .check{
+          width: $normal-pc;
+          height:$normal-pc;
+        }
+    }
+}
+
+/* Large Desktops and laptops ----------- */
+@media only screen 
+and (min-device-width : 1025px) {
+    .checkbox{
+        font-size: $normal-pc;
+        .check{
+          width: $normal-pc;
+          height:$normal-pc;
+        }
+    }
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-device-width : 1441px) {
+    .checkbox{
+        font-size: $normal-pc;
+        .check{
+          width: $normal-pc;
+          height:$normal-pc;
+        }
+    }
+}
+
+/* 4k Large screens ----------- */
+@media only screen 
+and (min-device-width : 1921px) {
+    .checkbox{
+        font-size: $normal-large;
+        .check{
+          width: $normal-large;
+          height:$normal-large;
+        }
+    }
+}

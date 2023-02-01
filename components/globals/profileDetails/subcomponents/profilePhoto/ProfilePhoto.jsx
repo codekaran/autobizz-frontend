@@ -1,11 +1,12 @@
 import {container,main,img,section,subsection} from "./ProfilePhoto.module.scss";
 import profilePicDefault from '../../../../../public/profilePhoto.jpg';
 import Image from "next/image";
+import ProfilePageContext from '../../../../../context/ProfilePage/ProfilePageContext';
 import Button from '../../../button/Button';
-import colors from '../../../../../variables/colors';
-
+import { BiEdit } from "react-icons/bi";
+import { useContext } from "react";
 const ProfilePhoto = (props) => {
-
+  const {editing} = useContext(ProfilePageContext);
   return (
     <div className={container}>
         <h3>Profile Photo</h3>
@@ -20,8 +21,8 @@ const ProfilePhoto = (props) => {
                 </div>
             </div>
             {props.completed ? 
-            <Button theme='light'>Change</Button> :
-            <Button backgroundColor={colors.yellow}>Complete</Button>  
+            <Button theme='light' disabled={editing} icon={<BiEdit/>}>Edit</Button> :
+            <Button disabled={editing}>Complete</Button>  
         }
         </div>
     </div>

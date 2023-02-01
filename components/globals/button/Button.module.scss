@@ -1,22 +1,28 @@
 @import '../../../styles/colors';
+@import '../../../styles/fontsize';
+
 @mixin btn{
     display: flex;
     flex-direction: row;
     justify-content:center;
     align-items: center;
-    padding: 10px;
+    padding: 5px 20px;
     border-radius: 0.5rem;
     min-width: 60px;
     height: fit-content;
     outline: none;
     font-style: normal;
-    font-size: 18px;
     transition: all 0.2s;
+    &:hover{
+        -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+           -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+                box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    }
     .icon{
         display: flex;
         justify-content: center;
         align-items: center;
-        font-size: 18px;
+        
         margin-left: 10px;
     }
 }
@@ -45,8 +51,77 @@
     }
 }
 
-@media (max-width: 760px){
-    .btn_primary,.btn_light {
-    font-size: 16px;
+.btn_disabled{
+    @include btn;
+    background: $light-button-background;
+    border: 1px solid $unselected;
+    color: $unselected;
+    &:hover,
+    &:active{
+        cursor: pointer;
+        background-color: $light-button-background;
+    }
+}
+
+.btn_danger{
+    @include btn;
+    background: $danger-button-bg;
+    border: none;
+    color: $white;
+    &:hover,
+    &:active{
+        cursor: pointer;
+        background-color: $danger-button-hover-bg;
+    }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 481px) {
+    .btn_light,.btn_primary,.btn_disabled,.btn_danger{
+        font-size: $normal-mobile;
+    }
+}
+
+/* Tablets----------- */
+@media only screen 
+and (min-device-width : 481px)
+and (max-device-width : 769px) {
+    .btn_light,.btn_primary,.btn_disabled,.btn_danger{
+        font-size: $normal-pad;
+    }
+}
+
+/* Small laptops ----------- */
+@media only screen 
+and (min-device-width : 769px) 
+and (max-device-width : 1025px) {
+    .btn_light,.btn_primary,.btn_disabled,.btn_danger{
+        font-size: $normal-pc;
+    }
+}
+
+/* Large Desktops and laptops ----------- */
+@media only screen 
+and (min-device-width : 1025px) {
+    .btn_light,.btn_primary,.btn_disabled,.btn_danger{
+        font-size: $normal-pc;
+    }
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-device-width : 1441px) {
+    .btn_light,.btn_primary,.btn_disabled,.btn_danger{
+        font-size: $normal-pc;
+    }
+}
+
+/* 4k Large screens ----------- */
+@media only screen 
+and (min-device-width : 1921px) {
+    .btn_light,.btn_primary,.btn_disabled,.btn_danger{
+        font-size: $normal-large;
     }
 }

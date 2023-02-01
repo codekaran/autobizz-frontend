@@ -1,0 +1,74 @@
+@import '../../../styles/fontsize';
+
+.loader {
+    display: inline-block;
+    border: 3px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    -webkit-animation: spin 1s ease-in-out infinite;
+  }
+  
+  @keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
+  @-webkit-keyframes spin {
+    to { -webkit-transform: rotate(360deg); }
+  }
+  
+  /* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 481px) {
+    .loader{
+        width: $normal-mobile;
+        height: $normal-mobile;
+    }
+}
+
+/* Tablets----------- */
+@media only screen 
+and (min-device-width : 481px)
+and (max-device-width : 769px) {
+    .loader{
+        width: $normal-pad;
+        height: $normal-pad;
+    }
+}
+
+/* Small laptops ----------- */
+@media only screen 
+and (min-device-width : 769px) 
+and (max-device-width : 1025px) {
+    .loader{
+        width: $normal-pc;
+        height: $normal-pc;
+    }
+}
+
+/* Large Desktops and laptops ----------- */
+@media only screen 
+and (min-device-width : 1025px) {
+    .loader{
+        width: $normal-pc;
+        height: $normal-pc;
+    }
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-device-width : 1441px) {
+    .loader{
+        width: $normal-pc;
+        height: $normal-pc;
+    }
+}
+
+/* 4k Large screens ----------- */
+@media only screen 
+and (min-device-width : 1921px) {
+    .loader{
+        width: $normal-large;
+        height: $normal-large;
+    }
+}

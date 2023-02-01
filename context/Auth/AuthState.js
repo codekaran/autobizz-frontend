@@ -108,7 +108,6 @@ const AuthState = (props) => {
           password: 123,
         },
       });
-      console.log(res);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: res.data.token,
@@ -139,6 +138,7 @@ const AuthState = (props) => {
   const setRegisterForm = (formData) => {
     dispatch({ type: REGISTER_FORM_UPDATE, payload: formData });
   };
+
   return (
     <AuthContext.Provider
       value={{
