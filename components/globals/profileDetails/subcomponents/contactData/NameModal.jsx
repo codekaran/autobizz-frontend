@@ -10,13 +10,15 @@ import CheckBox from "../../../../globals/checkbox/CheckBox";
 import AlertContext from "../../../../../context/Alert/AlertContext";
 import Loader from '../../../skeletons/loader';
 import ButtonLoader from "../../../ButtonLoader/ButtonLoader";
+import { companyNameModalSchema, customerNameModalSchema } from "../../../../../utils/validations/validation";
 
 const NameModal = ({open}) => {
+//Contexts//-----------------------------------------------------------------------------------------------------------------//  
   const {user,loadUser} = useContext(AuthContext);
   const {hideEditing,updateDetails,loading} =  useContext(ProfilePageContext);
   const {createAlert} = useContext(AlertContext);
 
-  // Form data is an object which stores email and password of the user from the input fields
+// Form data is an object which stores email and password of the user from the input fields//---------------------------------//
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -24,27 +26,44 @@ const NameModal = ({open}) => {
   });
   const { firstName, lastName, companyName} = formData;
 
-  // This function updates the formData object
+//---------------------------------------------------------------------------------------------------------------------------//
   const handleChange = (field) => (event) => {
     setFormData({ ...formData, [field]: event.target.value });
   };
-
+//Validation//----------------------------------------------------------------------------------------------------------------//
   const handleSubmit =async (event) => {
     event.preventDefault();
-    if(user.sellerType === 'Owner' && firstName===""){ createAlert("Please fill First Name",'W'); return;}
-    if(user.sellerType === 'Dealer' && companyName===""){ createAlert("Please fill Company Name",'W'); return;}
-    if(await updateDetails(formData)){
-    createAlert("Successfully updated Name");
-    setFormData({
-      firstName: "",
-      lastName: "",
-      companyName:"",
-    })
-    hideEditing();
-    loadUser();
+    
+    if(user.sellerType==='Owner'){
+      customerNameModalSchema.validate(formData).
+      then(async (values)=>{
+        if(await updateDetails(values)){
+          createAlert("Successfully updated Name");
+          setFormData({
+            firstName: "",
+            lastName: "",
+            companyName:"",
+          })
+          hideEditing();
+          loadUser();
+          }
+      }).catch(err=> createAlert(err.message , 'W'));}
+      else{
+      companyNameModalSchema.validate(formData).
+      then(async (values)=>{
+        if(await updateDetails(values)){
+          createAlert("Successfully updated Name");
+          setFormData({
+            firstName: "",
+            lastName: "",
+            companyName:"",
+          })
+          hideEditing();
+          loadUser();
+          }
+      }).catch(err=> createAlert(err.message , 'W'));}
   }
-  };
-
+//----------------------------------------------------------------------------------------------------------------------------//
   const handleCancel = (event)=>{
     event.preventDefault();
     hideEditing();
@@ -54,7 +73,7 @@ const NameModal = ({open}) => {
       companyName:"",
     })
   }
-
+//----------------------------------------------------------------------------------------------------------------------------//
   return (
    <div className={container}>
     <div className={open ? containerOpen : containerClosed}>

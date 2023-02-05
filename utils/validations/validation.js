@@ -9,13 +9,17 @@ export const phoneNumberModalSchema = Yup.object().shape({
 
 //----------------------------------------------NameModal.jsx---------------------------------------------------//
 export const customerNameModalSchema = Yup.object().shape({
-  firstName: Yup.string().required().max(15),
-  lastName: Yup.string().max(15),
+  firstName: Yup.string()
+    .required("Please enter first name")
+    .max(15, "Name cant be greater than 15 characters"),
+  lastName: Yup.string().max(15, "Name cant be greater than 15 characters"),
 });
 
 //----------------------------------------------NameModal.jsx---------------------------------------------------//
 export const companyNameModalSchema = Yup.object().shape({
-  companyName: Yup.string().required().max(15),
+  companyName: Yup.string()
+    .required("Please enter company name")
+    .max(15, "Name cant be greater than 15 characters"),
 });
 
 //----------------------------------------------AddressModal.jsx---------------------------------------------------//
@@ -25,4 +29,12 @@ export const AddressModalSchema = Yup.object().shape({
     .required()
     .matches(/^\d{4}$/),
   country: Yup.string().required(),
+});
+
+//-----------------------------------------------EmailModal.jsx---------------------------------------------------//
+export const EmailModalSchema = Yup.object().shape({
+  email: Yup.string()
+    .required("Please enter all fields")
+    .email("Please enter a valid email"),
+  currentPassword: Yup.string().required("Please enter all fields"),
 });

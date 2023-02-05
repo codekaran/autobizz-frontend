@@ -9,47 +9,50 @@ import { useState } from "react";
 import ButtonLoader from '../../../ButtonLoader/ButtonLoader';
 import AlertContext from "../../../../../context/Alert/AlertContext";
 import AuthContext from "../../../../../context/Auth/AuthContext";
+import { EmailModalSchema } from "../../../../../utils/validations/validation";
 
 
 const EmailModal = ({open}) => {
-//contexts
+//contexts//------------------------------------------------------------------------------------------------------//
   const {createAlert} = useContext(AlertContext);
   const {loadUser} = useContext(AuthContext);
   const {hideEditing,error,loading,updateDetails} =  useContext(ProfilePageContext);
-//useeffect to check for errors
+//useeffect to check for errors//-----------------------------------------------------------------------------------//
   useEffect(() => {
   if(error==='Invalid Credentials' || error ==='Unauthorized request'){
     createAlert('Please use correct password','E');
   }
 }, [error])
 
-// Form data is an object which stores email and password of the user from the input fields
+// Form data is an object which stores email and password of the user from the input fields//-----------------------//
 const [formData, setFormData] = useState({
   email: "",
   currentPassword: ""
 });
 const { email, currentPassword} = formData;
 
-// This function updates the formData object
+//---------------------------------------------------------------------------------------------------------------------//
 const handleChange = (field) => (event) => {
   setFormData({ ...formData, [field]: event.target.value });
 };
-
+//Validations//---------------------------------------------------------------------------------------------------------//
 const handleSubmit =async (event) => {
   event.preventDefault();
-  // if(email===""){ createAlert("Please fill Email",'W'); return;}
-  // if(currentPassword===""){ createAlert("Please fill Password",'W'); return;}
-  if(await updateDetails(formData)){
+ EmailModalSchema.validate(formData,{
+  abortEarly:true
+ }).
+ then(async (values)=>{
+  if(await updateDetails(values)){
   createAlert("Successfully updated Email");
   setFormData({
     email: "",
     currentPassword: ""
   })
   hideEditing();
-  loadUser();
-}
+  loadUser();}}
+).catch(err=> createAlert(err.message , 'W'));
 };
-
+//---------------------------------------------------------------------------------------------------------------------//
 const handleCancel = (event)=>{
   event.preventDefault();
   hideEditing();
@@ -58,12 +61,12 @@ const handleCancel = (event)=>{
     currentPassword: ""
   })
 }
-
+//---------------------------------------------------------------------------------------------------------------------//
   return (
    <div className={container}>
     <div className={open ? containerOpen : containerClosed}>
     <form onSubmit={handleSubmit}>
-      <Input placeholder={'New Email'} type='email' onChange={handleChange("email")} required value={email}></Input>
+      <Input placeholder={'New Email'} onChange={handleChange("email")} value={email}></Input>
       <Input placeholder={'Password'} type='password' onChange={handleChange("currentPassword")} value={currentPassword}></Input>
       <div className={btnGroup}>
     <Button theme='light' width='fit-content' onClick={(e)=>{handleCancel(e)}} icon={<BiX/>}>Cancel</Button>
