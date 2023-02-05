@@ -1,9 +1,9 @@
 import styles from "./Button.module.scss";
 import { colors } from "../../../variables/colors";
 
-const index = (props) => {
+const Button = (props) => {
   return (
-    <button style={{
+  <button style={{
       color:props.color,
       backgroundColor: props.backgroundColor,
       backgroundImage:props.backgroundImage,
@@ -20,10 +20,11 @@ const index = (props) => {
    className={props.disabled? styles.btn_disabled : (props.theme === 'light' ? styles.btn_light : props.theme === 'danger' ? styles.btn_danger : styles.btn_primary)} 
    onClick={props.onClick} 
    disabled={props.disabled} 
-   >
-      {props.children}{props.icon && <div className={styles.icon} style={{fontSize:props.fontSize}}>{props.icon}</div>}
-    </button>
+   type={props.type}
+  >
+    {props.children}{props.icon && <div className={styles.icon} style={{fontSize:props.fontSize}}>{props.icon}</div>}
+  </button>
   );
 };
 
-export default index;
+export default Button;

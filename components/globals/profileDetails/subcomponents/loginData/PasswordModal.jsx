@@ -55,6 +55,12 @@ setFormData({
   email: "",
   currentPassword: ""
 })
+
+const validateOnInput = ()=>{
+  // phoneNumberModalSchema.validate(formData,{
+  //   abortEarly:false
+  // }).then((values)=>console.log(values)).catch(err=> console.log(err.errors));
+}
 }
   return (
    <div className={container}>

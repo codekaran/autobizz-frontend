@@ -3,43 +3,43 @@ import Button from '../../../button/Button';
 import { useContext, useState } from "react";
 import ProfilePageContext from "../../../../../context/ProfilePage/ProfilePageContext";
 import Input from '../../../input/Input';
-import {BiCheckbox, BiLoader, BiSave,BiX} from 'react-icons/bi';
-import colors from "../../../../../variables/colors";
+import { BiSave,BiX} from 'react-icons/bi';
 import AuthContext from "../../../../../context/Auth/AuthContext";
 import CheckBox from "../../../../globals/checkbox/CheckBox";
 import AlertContext from "../../../../../context/Alert/AlertContext";
-import Loader from '../../../skeletons/loader';
 import ButtonLoader from "../../../ButtonLoader/ButtonLoader";
+import { phoneNumberModalSchema } from "../../../../../utils/validations/validation";
 
 const PhoneNumberModal = ({open}) => {
+//Contexts//-----------------------------------------------------------------------------//
   const {user,loadUser} = useContext(AuthContext);
   const {hideEditing,updateDetails,loading} =  useContext(ProfilePageContext);
   const {createAlert} = useContext(AlertContext);
-
-  // Form data is an object which stores email and password of the user from the input fields
+//-Form data is an object which stores email and password of the user from the input fields-//
   const [formData, setFormData] = useState({
     mobile: "",
   });
   const {mobile} = formData;
-
-  // This function updates the formData object
+//------------------------------------------------------------------------------------------//
   const handleChange = (field) => (event) => {
     setFormData({ ...formData, [field]: event.target.value });
   };
-
+//------------------------------------------------------------------------------------------//
   const handleSubmit =async (event) => {
     event.preventDefault();
-    if(mobile===""){ createAlert("Please fill valid Mobile number",'W'); return;}
-    if(await updateDetails(formData)){
-    createAlert("Successfully updated mobile number");
-    setFormData({
-      mobile:''
-    })
-    hideEditing();
-    loadUser();
-  }
-  };
-
+//validation & submission//-----------------------------------------------------------------//
+    phoneNumberModalSchema.validate(formData).
+    then(async (values)=>{
+      if(await updateDetails(values)){
+        createAlert("Successfully updated mobile number");
+        setFormData({
+          mobile:''
+        })
+        hideEditing();
+        loadUser();
+        }
+    }).catch(err=> createAlert(err.message , 'W'));}
+//------------------------------------------------------------------------------------------//
   const handleCancel = (event)=>{
     event.preventDefault();
     hideEditing();
@@ -47,7 +47,7 @@ const PhoneNumberModal = ({open}) => {
       mobile:''
     })
   }
-
+//------------------------------------------------------------------------------------------//
   return (
    <div className={container}>
     <div className={open ? containerOpen : containerClosed}>
@@ -64,6 +64,5 @@ const PhoneNumberModal = ({open}) => {
     </div>
    </div>
   );
-};
-
+  }
 export default PhoneNumberModal;
