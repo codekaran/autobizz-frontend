@@ -45,6 +45,7 @@ export const validateForm = (form, sellerType) => {
     country: true,
     zipCode: true,
     city: true,
+    countryCode: true,
   };
 
   // if the Owner is getting registered
@@ -118,6 +119,13 @@ export const validateForm = (form, sellerType) => {
       message: "Invalid City Name!",
     };
   }
-
+  if (!form.city.match(/^\w/)) {
+    validFieldsObj["countryCode"] = false;
+    return {
+      validFieldsObj,
+      isFormValid: false,
+      message: "Invalid country code name!",
+    };
+  }
   return { validFieldsObj, isFormValid: true, message: "no-error" };
 };

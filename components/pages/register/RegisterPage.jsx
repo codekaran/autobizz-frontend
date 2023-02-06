@@ -6,120 +6,62 @@ import { useRouter } from "next/router";
 import AuthContext from "../../../context/Auth/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import {
-  checkEmail,
-  checkPasswordStrength,
-} from "../../globals/funtions/FormValidate";
 import axios from "/axios/index.js";
 import { FaSign } from "react-icons/fa";
 import AlertContext from "../../../context/Alert/AlertContext";
+import { RegisterPageSchema } from "../../../utils/validations/validation";
 
-// const router = useRouter();
 const RegisterPage = (props) => {
+  //Contexts&
   const router = useRouter();
-  const {setRegisterForm,registerFormData} = useContext(AuthContext);
-  const {page1Filled} = registerFormData
-  const {createAlert} = useContext(AlertContext);
+  const { setRegisterForm, registerFormData } = useContext(AuthContext);
+  const { page1Filled } = registerFormData;
+  const { createAlert } = useContext(AlertContext);
   // Form data is an object which stores email and password of the user from the input fields
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     confirmPass: "",
-    error: false,
-    remember: false,
   });
-
-  const [formValid, setFormValid] = useState({
-    email: true,
-    emailExists: false,
-    password: true,
-    strongPassword: true,
-    confirmPass: true,
-  });
-
-  const [passVisible, setPassVisible] = useState(false);
-
-  const { email, password, confirmPass, error, remember } = formData;
-
-  useEffect(() => {
-  if(!page1Filled)router.push('/register')
-  }, [])
-  
-  
-
   // This function updates the formData object
   const handleChange = (field) => (event) => {
     setFormData({ ...formData, [field]: event.target.value });
-    console.log(field);
-    if (field === "email") {
-      console.log("setting exist");
-      setFormValid({ ...formValid, ["emailExists"]: false, ["email"]: true });
-    } else {
-      setFormValid({ ...formValid, [field]: true });
-    }
-
-    console.log(formValid);
   };
+  const [passVisible, setPassVisible] = useState(false);
+
+  const { email, password, confirmPass } = formData;
+
+  useEffect(() => {
+    if (!page1Filled) router.push("/register");
+  }, []);
+
   const handlePasswordToggle = () => {
     let temp = passVisible ? false : true;
     setPassVisible(temp);
   };
 
-  // const handleRemember = () => {
-  //   remember
-  //     ? setFormData({ ...formData, remember: false })
-  //     : setFormData({ ...formData, remember: true });
-  // };
-
-  const handleValidation = async () => {
-    if(email===''||password===''||confirmPass===''){
-      createAlert("Please fill out all fields",'W');
-      return;
-    }
-    let res = await axios.get(
-      // localhost
-      `/seller-api/sellers/emailExists?email=` + email
-    );
-    let userExists = res.data;
-    if (userExists) {
-      setFormValid({ ...formValid, ["emailExists"]: true });
-      createAlert('Account with this e-mail already exists!','E');
-      return false;
-    } else {
-      setFormValid({ ...formValid, ["emailExists"]: false });
-    }
-    if (!checkEmail(email)) {
-      setFormValid({ ...formValid, ["email"]: false });
-      createAlert('Please enter valid email!','W');
-      return false;
-    }
-    if (!checkPasswordStrength(password)) {
-      setFormValid({ ...formValid, ["strongPassword"]: false });
-      createAlert('Password doesnt comform to password policy!','W');
-      return false;
-    }
-    if (password != confirmPass && password != "") {
-      setFormValid({ ...formValid, [confirmPass]: false });
-      createAlert("Password do not match!",'W');
-      return false;
-    }
-
-    return true;
-  };
-
-  // Function to send data to the backend
-  //! If error:- Show the error
-  //* If success:- Redirect to the user dashboard or homepage
   const handleSubmit = async (event) => {
     event.preventDefault();
-    let isFormValid = await handleValidation();
-    console.log("form valid status:" + isFormValid);
-    if (isFormValid) {
-      console.log("helllloooo");
-      console.log(formData);
-      setRegisterForm({email: formData.email,password: formData.password,confirmPass: formData.confirmPass,page2Filled:true});
-      router.push("/register/seller-type");
-    }
+    RegisterPageSchema.validate(formData)
+      .then((values) => {
+        axios
+          .get("/seller-api/sellers/emailExists?email=" + values.email)
+          .then((res) => {
+            if (res.data) {
+              createAlert("Email Already Exists", "E");
+              return;
+            } else {
+              setRegisterForm({
+                email: values.email,
+                password: values.password,
+                confirmPass: values.confirmPass,
+                page2Filled: true,
+              });
+              router.push("/register/seller-type");
+            }
+          });
+      })
+      .catch((err) => createAlert(err.message, "W"));
   };
 
   return (
@@ -129,32 +71,13 @@ const RegisterPage = (props) => {
       <p className={styles.p}>
         Register now to start your journey as seller with company name
       </p>
-      {/* {formValid.emailExists ? (
-        <p className={styles.errorMessage}>Email already exists !!</p>
-      ) : (
-        ""
-      )}
-      {formValid.email ? (
-        ""
-      ) : (
-        <p className={styles.errorMessage}>Please enter a valid email !!</p>
-      )}
-      {formValid.strongPassword ? (
-        ""
-      ) : (
-        <p className={styles.errorMessage}>
-          Please enter a password with atleast: one Upper Case letter one small
-          case one number one special character and minmimum 8 characters !!
-        </p>
-      )} */}
       <form>
         <div className={styles.formGroup}>
           <input
-            type="email"
+            type="text"
             placeholder="Email"
             value={email}
             onChange={handleChange("email")}
-            required
           />
         </div>
 
@@ -164,12 +87,10 @@ const RegisterPage = (props) => {
             placeholder="Password"
             value={password}
             onChange={handleChange("password")}
-            required
           />
           <span className={styles.toggleVisible} onClick={handlePasswordToggle}>
             <FontAwesomeIcon icon={passVisible ? faEye : faEyeSlash} />
           </span>
-          <span>{formValid.password}</span>
         </div>
 
         <div className={styles.formGroup}>
@@ -178,14 +99,15 @@ const RegisterPage = (props) => {
             placeholder="Confirm Password"
             value={confirmPass}
             onChange={handleChange("confirmPass")}
-            required
           />
         </div>
-        {/* <div className={styles.remember}>
-          <div onClick={handleRemember}></div>
-          <p>Keep me remembered</p>
-        </div> */}
-        <Button margin='10px 0px 0px 0px' onClick={handleSubmit} icon={<FaSign/>}>Register</Button>
+        <Button
+          margin="10px 0px 0px 0px"
+          onClick={handleSubmit}
+          icon={<FaSign />}
+        >
+          Register
+        </Button>
       </form>
       {/* <p className={styles.or}>Or join with</p>
       <div className={styles.container}>

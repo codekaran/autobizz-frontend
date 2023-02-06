@@ -38,3 +38,12 @@ export const EmailModalSchema = Yup.object().shape({
     .email("Please enter a valid email"),
   currentPassword: Yup.string().required("Please enter all fields"),
 });
+
+//-----------------------------------------------RegisterPage.jsx---------------------------------------------------//
+export const RegisterPageSchema = Yup.object().shape({
+  email: Yup.string()
+    .required("Please enter all fields")
+    .email("Please enter a valid email"),
+  password: Yup.string().required("Please enter all fields"),
+  confirmPass: Yup.string().required("Please enter all fields"),
+});

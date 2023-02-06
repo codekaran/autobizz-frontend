@@ -1,10 +1,10 @@
-import {useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import styles from "./Info.module.scss";
 import Button from "../../globals/button/Button";
 import { validateForm } from "../../globals/funtions/FormValidate";
 import { useContext } from "react";
-import {FaSign} from 'react-icons/fa';
+import { FaSign } from "react-icons/fa";
 import AuthContext from "../../../context/Auth/AuthContext";
 import AlertContext from "../../../context/Alert/AlertContext";
 
@@ -20,22 +20,31 @@ const SellerInfo = () => {
     country: "",
     zipCode: "",
     city: "",
+    countryCode: "",
   });
-  const { companyName, fname, lname, phone, street, country, zipCode, city } =
-    sellerInfo;
+  const {
+    companyName,
+    fname,
+    lname,
+    phone,
+    street,
+    country,
+    zipCode,
+    city,
+    countryCode,
+  } = sellerInfo;
 
   //Contexts
   const AuthCtx = useContext(AuthContext);
-  const {register, setRegisterForm, registerFormData} = AuthCtx;
-  const {page2Filled}= registerFormData;
-  const {createAlert} = useContext(AlertContext);
+  const { register, setRegisterForm, registerFormData } = AuthCtx;
+  const { page2Filled } = registerFormData;
+  const { createAlert } = useContext(AlertContext);
 
   //
   useEffect(() => {
-    !page2Filled && router.push('/register');
-  }, [])
-  
-  
+    !page2Filled && router.push("/register");
+  }, []);
+
   // variable to check valid form fields
   const [formValid, setFormValid] = useState({
     companyName: true,
@@ -46,6 +55,7 @@ const SellerInfo = () => {
     country: true,
     zipCode: true,
     city: true,
+    countryCode: true,
   });
 
   const [errorMessage, setErrorMessage] = useState("no-error");
@@ -59,23 +69,22 @@ const SellerInfo = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    //setRegisterForm(sellerInfo);  
+    //setRegisterForm(sellerInfo);
 
     let dataObject = {};
     // check if the form is valid
-    
+
     let { validFieldsObj, isFormValid, message } = validateForm(
       sellerInfo,
       registerFormData.sellerType
     );
     console.log(validFieldsObj);
     setFormValid(validFieldsObj);
-    
+
     if (isFormValid) {
-      register({...registerFormData,...sellerInfo});
-    }
-    else{
-      createAlert(message,'W');
+      register({ ...registerFormData, ...sellerInfo });
+    } else {
+      createAlert(message, "W");
     }
   };
   return (
@@ -126,7 +135,15 @@ const SellerInfo = () => {
             />
           </>
         )}
-
+        <div className={styles.formGroup}>
+          <input
+            type="text"
+            style={{ border: formValid.countryCode ? "" : "1px solid red" }}
+            placeholder="Country code"
+            value={countryCode}
+            onChange={handleChange("countryCode")}
+          />
+        </div>
         <div className={styles.formGroup}>
           <input
             type="tel"
@@ -169,7 +186,9 @@ const SellerInfo = () => {
           }}
         />
 
-        <Button width='100%' onClick={handleSubmit} icon={<FaSign/>}>Get Started</Button>
+        <Button width="100%" onClick={handleSubmit} icon={<FaSign />}>
+          Get Started
+        </Button>
       </form>
     </div>
   );
