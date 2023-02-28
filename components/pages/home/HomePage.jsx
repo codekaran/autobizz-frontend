@@ -5,9 +5,9 @@ import TestimonialSection from "./TestimonialSection";
 import styles from "./HomePage.module.scss";
 import SearchBar from "../../globals/search/SearchBar";
 import BuyFromUs from "../../globals/buyFromUs/BuyFromUs";
+import Testimonials from "../../globals/testimonials/Testimonials";
 
 const HomePage = (props) => {
-  console.log(props.carsArray);
   return (
     <div className={styles.home}>
       {/* <SearchBar/> */}
@@ -16,7 +16,7 @@ const HomePage = (props) => {
       <div className={styles.home}>
         <Carousel cars={props.carsArray} title="Featured cars" />
         <BuyFromUs/>
-        <TestimonialSection />
+        <Testimonials/>
         <GoogleAd />
       </div>
     </div>

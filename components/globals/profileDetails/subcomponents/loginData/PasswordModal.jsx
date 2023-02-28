@@ -57,17 +57,15 @@ setFormData({
 })
 
 const validateOnInput = ()=>{
-  // phoneNumberModalSchema.validate(formData,{
-  //   abortEarly:false
-  // }).then((values)=>console.log(values)).catch(err=> console.log(err.errors));
+
 }
 }
   return (
    <div className={container}>
     <div className={open ? containerOpen : containerClosed}>
     <form>
-      <Input placeholder={'New Password'} type='password' onChange={handleChange("newPassword")} value={newPassword}></Input>
-      <Input placeholder={'Old Password'} type='password' onChange={handleChange("currentPassword")} value={currentPassword}></Input>
+      <Input placeholder={'New Password'} type='password' showPassFunc onChange={handleChange("newPassword")} value={newPassword}></Input>
+      <Input placeholder={'Old Password'} type='password' showPassFunc onChange={handleChange("currentPassword")} value={currentPassword}></Input>
     </form>
     <div className={btnGroup}>
     <Button theme='light' width='fit-content' onClick={(e)=>{handleCancel(e)}} icon={<BiX/>}>Cancel</Button>

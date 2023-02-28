@@ -16,7 +16,6 @@ const ScrollCards = (props) => {
 
   useEffect(() => {
     props.getScrollCardRef(scrollWindow);
-    console.log(scrollWindow);
     scrollWindow.current.addEventListener("scroll", hideAnimation);
     setState({ ...state, carImages: props.carDetails });
     return () => {};
@@ -39,12 +38,9 @@ const ScrollCards = (props) => {
       (scrollWindow.current.scrollHeight - scrollWindow.current.scrollTop) /
       (1 * scrollWindow.current.clientHeight);
     let final_val = props.carDetails.length - Math.round(val);
-    console.log("final", final_val);
     if (imageNumber != final_val) {
-      console.log("setting state");
       props.scrollIndicator(final_val);
       setImageNumber(final_val);
-      console.log(state);
     }
   };
 

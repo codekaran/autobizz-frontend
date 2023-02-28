@@ -1,106 +1,43 @@
+@import '../../../styles/colors';
 .sellerType {
-  text-align: center;
-  padding: 0 60px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  h3 {
-    
-    font-style: normal;
+  gap:20px;
+  padding: 20px;
+  text-align: center;
+  .boldText{
     font-weight: 600;
-    font-size: 24px;
-    line-height: 30px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: #406882;
-    margin-bottom: 16px;
   }
 
-  h1 {
-    
-    font-style: normal;
-    font-weight: 600;
-    font-size: 48px;
-    line-height: 60px;
-    color: #1b1b1b;
-    margin-bottom: 20px;
-  }
-
-  p {
-    font-family: Inter;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 20px;
-    line-height: 24px;
-    color: #1b1b1b;
-    margin-bottom: 54px;
-  }
-  .boldText {
-    
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    line-height: 30px;
-    color: #1b1b1b;
-    margin-bottom: 0px;
-  }
-
-  .container {
+  .container{
     display: flex;
     justify-content: center;
-    gap: 0px 36px;
-    margin: 32px 0px 36px;
-
-    .box {
-      aspect-ratio: 1;
-      padding: 12px 28px;
-      border: 1px solid #1a374d;
-      box-sizing: border-box;
-      border-radius: 8px;
+    gap:20px;
+    .box{
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      cursor: pointer;
-      // Text
-      
-      font-style: normal;
-      font-weight: normal;
-      font-size: 16px;
-      line-height: 20px;
-      color: #1b1b1b;
-      &:hover {
-        background-color: #e5e5e5;
-      }
+      padding: 10px 20px;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid $unselected;
+      border-radius: 10px;
     }
+    .isClicked{
+      border: 1px solid $selected;
+      background-color: $selected-bg;
+    }
+
+    
+  }
+  .buttonGroup{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .sellerType {
-    padding: 140px 30px 50px;
-
-    h3 {
-      font-size: 14px;
-      line-height: 18px;
-    }
-
-    h1 {
-      font-size: 36px;
-      line-height: 45px;
-      margin-bottom: 12px;
-    }
-
-    p {
-      font-size: 14px;
-      line-height: 17px;
-      margin-bottom: 40px;
-    }
-
-    .boldText {
-      font-size: 16px;
-      line-height: 20px;
-    }
   }
 }

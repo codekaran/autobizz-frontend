@@ -16,7 +16,6 @@ export const formValidate = (form) => {
 };
 
 export const checkEmail = (email) => {
-  console.log("validating the mail");
   if (email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
     return true;
   }
@@ -30,7 +29,6 @@ export const checkPasswordStrength = (password) => {
       "(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})"
     )
   ) {
-    console.log("strong");
     return true;
   }
 };
@@ -50,7 +48,6 @@ export const validateForm = (form, sellerType) => {
 
   // if the Owner is getting registered
   if (sellerType === "Owner") {
-    console.log("checking for ", sellerType);
     if (!form.fname.match(/^\w/)) {
       validFieldsObj["fname"] = false;
       return {

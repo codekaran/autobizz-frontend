@@ -4,10 +4,8 @@ import ScrollCards from "./ScrollCards";
 import Image from "next/image";
 
 const CarScrollNew = (props) => {
-  console.log(props);
   useEffect(() => {
     setState({ ...state, pictures: props.images });
-    console.log(state);
   }, []);
   const [state, setState] = useState({
     pictures: [],
@@ -30,10 +28,7 @@ const CarScrollNew = (props) => {
   };
 
   const handlePopUpScroll = (image_num) => {
-    console.log(image_num);
     setTimeout(() => {
-      console.log(popUpImageSection.current.scrollHeight);
-      console.log(popUpImageSection.current.clientHeight);
       let number_of_cars =
         popUpImageSection.current.scrollHeight /
         popUpImageSection.current.clientHeight;
@@ -47,18 +42,15 @@ const CarScrollNew = (props) => {
         left: 0,
         behavior: "smooth",
       });
-      console.log(number_of_cars);
     }, 10);
   };
 
   const closePopUp = (e) => {
-    console.log(e);
     e.stopPropagation();
     // let closePopUpStatus = state.closePopUp ? false : true;
     setState({ ...state, closePopUp: false });
     document.body.style.overflow = "";
     // this.setState(this.state);
-    console.log(state);
   };
   const handleScrollIndicator = (image) => {
     // let client = this.scrollIndicator.clientHeight;
@@ -71,7 +63,6 @@ const CarScrollNew = (props) => {
     } else if (image > state.image_number) {
       translateValue -= diff * 100;
     }
-    console.log("thumbnail", image);
     setState({ ...state, image_number: image, translate: translateValue });
     // this.state.image_number = image;
     // this.setState(this.state);
@@ -84,7 +75,6 @@ const CarScrollNew = (props) => {
   };
 
   const getScrollCardRef = (scrollCardRef) => {
-    console.log("akjsdfajsdgfasdfa", scrollCardRef);
     // this.state.scrollCardRef = scrollCardRef;
     setState({ ...state, scrollCardRef: scrollCardRef });
     // this.setState(this.state);

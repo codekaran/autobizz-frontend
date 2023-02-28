@@ -12,7 +12,6 @@ const CarCard = (props) => {
   const [loaded, setLoaded] = useState(false);
   const handleRedirect = () => {
     router.push("/car/" + make + "-" + model + "-" + id);
-    // console.log();
   };
   const handleImageLoad = () => {
     setLoaded(true);

@@ -1,9 +1,20 @@
 @import '../../../styles/colors';
+    .inputContainer{
+        display: flex;
+        position: relative;
 
+        .icon{
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+            right:10px;
+            cursor: pointer;
+        }
     .input{
         padding: 10px;
         border-radius: 0.5rem;
         border: 2px solid $selected-bg;
+        min-width: 100%;
         // max-width: 450px;
         &:focus{
             border: 2px solid $selected;
@@ -18,13 +29,17 @@
     .input[type=number]{
         -moz-appearance: textfield;
     }
+}
 
     /* Smartphones (portrait and landscape) ----------- */
 @media only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 481px) {
-    .input{
+    .inputContainer{
         font-size: 12px;
+        .icon{
+            font-size:16px
+        }
     }
 }
 
@@ -32,8 +47,11 @@ and (max-device-width : 481px) {
 @media only screen 
 and (min-device-width : 481px)
 and (max-device-width : 769px) {
-    .input{
+    .inputContainer{
         font-size: 14px;
+        .icon{
+            font-size:18px
+        }
     }
 }
 
@@ -41,31 +59,43 @@ and (max-device-width : 769px) {
 @media only screen 
 and (min-device-width : 769px) 
 and (max-device-width : 1025px) {
-    .input{
+    .inputContainer{
         font-size: 16px;
+        .icon{
+            font-size:20px
+        }
     }
 }
 
 /* Large Desktops and laptops ----------- */
 @media only screen 
 and (min-device-width : 1025px) {
-    .input{
+    .inputContainer{
         font-size: 16px;
+        .icon{
+            font-size:20px;
+        }
     }
 }
 
 /* Large screens ----------- */
 @media only screen 
 and (min-device-width : 1441px) {
-    .input{
+    .inputContainer{
         font-size: 16px;
+        .icon{
+            font-size:20px;
+        }
     }
 }
 
 /* 4k Large screens ----------- */
 @media only screen 
 and (min-device-width : 1921px) {
-    .input{
+    .inputContainer{
         font-size: 20px;
+        .icon{
+            font-size:24px
+        }
     }
 }

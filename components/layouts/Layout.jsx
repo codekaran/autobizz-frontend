@@ -8,6 +8,7 @@ import AlertState from "../../context/Alert/AlertState";
 import Alerts from "../globals/Alerts/Alerts";
 import AdState from "../../context/Ad/AdState";
 import ProfilePageState from "../../context/ProfilePage/ProfilePageState";
+import SearchState from "../../context/Search/SearchState";
 
 
 const Layout = ({ children }) => {
@@ -20,12 +21,14 @@ const Layout = ({ children }) => {
       <AuthState>
       <AlertState>
       <AdState>
+      <SearchState>
         <ProfilePageState>
         <Header></Header>
         <Alerts/>
         {children}
         <Footer></Footer>
         </ProfilePageState>
+      </SearchState>
       </AdState>
       </AlertState>
       </AuthState>

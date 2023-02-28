@@ -18,11 +18,12 @@ const PhoneNumberModal = ({open}) => {
 
   // Form data is an object which stores email and password of the user from the input fields
   const [formData, setFormData] = useState({
-    address: "",
-    postalCode:"",
-    country:""
+    address: user.address,
+    postalCode:user.postalCode,
+    country:user.country,
+    city:user.city
   });
-  const {address,postalCode,country} = formData;
+  const {address,postalCode,country,city} = formData;
 
   // This function updates the formData object
   const handleChange = (field) => (event) => {
@@ -34,13 +35,15 @@ const PhoneNumberModal = ({open}) => {
     if(address==="" || postalCode==="" || country===""){ createAlert("Please fill all fields",'W'); return;}
     if(await updateDetails(formData)){
     createAlert("Successfully updated mobile number");
+    loadUser();
     setFormData({
-        address: "",
-        postalCode:"",
-        country:""
+      address: user.address,
+      postalCode:user.postalCode,
+      country:user.country,
+      city:user.city
     })
     hideEditing();
-    loadUser();
+    
   }
   };
 
@@ -48,9 +51,10 @@ const PhoneNumberModal = ({open}) => {
     event.preventDefault();
     hideEditing();
     setFormData({
-        address: "",
-        postalCode:"",
-        country:""
+      address: user.address,
+      postalCode:user.postalCode,
+      country:user.country,
+      city:user.city
     })
   }
 
@@ -59,6 +63,7 @@ const PhoneNumberModal = ({open}) => {
     <div className={open ? containerOpen : containerClosed}>
     <form>
         <Input placeholder={'Address*'} onChange={handleChange("address")} value={address}></Input>
+        <Input placeholder={'City*'} onChange={handleChange("city")} value={city}></Input>
         <Input placeholder={'Postal Code*'} type="number" onChange={handleChange("postalCode")} value={postalCode}></Input>
         <Input placeholder={'Country*'} onChange={handleChange("country")} value={country}></Input>
     </form>

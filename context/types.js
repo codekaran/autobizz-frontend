@@ -27,3 +27,6 @@ export const UPDATE_FALIURE = "UPDATE_FALIURE";
 export const CLOSE_EDITING = "CLOSE_EDITING";
 export const LOADING_TRUE = "LOADING_TRUE";
 export const LOADING_FALSE = "LOADING_FALSE";
+
+//Search State
+export const SET_SEARCH_STATE = "SET_SEARCH_STATE";

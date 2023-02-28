@@ -18,7 +18,6 @@ export async function getStaticPaths() {
         password: 123,
       },
     });
-    // console.log(cars.data);
     let pathsData = [];
     for (let car of cars.data) {
       pathsData.push({
@@ -27,7 +26,6 @@ export async function getStaticPaths() {
         },
       });
     }
-    console.log(pathsData);
     return {
       fallback: false,
       paths: pathsData,
@@ -36,7 +34,6 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps(context) {
-  console.log("indide prosp");
   let adId = context.params.makeModel.split("-").slice(-1)[0];
   let car = await axios.get(`/seller-api/ads/ad/` + adId, {
     auth: {
@@ -53,7 +50,6 @@ export async function getStaticProps(context) {
     i += 1;
   }
   car.data.images = tempImage;
-  console.log(car.data);
   return {
     props: {
       content: car.data,

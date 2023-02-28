@@ -18,8 +18,9 @@ const PhoneNumberModal = ({open}) => {
 //-Form data is an object which stores email and password of the user from the input fields-//
   const [formData, setFormData] = useState({
     mobile: "",
+    countryCode:"+1"
   });
-  const {mobile} = formData;
+  const {mobile,countryCode} = formData;
 //------------------------------------------------------------------------------------------//
   const handleChange = (field) => (event) => {
     setFormData({ ...formData, [field]: event.target.value });
@@ -33,7 +34,8 @@ const PhoneNumberModal = ({open}) => {
       if(await updateDetails(values)){
         createAlert("Successfully updated mobile number");
         setFormData({
-          mobile:''
+          mobile: "",
+    countryCode:"+1"
         })
         hideEditing();
         loadUser();
@@ -44,7 +46,8 @@ const PhoneNumberModal = ({open}) => {
     event.preventDefault();
     hideEditing();
     setFormData({
-      mobile:''
+      mobile: "",
+    countryCode:"+1"
     })
   }
 //------------------------------------------------------------------------------------------//
@@ -52,6 +55,7 @@ const PhoneNumberModal = ({open}) => {
    <div className={container}>
     <div className={open ? containerOpen : containerClosed}>
     <form>
+        <Input placeholder={'Country Code*'} onChange={handleChange("countryCode")} value={countryCode}></Input>
         <Input placeholder={'Phone number*'} onChange={handleChange("mobile")} value={mobile}></Input>
         <div style={{display:'flex',gap:'10px', alignItems:'center'}}>
           <CheckBox name='Show in Ad'/>

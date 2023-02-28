@@ -7,8 +7,6 @@ import { useState, useRef } from "react";
 import handleScroll from "./SmoothScroll";
 
 const Carousal = (props) => {
-  console.log(props);
-
   let carousel = useRef(null);
 
   return (

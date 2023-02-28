@@ -23,7 +23,6 @@ const UserAds = () => {
     let arr=[...userAds];
     arr[index].editModeOn = arr[index].editModeOn == 0 ? 1 : 0;    
     setUserAds(arr);
-    console.log(userAds[index].editModeOn);
   };
 
   return (
@@ -33,7 +32,6 @@ const UserAds = () => {
       :
       <>{(!loadingUserAds && userAds.length === 0)? 
       <div className={styles.noAds}>
-        {console.log('empty array')}
         <h3>You haven't posted an ad yet!</h3>
       </div>
       :

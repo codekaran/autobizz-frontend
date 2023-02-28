@@ -31,7 +31,6 @@ const Step_3 = () => {
 
   // ############ functions ###########
   const handleChange = (name) => (e) => {
-    console.log("handeling changes");
     // value of description field if sent
     let val = e.target.value;
     // handling condition of car
@@ -44,7 +43,7 @@ const Step_3 = () => {
       val = e.target.files;
     }
     setData({ ...data, [name]: val });
-    console.log(data);
+
   };
 
   const createFormData = () => {
@@ -81,7 +80,6 @@ const Step_3 = () => {
           },
         }
       );
-      console.log(result);
       if (result.data == "Ad already exists") {
         createAlert("Ad already exists!",'E')
       }
@@ -91,7 +89,6 @@ const Step_3 = () => {
       setIsAdUploading(false);
       setIsAdUploaded(true);
     } catch (err) {
-      console.log(err);
     }
     // router.push("/");
   };

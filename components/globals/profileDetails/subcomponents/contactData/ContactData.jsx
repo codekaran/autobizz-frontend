@@ -33,8 +33,9 @@ const ContactData = (props) => {
                 <div className={details}>
                 <h4>Address</h4>
                 <p>{user.address}</p>
-                <p>{user.postalCode}</p>
+                <p>{user.city}</p>
                 <p>{user.country}</p>
+                <p>{user.postalCode}</p>
                 </div>
                 <Button theme='light' disabled={editing} icon={<BiEdit/>} onClick={()=>{showEditing('address')}}>Edit</Button>
             </div>
@@ -46,7 +47,7 @@ const ContactData = (props) => {
             <div className={subsection}>
                 <div className={details}>
                 <h4>Phone</h4>
-                <p>{user.mobile}</p>
+                <p><span>{user.countryCode + '-'}</span>{user.mobile}</p>
                 </div>
                 <Button theme='light' disabled={editing} icon={<BiEdit/>} onClick={()=>{showEditing('mobile')}}>Edit</Button>
             </div>

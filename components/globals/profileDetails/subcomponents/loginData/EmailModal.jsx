@@ -22,6 +22,7 @@ const EmailModal = ({open}) => {
   if(error==='Invalid Credentials' || error ==='Unauthorized request'){
     createAlert('Please use correct password','E');
   }
+  if(error==='email already taken')createAlert('This email is already taken', 'E')
 }, [error])
 
 // Form data is an object which stores email and password of the user from the input fields//-----------------------//
@@ -42,14 +43,16 @@ const handleSubmit =async (event) => {
   abortEarly:true
  }).
  then(async (values)=>{
-  if(await updateDetails(values)){
-  createAlert("Successfully updated Email");
-  setFormData({
-    email: "",
-    currentPassword: ""
-  })
+
+   const res = await updateDetails(values) 
+    if(res)
+    {createAlert("Successfully updated Email");
+    setFormData({
+      email: "",
+      currentPassword: ""
+    })}
   hideEditing();
-  loadUser();}}
+  loadUser();}
 ).catch(err=> createAlert(err.message , 'W'));
 };
 //---------------------------------------------------------------------------------------------------------------------//
@@ -67,7 +70,7 @@ const handleCancel = (event)=>{
     <div className={open ? containerOpen : containerClosed}>
     <form onSubmit={handleSubmit}>
       <Input placeholder={'New Email'} onChange={handleChange("email")} value={email}></Input>
-      <Input placeholder={'Password'} type='password' onChange={handleChange("currentPassword")} value={currentPassword}></Input>
+      <Input placeholder={'Password'} showPassFunc={true} type='password' onChange={handleChange("currentPassword")} value={currentPassword}></Input>
       <div className={btnGroup}>
     <Button theme='light' width='fit-content' onClick={(e)=>{handleCancel(e)}} icon={<BiX/>}>Cancel</Button>
     <Button type={'submit'} width='fit-content' icon={loading? <ButtonLoader/> : <BiSave/>}>Save</Button>

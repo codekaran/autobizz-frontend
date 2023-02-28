@@ -47,7 +47,6 @@ const AdState = (props) => {
         ad.images = imagesWithLoadStatus;
         ad.editModeOn = 0;
       }
-      console.log(response);
       dispatch({ type: GET_USERADS_SUCCESS, payload: response });
     } catch (error) {
       dispatch({

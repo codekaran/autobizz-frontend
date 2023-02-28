@@ -16,7 +16,7 @@
         border-radius: 0.5rem 0.5rem 0 0;
         min-height: 100px;
         transition: all 0.2s ease-in-out;
-        background-image: linear-gradient($secondary-bg,$primary-bg);
+        background-image: linear-gradient($selected-bg,$primary-bg);
         .imageContainer{
             border-radius: 50%;
             background-color: $primary-bg;

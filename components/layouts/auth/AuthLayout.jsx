@@ -5,18 +5,6 @@ import styles from "./AuthLayout.module.scss";
 const AuthLayout = ({ children }) => {
   return (
         <div className={styles.auth_layout}>
-          <div className={styles.container}>
-            <div style={{ textAlign: "center" }}>
-              <div className={styles.image}></div>
-              <h3>Welcome to</h3>
-              <h1>Company Name</h1>
-            </div>
-          </div>
-          <div className={styles.container}>
-            <div className={styles.box}>
-              <h3>Welcome to</h3>
-              <h1>Company Name</h1>
-            </div>
             <div className={styles.top}>
               <Image src={design} alt="Design" />
             </div>
@@ -24,7 +12,6 @@ const AuthLayout = ({ children }) => {
             <div className={styles.bottom}>
               <Image src={design} alt="Design" />
             </div>
-          </div>
         </div>
   );
 };

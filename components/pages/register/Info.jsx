@@ -4,11 +4,16 @@ import styles from "./Info.module.scss";
 import Button from "../../globals/button/Button";
 import { validateForm } from "../../globals/funtions/FormValidate";
 import { useContext } from "react";
-import { FaSign } from "react-icons/fa";
+import { FaArrowAltCircleLeft } from "react-icons/fa";
 import AuthContext from "../../../context/Auth/AuthContext";
 import AlertContext from "../../../context/Alert/AlertContext";
+import Input from "../../globals/input/Input";
+import { MdAssignment } from "react-icons/md";
+import { InfoPageSchemaCompany, InfoPageSchemaOwner } from "../../../utils/validations/validation";
+import Select from "../../globals/Select/Select";
+import { countries } from "../../../utils/staticData";
 
-const SellerInfo = () => {
+const SellerInfo = ({setActive}) => {
   const router = useRouter();
   // variables to store the form data
   const [sellerInfo, setSellerInfo] = useState({
@@ -18,7 +23,7 @@ const SellerInfo = () => {
     phone: "",
     street: "",
     country: "",
-    zipCode: "",
+    postalCode: "",
     city: "",
     countryCode: "",
   });
@@ -29,7 +34,7 @@ const SellerInfo = () => {
     phone,
     street,
     country,
-    zipCode,
+    postalCode,
     city,
     countryCode,
   } = sellerInfo;
@@ -42,7 +47,7 @@ const SellerInfo = () => {
 
   //
   useEffect(() => {
-    !page2Filled && router.push("/register");
+    // !page2Filled && router.push("/register");
   }, []);
 
   // variable to check valid form fields
@@ -53,7 +58,7 @@ const SellerInfo = () => {
     phone: true,
     street: true,
     country: true,
-    zipCode: true,
+    postalCode: true,
     city: true,
     countryCode: true,
   });
@@ -61,7 +66,6 @@ const SellerInfo = () => {
   const [errorMessage, setErrorMessage] = useState("no-error");
 
   const handleChange = (field) => (event) => {
-    console.log(event.target.value);
     setSellerInfo({ ...sellerInfo, [field]: event.target.value });
     setFormValid({ ...formValid, [field]: true });
   };
@@ -69,126 +73,91 @@ const SellerInfo = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    //setRegisterForm(sellerInfo);
+    if(registerFormData.sellerType==='Owner')InfoPageSchemaOwner.validate(sellerInfo).then((values)=> register({ ...registerFormData, ...values })).catch(err=> createAlert(err.message,'W'))
+    else InfoPageSchemaCompany.validate(sellerInfo).then((values)=> register({ ...registerFormData, ...values })).catch(err=> createAlert(err.message,'W'))
 
-    let dataObject = {};
-    // check if the form is valid
-
-    let { validFieldsObj, isFormValid, message } = validateForm(
-      sellerInfo,
-      registerFormData.sellerType
-    );
-    console.log(validFieldsObj);
-    setFormValid(validFieldsObj);
-
-    if (isFormValid) {
-      register({ ...registerFormData, ...sellerInfo });
-    } else {
-      createAlert(message, "W");
-    }
   };
   return (
     <div className={styles.info}>
-      <h3>Seller</h3>
-      <h1>Info</h1>
       <p>Provide some personal info for smooth and easy journey</p>
-      <p
-        style={{ opacity: errorMessage === "no-error" ? 0 : 1 }}
-        className={styles.errorMessage}
-      >
-        {errorMessage}!
-      </p>
       <form action="">
         {registerFormData.sellerType == "Owner" ? (
           <>
             {" "}
-            <input
-              style={{ border: formValid.fname ? "" : "1px solid red" }}
+            <Input
               type="text"
-              placeholder="First Name"
+              placeholder="First Name*"
               value={fname}
               onChange={handleChange("fname")}
             />
-            <input
+            <Input
               type="text"
-              style={{ border: formValid.lname ? "" : "1px solid red" }}
               placeholder="Last Name"
               value={lname}
               onChange={handleChange("lname")}
-              required
             />
           </>
         ) : (
           <>
             {formValid.companyName}
-            <input
-              style={{
-                border: formValid.companyName ? "" : "1px solid red",
-                flex: "1",
-              }}
+            <Input
+              
               type="text"
-              placeholder="Company Name"
+              placeholder="Company Name*"
               value={companyName}
               onChange={handleChange("companyName")}
               // style={{ }}
-              required
+              
             />
           </>
         )}
         <div className={styles.formGroup}>
-          <input
-            type="text"
-            style={{ border: formValid.countryCode ? "" : "1px solid red" }}
-            placeholder="Country code"
-            value={countryCode}
-            onChange={handleChange("countryCode")}
-          />
-        </div>
-        <div className={styles.formGroup}>
-          <input
+        <Select
+          options={countries.map(country=> country.code)}
+          value={countryCode}
+          onChange={handleChange("countryCode")}
+        />
+          <Input
             type="tel"
-            style={{ border: formValid.phone ? "" : "1px solid red" }}
-            placeholder="Phone Number"
+            
+            placeholder="Phone Number*"
             value={phone}
             onChange={handleChange("phone")}
           />
-          <p>This number will not be shown on ads</p>
         </div>
-        <input
-          style={{ border: formValid.street ? "" : "1px solid red" }}
+        <Input
+          
           type="text"
-          placeholder="Street, House no."
+          placeholder="Street, House no.*"
           value={street}
           onChange={handleChange("street")}
         />
-        <input
-          style={{ border: formValid.country ? "" : "1px solid red" }}
-          type="text"
-          placeholder="Country"
+        <Select
+          placeholder="Country*"
+          options={countries.map(country=> country.country)}
           value={country}
           onChange={handleChange("country")}
         />
-        <input
+        <Input
           type="text"
-          placeholder="Zip Code"
-          value={zipCode}
-          onChange={handleChange("zipCode")}
+          placeholder="Postal Code*"
+          value={postalCode}
+          onChange={handleChange("postalCode")}
         />
-        <input
+        <Input
           // style={{}}
           type="text"
-          placeholder="City"
+          placeholder="City*"
           value={city}
           onChange={handleChange("city")}
-          style={{
-            flex: registerFormData.sellerType != "Owner" ? 1 : 0.5,
-            border: formValid.city ? "" : "1px solid red",
-          }}
+          
         />
-
-        <Button width="100%" onClick={handleSubmit} icon={<FaSign />}>
-          Get Started
+        <div className={styles.buttonGroup}>
+        <Button onClick={(e)=>{e.preventDefault();setActive(2)}} icon={<FaArrowAltCircleLeft/>}>Back</Button>
+        <Button onClick={handleSubmit} icon={<MdAssignment/>}>
+          Register
         </Button>
+        </div>
       </form>
     </div>
   );

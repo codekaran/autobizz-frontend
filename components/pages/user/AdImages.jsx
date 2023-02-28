@@ -10,7 +10,6 @@ const AdImages = (props) => {
     let arr = content;
     arr[index].loaded = true;
     setContent(arr);
-    console.log(content);
   };
 
   return (

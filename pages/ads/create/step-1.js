@@ -13,13 +13,8 @@ export async function getStaticProps() {
   let data = {};
   try {
     let res = await axios.get(`/seller-api/ref/getMakes`);
-    // res = await res.json();
-    // data = JSON.parse(res.data);
-    console.log(res.data);
     data = res.data;
-  } catch (err) {
-    console.log(err);
-  }
+  } catch (err) {}
 
   return {
     props: {

@@ -24,7 +24,6 @@ const ForgotPassword = () => {
 
   useEffect(() => {
     countDown();
-    console.log(values);
   }, [time]);
 
   //TODO: Still needs to work on this..

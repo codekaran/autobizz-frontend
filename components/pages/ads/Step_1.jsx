@@ -63,7 +63,6 @@ const Step_1 = (props) => {
     })
   }
 
-  console.log(props);
   return (
     <div className={styles.step_1}>
       <p className={styles.boldText}>What is the Brand of your Vehicle?</p>

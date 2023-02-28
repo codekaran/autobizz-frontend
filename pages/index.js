@@ -22,7 +22,6 @@ const Home = (props) => {
 
 export async function getStaticProps() {
   let result = await getCars();
-  console.log(result);
   return {
     props: { data: result.data },
   };

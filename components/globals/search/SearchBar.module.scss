@@ -1,97 +1,88 @@
 @import '../../../styles/colors';
 
 .searchBar{
-    padding: 30px;
     display: flex;
-    justify-content: center;
-    background-color: $primary-bg;
-    max-height: 101px ;
-    .searchInput{
-        min-width: 40%;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        .input{
-            display: flex;
-            flex-direction: row;
-            justify-content: center;
-            align-items: center;
-            min-width: 100%;
-            input,input:focus{
-                background-color: $white;
-                border-radius: 0.5rem 0rem 0rem 0.5rem;
-                padding: 10px;
-                border: 1px solid $secondary-bg;
-                border-right: none;
-                font-size: 18px;
-                outline: none;
-                flex-grow: 1;
-                color:$primary-text;
+    flex-direction: column;
+    align-items: center;
+    gap:10px;
+    z-index: 10000;
+    .showSearch{
+        display: none;
+    }
+    .form{
+        background-color: white;
+        padding: 20px;
+        border-radius: 0.5rem;
+        box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 75%);
+        margin-top: -70px;
+        form{
+            display: grid;
+            grid-template-columns: auto auto auto auto;
+            @media (max-width: 1024px){
+                grid-template-columns: auto auto;
+            }
+            grid-gap: 20px;
+            label{
+                display: flex;
+                flex-direction: column;
+                .select{
+                    min-width: 200px;
+                    padding: 10px;
+                    border-radius: 0.5rem;
+                    border: 1px solid $selected-bg;
+                    background-color: white;
+                    cursor: pointer;
+                    z-index: 10001;
+                }
             }
             button{
-                min-height: 100%;
-            }
-        }
-        .dropdown{
-            margin-top: 5px;
-            background-color: $primary-bg;
-            color: $primary-text;
-            z-index: 10;
-            font-size: 16px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
-            min-width: 100%;
-            //border: 0.5px solid $secondary-bg;
-            border-radius: 0.5rem;
-            .dropdown_row{
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                cursor: pointer;
-                min-width: 100%;
-                padding: 5px 10px;
-                transition: all 0.3s;
-                border-left: 0.5px solid $secondary-bg;
-                border-right: 0.5px solid $secondary-bg;
-                &:first-child{
-                    border-radius: 0.5rem 0.5rem 0rem 0rem;
-                    border-top: 0.5px solid $secondary-bg;
-                    padding-top: 10px;
-                   }
-                &:last-child{    
-                    border-radius: 0rem 0rem 0.5rem 0.5rem;
-                    border-bottom: 0.5px solid $secondary-bg;
-                    padding-bottom: 10px;
-                   }
-                &:hover{
-                    background-color: $light-button-focus;
-                }
+                width: fit-content;
+                padding: 10px 20px;
             }
         }
     }
 }
+.searchBarClosed{
+    position: fixed;
+    top:120px;
+    right:20px;
+    z-index: 10000;
+    .showSearch{
+        display: none;
+    }
+    .form{
+        display: none;
+    }
+}
 
 @media (max-width: 768px){
+    
     .searchBar{
-        padding: 20px;
-        max-height: 76px;
-        .searchInput{
-            min-width: 100%;
-            .input{
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                min-width: 100%;
-                input,input:focus{
-                    font-size: 14px;
-                }
+    align-items: flex-end;
+    position: fixed;
+    top:120px;
+    right: 20px;
+    .showSearch{
+            display: block;
+            button{
+                padding: 20px;
             }
-            .dropdown{
-                font-size: 12px;
-            }
+     }
+    
+    .form{
+        margin-top: 0px;
+        form{
+            
+            grid-template-columns: auto;
         }
     }
-} 
+}
+.searchBarClosed{
+    .showSearch{
+        display: block;
+        button{
+            padding: 20px;
+        }
+    }
+}
+}

@@ -17,7 +17,6 @@ const Profile = () => {
   const router = useRouter();
   // functions
   const handleClick = (data) => (event) => {
-    console.log(data);
     if (data == "ad") {
       setRightPart(<UserAds></UserAds>);
     } else if (data == "personal") {

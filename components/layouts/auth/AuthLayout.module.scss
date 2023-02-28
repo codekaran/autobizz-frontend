@@ -1,126 +1,21 @@
-.auth_layout {
-    width: 100vw;
-    min-height: 100vh ;
-    margin: 0px;
-    padding: 0px;
+.auth_layout{
     display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    .container {
-        display: grid;
-        place-items: center;
-        height: 100%;
+    position: relative;
+    min-height: 80vh;
+    place-items:  center;
+    padding: 20px;
+    .top,.bottom{
+        position: absolute;
     }
-    .container:first-child {
-        background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
-            url("../../../public/bg-car.jfif");
-        background-position: bottom;
-        background-size: cover;
-        background-repeat: no-repeat;
-        .image {
-            height: clamp(100px, 20vh, 180px);
-            aspect-ratio: 1;
-            background-color: #848484;
-            border-radius: 50%;
-            margin: auto;
-        }
-
-        h3 {
-            
-            font-style: normal;
-            font-weight: normal;
-            font-size: 36px;
-            line-height: 45px;
-            color: #ffffff;
-            margin: 84px auto 16px;
-        }
-
-        h1 {
-            
-            font-style: normal;
-            font-weight: 600;
-            font-size: 48px;
-            line-height: 60px;
-            color: #ffffff;
-            margin: 0px;
-        }
+    .top{
+        right:0;
+        top:0;
+        z-index: -1;
     }
-    .container:nth-child(2) {
-        position: relative;
-
-        .box {
-            display: none;
-        }
-        .top {
-            position: absolute !important;
-            top: 0px;
-            right: 0px;
-            left: auto;
-            bottom: auto;
-            z-index: -1;
-        }
-        .bottom {
-            position: absolute !important;
-            top: auto;
-            bottom: 0px;
-            left: 0px;
-            right: auto;
-            z-index: -1;
-            transform: rotate(180deg);
-        }
-    }
-}
-
-@media (max-width: 768px) {
-    .auth_layout {
-        grid-template-columns: 1fr;
-
-        .container:first-child {
-            display: none;
-        }
-        .container:nth-child(2) {
-            width: 100%;
-            display: block;
-
-            .box {
-                display: block;
-                margin: 0px;
-                position: absolute;
-                width: 80%;
-                top: 28px;
-                left: 16px;
-
-                h3 {
-                    
-                    font-style: normal;
-                    font-weight: normal;
-                    font-size: 13px;
-                    line-height: 16px;
-                    color: #406882;
-                }
-
-                h1 {
-                    
-                    font-style: normal;
-                    font-weight: 600;
-                    font-size: 24px;
-                    line-height: 30px;
-                    color: #406882;
-                }
-            }
-
-            .top {
-                aspect-ratio: 1;
-                height: 140px;
-            }
-
-            .bottom {
-                display: none;
-                // aspect-ratio: 1;
-                // height: 140px;
-                // bottom: 0px;
-                // left: 0px;
-            }
-        }
+    .bottom{
+        bottom:0;
+        left: 0;
+        z-index: -1;
+        transform: rotate(180deg);
     }
 }

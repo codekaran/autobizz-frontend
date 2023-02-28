@@ -1,0 +1,15 @@
+@import '../../../styles/colors';
+.container{
+    display: flex;
+    flex-direction: column;
+    label{
+        text-transform: capitalize;
+    }
+    .select{
+        padding: 10px;
+        border-radius: 0.5rem;
+        background-color: white;
+        border: 2px solid $selected-bg;
+        outline: none;
+    }
+}

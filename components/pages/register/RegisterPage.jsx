@@ -4,13 +4,13 @@ import Button from "../../globals/button/Button";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import AuthContext from "../../../context/Auth/AuthContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import axios from "/axios/index.js";
-import { FaSign } from "react-icons/fa";
+import { FaArrowCircleRight } from "react-icons/fa";
 import AlertContext from "../../../context/Alert/AlertContext";
 import { RegisterPageSchema } from "../../../utils/validations/validation";
-
+import Input from '../../globals/input/Input'
+import SellerType from "./SellerType";
+import Info from './Info';
 const RegisterPage = (props) => {
   //Contexts&
   const router = useRouter();
@@ -23,6 +23,7 @@ const RegisterPage = (props) => {
     password: "",
     confirmPass: "",
   });
+  const [active,setActive] = useState(1);
   // This function updates the formData object
   const handleChange = (field) => (event) => {
     setFormData({ ...formData, [field]: event.target.value });
@@ -48,7 +49,7 @@ const RegisterPage = (props) => {
           .get("/seller-api/sellers/emailExists?email=" + values.email)
           .then((res) => {
             if (res.data) {
-              createAlert("Email Already Exists", "E");
+              createAlert("This email is already taken", "E");
               return;
             } else {
               setRegisterForm({
@@ -57,7 +58,7 @@ const RegisterPage = (props) => {
                 confirmPass: values.confirmPass,
                 page2Filled: true,
               });
-              router.push("/register/seller-type");
+              setActive(2)
             }
           });
       })
@@ -68,59 +69,51 @@ const RegisterPage = (props) => {
     <div className={styles.register}>
       <h3>{props.title}</h3>
       <h1>Register</h1>
-      <p className={styles.p}>
-        Register now to start your journey as seller with company name
-      </p>
+      
       <form>
-        <div className={styles.formGroup}>
-          <input
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={handleChange("email")}
-          />
+        <div className={`${styles.step1} ${styles.registerPage} ${active === 1 && styles.active}`}>
+        <p>
+        Register now to start your journey as seller with us
+        </p>
+          <div className={styles.formGroup}>
+            <Input
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={handleChange("email")}
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <Input
+              type='password'
+              showPassFunc={true}
+              placeholder="Password"
+              value={password}
+              onChange={handleChange("password")}
+            />
+          </div>
+
+          <div className={styles.formGroup}>
+            <Input
+              type="password"
+              placeholder="Confirm Password"
+              value={confirmPass}
+              onChange={handleChange("confirmPass")}
+            />
+          </div>
+          <Button
+            onClick={handleSubmit}
+            icon={<FaArrowCircleRight />}
+          >
+            Next
+          </Button>
         </div>
 
-        <div className={styles.formGroup}>
-          <input
-            type={passVisible ? "text" : "password"}
-            placeholder="Password"
-            value={password}
-            onChange={handleChange("password")}
-          />
-          <span className={styles.toggleVisible} onClick={handlePasswordToggle}>
-            <FontAwesomeIcon icon={passVisible ? faEye : faEyeSlash} />
-          </span>
-        </div>
-
-        <div className={styles.formGroup}>
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            value={confirmPass}
-            onChange={handleChange("confirmPass")}
-          />
-        </div>
-        <Button
-          margin="10px 0px 0px 0px"
-          onClick={handleSubmit}
-          icon={<FaSign />}
-        >
-          Register
-        </Button>
+        <div className={`${styles.step2} ${active === 2 && styles.active}`}><SellerType setActive={setActive}/></div>
+        <div className={`${styles.step3} ${active === 3 && styles.active}`}><Info setActive={setActive}/></div>
       </form>
-      {/* <p className={styles.or}>Or join with</p>
-      <div className={styles.container}>
-        <div className={styles.icon}>
-          <Image src={google} />
-        </div>
-        <div className={styles.icon}>
-          <Image src={apple} />
-        </div>
-        <div className={styles.icon}>
-          <Image src={facebook} />
-        </div>
-      </div> */}
+
       <p className={styles.redirect}>
         Already registered?{" "}
         <Link href="/login/seller" passHref>
