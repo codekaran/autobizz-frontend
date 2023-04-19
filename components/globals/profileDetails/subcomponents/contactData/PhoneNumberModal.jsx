@@ -9,7 +9,10 @@ import CheckBox from "../../../../globals/checkbox/CheckBox";
 import AlertContext from "../../../../../context/Alert/AlertContext";
 import ButtonLoader from "../../../ButtonLoader/ButtonLoader";
 import { phoneNumberModalSchema } from "../../../../../utils/validations/validation";
-
+import Select from "../../../Select/Select";
+import { countries } from "../../../../../utils/staticData";
+import PhoneNumberInput from "../../../input/CountryCodeSelect";
+import CountryCodeSelect from "../../../input/CountryCodeSelect";
 const PhoneNumberModal = ({open}) => {
 //Contexts//-----------------------------------------------------------------------------//
   const {user,loadUser} = useContext(AuthContext);
@@ -17,8 +20,8 @@ const PhoneNumberModal = ({open}) => {
   const {createAlert} = useContext(AlertContext);
 //-Form data is an object which stores email and password of the user from the input fields-//
   const [formData, setFormData] = useState({
-    mobile: "",
-    countryCode:"+1"
+    mobile: user.mobile,
+    countryCode:user.countryCode
   });
   const {mobile,countryCode} = formData;
 //------------------------------------------------------------------------------------------//
@@ -33,10 +36,7 @@ const PhoneNumberModal = ({open}) => {
     then(async (values)=>{
       if(await updateDetails(values)){
         createAlert("Successfully updated mobile number");
-        setFormData({
-          mobile: "",
-    countryCode:"+1"
-        })
+        
         hideEditing();
         loadUser();
         }
@@ -46,8 +46,8 @@ const PhoneNumberModal = ({open}) => {
     event.preventDefault();
     hideEditing();
     setFormData({
-      mobile: "",
-    countryCode:"+1"
+      mobile: user.mobile,
+    countryCode:user.countryCode
     })
   }
 //------------------------------------------------------------------------------------------//
@@ -55,7 +55,7 @@ const PhoneNumberModal = ({open}) => {
    <div className={container}>
     <div className={open ? containerOpen : containerClosed}>
     <form>
-        <Input placeholder={'Country Code*'} onChange={handleChange("countryCode")} value={countryCode}></Input>
+        <CountryCodeSelect value={countryCode} onChange={handleChange('countryCode')}/>
         <Input placeholder={'Phone number*'} onChange={handleChange("mobile")} value={mobile}></Input>
         <div style={{display:'flex',gap:'10px', alignItems:'center'}}>
           <CheckBox name='Show in Ad'/>

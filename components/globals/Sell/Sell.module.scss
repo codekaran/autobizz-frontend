@@ -1,0 +1,91 @@
+@import '../../../styles/colors';
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    gap: 40px;
+    align-items: center;
+    scroll-behavior: smooth;
+    margin-bottom: 50px;
+    h2{
+        align-self: center;
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 30px;
+        margin-top: 100px;
+    }
+    .subContainer{
+        display: flex;
+        width: 70%;
+        
+        .left{
+            height: fit-content;
+            position: fixed;
+            max-width: 20%;
+            border-radius: 0.5rem;
+            box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.3);
+            width: 30%;
+            padding: 10px;
+            background: $white;
+            display: flex;
+            gap:10px;
+            flex-direction: column;
+            justify-content: center;
+            // padding: 50px;
+            color: $selected;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: 150%;
+            margin-right: 20px;
+            overflow: hidden;
+            letter-spacing: 0.05em;
+            .nav{
+            display: flex;
+            text-decoration: none;
+            gap:5px;
+            color: $primary-text;
+            align-items: center;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            background-color: $unselected-bg;
+            padding: 10px;
+            &:hover{
+                background-color: $selected-bg;
+            }
+        }}
+        form{
+            display: flex;
+            flex-direction: column;
+            gap:30px;
+            max-width: 80%;
+            margin: auto;
+            .section{
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                border-radius: 0.5em;
+                box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.3);
+                height: fit-content;
+                padding: 20px;
+                gap:10px;
+                .grid_2{
+                    display: grid;
+                    grid-template-columns: auto auto;
+                    grid-gap: 10px;
+                }
+                .anchor{
+                    position: absolute;
+                    top:-265px;
+                }
+            }
+    
+            button{
+                width: fit-content;
+                align-self: center;
+                padding: 15px 30px;
+            }
+        }
+    }
+}

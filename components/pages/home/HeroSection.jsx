@@ -7,6 +7,8 @@ import Button from '../../globals/button/Button';
 import {FaSearch} from 'react-icons/fa';
 import {MdSell} from 'react-icons/md';
 import { useRouter } from "next/router";
+import colors from '../../../variables/colors';
+
 const HeroSection = (props) => {
   const router = useRouter(); 
 
@@ -41,8 +43,8 @@ const HeroSection = (props) => {
       <h6>Sell and Buy Cars<br/><span>Hasslefree!</span></h6>
       {/* <p>With our amazing out reach sell your car easily to millions of customers at best market prices, but that’s not it as buyers can get well checked and good condition cars at best prices.</p> */}
       <div className={styles.buttonGroup}>
-        <Button  icon={<MdSell/>} onClick={(e)=>{router.push('/ads/create/step-1')}}>Sell your car</Button>
-        <Button  icon={<FaSearch/>}>Explore cars</Button>
+        <Button backgroundColor={colors.orangeAccent} icon={<MdSell/>} onClick={(e)=>{router.push('/ads/create/step-1')}}>Sell your car</Button>
+        <Button  backgroundColor={colors.orangeAccent} icon={<FaSearch/>}>Explore cars</Button>
       </div>
     </div>
   );

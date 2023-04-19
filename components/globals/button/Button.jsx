@@ -21,6 +21,7 @@ const Button = (props) => {
    onClick={props.onClick} 
    disabled={props.disabled} 
    type={props.type}
+   {...props}
   >
     {props.children}{props.icon && <div className={styles.icon} style={{fontSize:props.fontSize}}>{props.icon}</div>}
   </button>

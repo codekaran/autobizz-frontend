@@ -40,7 +40,7 @@ const CarScrollNew = (props) => {
       popUpImageSection.current.scroll({
         top: val,
         left: 0,
-        behavior: "smooth",
+        behavior: "auto",
       });
     }, 10);
   };

@@ -19,13 +19,11 @@
   }
   .company_logo {
     cursor: pointer;
-    div {
-      min-width: 160px;
-      height: 56px;
-      left: 84px;
-      top: 12px;
-      background: $grey-placeholder;
-    }
+      min-width: 140px;
+      height: 30px;
+      overflow: hidden;
+      
+    
   }
   .flex_box {
     display: flex;
@@ -84,7 +82,7 @@
     overflow: hidden;
     position: sticky;
     top:0;
-    z-index: 10;
+    z-index: 1000;
     justify-content: space-between;
     align-items: center;
     .burger {
@@ -120,7 +118,7 @@
       justify-content: center;
       align-items: center;
       width: 100vw;
-      z-index: 101;
+      z-index: 999;
       position: fixed;
       left: 0;
       top: 0px;

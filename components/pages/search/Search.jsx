@@ -8,10 +8,13 @@ import SearchResults from '../../globals/searchResults/SearchResults';
 const Search = (props) => {
   return (
     <div className={styles.search}>
-        <SearchBar/>
+        
         <div className={styles.bottom}>
         <div className={styles.filterSection}><FilterSection/></div>
-        <div className={styles.searchResults}><SearchResults/></div>
+        <div className={styles.searchResults}>
+          <SearchBar style={{marginTop:'120px'}}/>
+          <SearchResults/>
+        </div>
         </div>
     </div>
   )

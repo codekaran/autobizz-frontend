@@ -1,0 +1,44 @@
+@import '../../../../styles/colors';
+.container{
+    padding: 20px;
+    border-radius: 0.5rem;
+    box-shadow: 0px 2px 8px 2px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    .tabbedView{
+        display: flex;
+        width: 100%;
+        flex-direction: column;
+        gap:20px;
+        .tabButtons{
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+            ul{
+                padding: 0;
+                width: 100%;
+                list-style-type: none;
+                display: flex;
+                justify-content: center;
+                
+                li{
+                    display: flex;
+                    justify-content: center;
+                    width: 100%;
+                    padding: 10px;
+                    cursor: pointer;
+                    background-color: $unselected-bg;
+                    color: $primary-text;
+                    font-weight: 600;
+                }
+                .selectedTab{
+                    background-color: $selected-bg;
+                    color: $primary-text;
+                    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75) inset;
+            -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75) inset;
+               -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75) inset;
+                }
+            }
+        }
+    }
+}

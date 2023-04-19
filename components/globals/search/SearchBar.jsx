@@ -7,18 +7,17 @@ import { FaCross, FaSearch } from "react-icons/fa";
 import {CgClose} from 'react-icons/cg';
 import SearchContext from "../../../context/Search/SearchContext";
 
-const SearchBar = () => {
+const SearchBar = (props) => {
   const [formData,setFormData] = useState({
     make:'ALL',
     model:'ALL',
-    maxPrice:1000,
-    minPrice:0,
-    mileage:'0-30,000',
+    max_mileage:1000000,
+    min_mileage:0
   });
   const [open,setOpen] = useState(false);
   const {setSearchState} = useContext(SearchContext); 
   const {make,model,maxPrice,mileage} = formData;
-
+  const searchCtx = useContext(SearchContext);
   useEffect(() => {
     if(window.innerWidth>768)setOpen(true)
   }, [])
@@ -29,12 +28,13 @@ const SearchBar = () => {
   };
   const handleSubmit = (e)=>{
     e.preventDefault();
+    searchCtx.updateResults(formData);
   }
   const toggleOpen = () => {
     setOpen(open => !open)
   }
   return (
-    <div className={open ? styles.searchBar : styles.searchBarClosed}>
+    <div className={open ? styles.searchBar : styles.searchBarClosed} {...props}>
       <div className={styles.showSearch}>
       <Button theme='light' onClick = {toggleOpen}>{open? <CgClose/> : <FaSearch/>}</Button>
       </div>

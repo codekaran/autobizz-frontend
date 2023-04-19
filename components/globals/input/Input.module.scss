@@ -2,7 +2,11 @@
     .inputContainer{
         display: flex;
         position: relative;
-
+        flex-direction: column;
+        label{
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
         .icon{
             position: absolute;
             top:50%;
@@ -11,7 +15,7 @@
             cursor: pointer;
         }
     .input{
-        padding: 10px;
+        padding: 15px;
         border-radius: 0.5rem;
         border: 2px solid $selected-bg;
         min-width: 100%;

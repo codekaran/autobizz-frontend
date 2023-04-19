@@ -1,0 +1,100 @@
+@import '../../../styles/colors';
+
+.scrollerContainer{
+    width: 70%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0px 0px 5px 0px rgb(0 0 0 / 75%);
+    .leftButton{
+        position: absolute;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        font-size: 50px;
+        padding: 0px 10px;
+        color: white;
+        height: 80%;
+        cursor: pointer;
+    }
+    .rightButton{
+        position: absolute;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        font-size: 50px;
+        right:0;
+        padding: 0px 10px;
+        color: white;
+        height: 80%;
+        cursor: pointer;
+    }
+    .slides{
+        height: 80%;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        align-items: center;
+        position: relative;
+        gap:10px;
+        overflow-x:scroll;
+        scroll-behavior: smooth;
+        -ms-overflow-style: none;  /* Internet Explorer 10+ */
+        scrollbar-width: none;  /* Firefox */
+        scroll-snap-type: x mandatory;
+        cursor: grab;
+        .slide{
+            height: 100%;
+            min-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            scroll-snap-stop: always;
+            scroll-snap-align: start;
+            
+            .img{
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+        }
+    }
+    .slides::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
+    .thumbs{
+        height: 20%;
+        width: 100%;
+        display: flex;
+        gap:10px;
+        padding: 5px;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        .slide{
+            min-width: 15%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+            .img{
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+            border: 6px solid $selected-bg;
+            filter: brightness(0.7);
+        }
+        .active
+        {
+            border: 6px solid $primary-button-focus;
+            filter: brightness(1);
+        }
+    }
+    .thumbs::-webkit-scrollbar { 
+        display: none;  /* Safari and Chrome */
+    }
+}

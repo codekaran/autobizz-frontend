@@ -7,6 +7,7 @@ import {
   TOGGLE_NAME_EDITING,
   TOGGLE_MOBILE_EDITING,
   TOGGLE_ADDRESS_EDITING,
+  TOGGLE_AVATAR_EDITING,
   UPDATE_FALIURE,
   CLOSE_EDITING,
   LOADING_TRUE,
@@ -25,6 +26,7 @@ const ProfilePageState = (props) => {
     loading: false,
     editMobile: false,
     editAddress: false,
+    editAvatar: false,
     error: null,
   };
 
@@ -47,6 +49,9 @@ const ProfilePageState = (props) => {
         break;
       case "address":
         dispatch({ type: TOGGLE_ADDRESS_EDITING, payload: true });
+        break;
+      case "avatar":
+        dispatch({ type: TOGGLE_AVATAR_EDITING, payload: true });
         break;
       default:
         break;
@@ -93,6 +98,7 @@ const ProfilePageState = (props) => {
         editName: state.editName,
         editMobile: state.editMobile,
         editAddress: state.editAddress,
+        editAvatar: state.editAvatar,
         loading: state.loading,
         error: state.error,
       }}

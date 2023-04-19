@@ -14,7 +14,7 @@ const Step_2 = () => {
   // to fetch carmodels
 
   useEffect(async () => {
-    if(!ctx.adFormData.step1Completed)router.push("/ads/create/step-1")
+    if(!ctx.adFormData.step1Completed){}
     else{
       let result;
       if (ctx.adFormData.make) {

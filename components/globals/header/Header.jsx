@@ -10,6 +10,8 @@ import colors from '../../../variables/colors';
 import loadCustomRoutes from "next/dist/lib/load-custom-routes";
 import {BiLogInCircle, BiLogOutCircle} from 'react-icons/bi'
 import {CgProfile} from 'react-icons/cg';
+import logo from '../../../public/logo.png'
+import Image from "next/image";
 
 const Header = () => {
   const ctx  = useContext(AuthContext);
@@ -45,9 +47,8 @@ const Header = () => {
     <div className={styles.header}>
       <Link href='/'>
       <div className={styles.company_logo} >
-        <div>
-            <p>Home</p>
-        </div>
+        <Image src={logo} layout='responsive'>
+        </Image>
       </div>
       </Link>
       {/* burger for mobile view */}

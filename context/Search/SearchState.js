@@ -8,12 +8,12 @@ import setAuthToken from "../../utils/setAuthToken";
 const SearchState = (props) => {
   const initialState = {
     results: [],
-    make: "ALL",
-    model: "ALL",
-    minPrice: "0",
-    maxPrice: "1000000",
-    minDistance: "0",
-    maxDistance: "1000000",
+    make: null,
+    model: null,
+    min_mileage: "0",
+    min_mileage: "1000000",
+    min_distance: "0",
+    max_distance: "1000000",
     error: null,
   };
 
@@ -51,7 +51,24 @@ const SearchState = (props) => {
   };
 
   //Update results based on formData
-  const updateResults = (formData) => {};
+  const updateResults = async (formData) => {
+    try {
+      const res = await axios.post(`seller-api/ads/query`, formData, {
+        auth: {
+          username: "karan",
+          password: 123,
+        },
+      });
+      console.log(formData);
+      console.log(res);
+      dispatch({
+        type: SET_SEARCH_STATE,
+        payload: res.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <SearchContext.Provider

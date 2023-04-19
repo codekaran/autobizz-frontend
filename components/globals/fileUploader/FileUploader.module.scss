@@ -1,0 +1,50 @@
+@import '../../../styles/colors';
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    
+    .body{
+        width: 100%;
+        border:1px black dashed;
+        transition: all 0.3s ease-in-out;
+        border-radius: 0.5rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        color:$secondary-text;
+        .icon{
+            font-size: 120px;
+            transition: all 0.3s ease-in-out;
+        }
+        .title{
+            font-size: 20px;
+        }
+        input{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+        background-color: $unselected-bg;
+    }
+    .body:hover{
+        background-color: $selected-bg;
+        .icon{
+            scale:1.1;
+        }
+    }
+}
+
+.container.dragover{
+    .body{
+        background-color: $selected-bg;
+        .icon{
+            scale:1.1;
+        }
+    }
+}

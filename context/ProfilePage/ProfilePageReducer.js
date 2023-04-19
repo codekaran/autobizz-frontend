@@ -9,6 +9,7 @@ import {
   UPDATE_FALIURE,
   CLEAR_ERRORS,
   TOGGLE_MOBILE_EDITING,
+  TOGGLE_AVATAR_EDITING,
 } from "../types";
 
 export default (state, action) => {
@@ -43,6 +44,12 @@ export default (state, action) => {
         editing: true,
         editAddress: true,
       };
+    case TOGGLE_AVATAR_EDITING:
+      return {
+        ...state,
+        editing: true,
+        editAvatar: true,
+      };
     case LOADING_TRUE:
       return {
         ...state,
@@ -73,6 +80,7 @@ export default (state, action) => {
         editName: false,
         editMobile: false,
         editAddress: false,
+        editAvatar: false,
       };
 
     default:

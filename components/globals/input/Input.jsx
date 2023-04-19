@@ -12,8 +12,9 @@ const Input = (props) => {
 
   return (
     <div className={inputContainer}>
+      <label htmlFor={props.name}>{props.name}</label>
       {props.showPassFunc ? 
-        <><input {...props} type={type} className={input} />{type==='password' ? <FaEye onClick={showPass} className={icon}/> : <FaEyeSlash onClick={showPass} className={icon}/>}</>
+        <><input {...props} style={props.style} id={props.name} type={type} className={input} />{type==='password' ? <FaEye onClick={showPass} className={icon}/> : <FaEyeSlash onClick={showPass} className={icon}/>}</>
       : 
       <input className={input} {...props}/>}
     </div>

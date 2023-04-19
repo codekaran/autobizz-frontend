@@ -3,41 +3,54 @@
 .container{
     padding: 10px;
     color: $primary-button-background;
+    
     width: 100%;
     max-width: 700px;
     .main{
-        border: 1px solid $selected-bg;
         padding: 10px;
         margin-top: 10px;
         border-radius:0.5rem ;
         display: flex;
-        align-items: center;
+        flex-direction: column;
+        border: 1px solid $selected-bg;
         background: white;
-        .img{
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            border: 1px solid $selected-bg;
-            overflow: hidden;
-            
-        }
-
-        .section{
+        .header{
             display: flex;
             align-items: center;
-            padding: 10px;
-            margin-right: auto;
-            .subsection{
-                h4{
-                    margin-bottom: 4px;
-                }
+            justify-content: flex-start;
+            width: 100%;
+            .img{
+                width: 70px;
+                height: 70px;
+                border-radius: 50%;
+                border: 1px solid $selected-bg;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $secondary-bg;
+                color: white;
+            }
+            
+            .section{
+                display: flex;
+                align-items: center;
+                padding: 10px;
                 margin-right: auto;
-                p{
-                    color: $primary-button-focus;
+                .subsection{
+                    h4{
+                        margin-bottom: 4px;
+                    }
+                    margin-right: auto;
+                    p{
+                        color: $primary-button-focus;
+                    }
                 }
             }
         }
-        
+        .modal{
+            width: 100%;
+        }
     }
 }
 
@@ -54,29 +67,38 @@
             align-items: flex-start;
             background: white;
 
-            .img{
-                width: 70px;
-                height: 70px;
-                border-radius: 50%;
-                
-                overflow: hidden;
-                margin-left: 50%;
-                transform: translateX(-50%);
-            }
-
-            .section{
+            .header{
                 display: flex;
-                flex-direction: column;
-                gap: 10px;
-                align-items: flex-start;
-                padding: 10px 0px;
-                .subsection{
-                    p{
-                        color: $primary-button-focus;
-                    }
+                align-items: center;
+                justify-content: flex-start;
+                width: 100%;
+                .img{
+                    width: 70px;
+                    height: 70px;
+                    border-radius: 50%;
+                    border: 1px solid $selected-bg;
+                    overflow: hidden;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background-color: $secondary-bg;
+                    color: white;
                 }
-                &:last-child{
-                    border: none;
+                
+                .section{
+                    display: flex;
+                    align-items: center;
+                    padding: 10px;
+                    margin-right: auto;
+                    .subsection{
+                        h4{
+                            margin-bottom: 4px;
+                        }
+                        margin-right: auto;
+                        p{
+                            color: $primary-button-focus;
+                        }
+                    }
                 }
             }
             
