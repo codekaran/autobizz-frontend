@@ -12,6 +12,7 @@ const Carousal = (props) => {
   return (
     <>
       <div className={styles.heading}>
+        <div className={styles.top}>
         <h4 className={styles.title}>{props.title}</h4>
         <div className={styles.arrow}>
           <div
@@ -23,8 +24,8 @@ const Carousal = (props) => {
             className={styles.rightArrow}
           ></div>
         </div>
-      </div>
-      <div className={styles.carousel}>
+        </div>
+        <div className={styles.carousel}>
         {/* <h4 className={styles.title}>{props.title}</h4> */}
 
         <div id="my-scrollbar" ref={carousel} className={styles.cards}>
@@ -33,6 +34,7 @@ const Carousal = (props) => {
             <CarCard key={car.id} carData={car} />
           ))}
         </div>
+      </div>
       </div>
     </>
   );

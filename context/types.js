@@ -31,3 +31,4 @@ export const LOADING_FALSE = "LOADING_FALSE";
 
 //Search State
 export const SET_SEARCH_STATE = "SET_SEARCH_STATE";
+export const SET_SEARCH_RESULTS = "SET_SEARCH_RESULTS";

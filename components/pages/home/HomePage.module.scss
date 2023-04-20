@@ -8,6 +8,10 @@
   place-items: center;
   justify-content: center;
 }
+.home_section{
+  display: flex;
+  flex-direction: column;
+}
 
 @media (max-width: 768px) {
   .home {

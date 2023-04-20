@@ -9,8 +9,8 @@ import SearchContext from "../../../context/Search/SearchContext";
 
 const SearchBar = (props) => {
   const [formData,setFormData] = useState({
-    make:'ALL',
-    model:'ALL',
+    make:null,
+    model:null,
     max_mileage:1000000,
     min_mileage:0
   });
@@ -25,8 +25,25 @@ const SearchBar = (props) => {
 
   const handleChange = (field) => (event) => {
     setFormData({ ...formData, [field]: event.target.value });
+    if(field === 'make')setFormData({...formData,[field]:event.target.value,model:models.filter(model => model.make===event.target.value).slice(0,1)[0].model})
+    if(field ==='make' && event.target.value==='ALL') setFormData({...formData,[field]:null, model:null})
+    if(field ==='model' && event.target.value==='ALL') setFormData({...formData,[field]:null})
+    if(field === 'mileage'){
+      const miles = event.target.value;
+      if (miles === 'ALL') setFormData({...formData,max_mileage:1000000, min_mileage:0})
+      else {
+        const max = Number.parseInt(miles.split('-').pop())*1000;
+        const min = Number.parseInt(miles.split('-').shift())*1000;
+
+        if(miles==='90,000+'){
+          max=1000000;
+          min=90000
+        }
+        setFormData({...formData,max_mileage:max, min_mileage:min})
+      }
+    }
   };
-  const handleSubmit = (e)=>{
+  const handleSubmit = async (e)=>{
     e.preventDefault();
     searchCtx.updateResults(formData);
   }
@@ -44,7 +61,8 @@ const SearchBar = (props) => {
         Makes
        <select className={styles.select} name = "make" value={make} onChange={handleChange('make')}>
           {makes.map(make => {
-            return <option>{make}</option>
+            if(make==='ALL')return <option value={null}>{make}</option>
+            else return <option>{make}</option>
           })}
         </select>
        </label>
@@ -52,6 +70,7 @@ const SearchBar = (props) => {
         Models
         <select className={styles.select} name = "model" value={model} onChange={handleChange('model')}>
           {models.map(model =>{
+            if(model.make==='ALL')return <option value={null}>{'ALL'}</option>
             if (model.make === make)
             return <option>{model.model}</option>
           })}
@@ -67,7 +86,7 @@ const SearchBar = (props) => {
         </label>
         <label htmlFor="mileage">
         Mileage (km)
-        <select className={styles.select} name = "mileage" value={mileage} onChange={handleChange('mileage')}>
+        <select className={styles.select} name = "mileage" onChange={handleChange('mileage')}>
           {mileages.map(mileage => {
             return <option>{mileage}</option>
           } )}

@@ -5,7 +5,7 @@ import {AiFillStar,AiOutlineStar} from 'react-icons/ai';
 import Image from 'next/image';
 function TestimonialCard(props) {
   return (
-    <div className={container}>
+    <div className={container} style={{ transform: props.active === props.id ? 'scale(1.1)' : 'scale(1)'}}>
         <div className={quote}><FaQuoteRight/></div>
         <p>{props.description}</p>
         <div className={details}>

@@ -1,69 +1,74 @@
 .heading {
   display: flex;
+  flex-direction: column;
+  padding: 30px;
   justify-content: space-between;
-  .title {
-    font-style: normal;
-    font-weight: 600;
-    font-size: 24px;
-    color: #000000;
-    margin-left: 20px;
-    // padding-bottom: 32px;
-  }
-  .arrow {
+  .top{
     display: flex;
-    .leftArrow {
-      background-image: url("../../../public/leftArrow.png");
-      background-position: center;
-      background-size: cover;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-      transform: scale(0.8);
-      &:active {
-        transform: scale(1);
+    align-items: center;
+    justify-content: space-between;
+    .title {
+      font-style: normal;
+      font-weight: 800;
+      font-size: 24px;
+      color: #000000;
+    }
+    .arrow {
+      display: flex;
+      .leftArrow {
+        background-image: url("../../../public/leftArrow.png");
+        background-position: center;
+        background-size: cover;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        transform: scale(0.8);
+        &:active {
+          transform: scale(1);
+        }
+      }
+      .rightArrow {
+        background-image: url("../../../public/rightArrow.png");
+        background-position: center;
+        width: 30px;
+        height: 30px;
+        background-size: cover;
+        cursor: pointer;
+        transform: scale(0.8);
+        &:active {
+          transform: scale(1);
+        }
       }
     }
-    .rightArrow {
-      background-image: url("../../../public/rightArrow.png");
-      background-position: center;
-      width: 30px;
-      height: 30px;
-      background-size: cover;
-      cursor: pointer;
-      transform: scale(0.8);
-      &:active {
-        transform: scale(1);
+  }
+  .carousel {
+    width: 100%;
+  
+    // test
+    display: flex;
+    // test
+  
+    ul {
+      padding: 10px;
+    }
+    // test
+    .cards {
+      width: 100vw;
+      display: flex;
+      padding: 10px 0px;
+      white-space: nowrap;
+      overflow-x: scroll;
+      overflow-y: hidden;
+      -webkit-overflow-scrolling: touch;
+      &::-webkit-scrollbar {
+        display: none;
       }
     }
+    // test
   }
 }
 
-.carousel {
-  width: 100%;
-  padding: 0px 20px;
 
-  // test
-  display: flex;
-  // test
-
-  ul {
-    padding: 10px;
-  }
-  // test
-  .cards {
-    width: 100vw;
-    display: flex;
-    padding: 10px 0px;
-    white-space: nowrap;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-  // test
-}
 @media (max-width: 750px) {
   .heading {
     .title {
